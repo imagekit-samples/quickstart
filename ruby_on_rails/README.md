@@ -1,24 +1,25 @@
-# README
+## Initialization
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Add this configuration to `config/environments/development.rb` and `config/environments/production.rb`
 
-Things you may want to cover:
+```ruby
+config.imagekit={
+  private_key: "<your-private-key>",
+  public_key: "<your-public-key>",
+  url_endpoint: "<endpoint-url>"
+}
+```
 
-* Ruby version
+Next, go to `app/controllers/application_controller.rb`, and fill in the following values there as well:
 
-* System dependencies
+```ruby
+def init_ik
+    private_key: "<your-private-key>",
+    public_key: "<your-public-key>",
+    # default value for endpoint is: https://ik.imagekit.io/<IMAGEKIT_ID>/
+    url_endpoint: "<endpoint-url>"
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    # here we initialize an instance of the SDK, which we will use to work with images
+    @imagekitio = ImageKit::ImageKitClient.new(private_key, public_key, url_endpoint)
+end
+```
