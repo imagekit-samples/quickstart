@@ -1,2 +1,37 @@
-<h2>Welcome to the ImageKit Rails SDK Tutorial!</h2>
-<h3>Follow the next few steps to play around with images using ImageKit</h3>
+<h2>Default Image in full size</h2>
+<%= image_tag @default_image %>
+
+<br/><br/>
+
+<h2>Default Image with manipulated size (200px * 200px)</h2>
+<%= image_tag @height_width %>
+
+<br/><br/>
+
+<h2>Default Image cropped (200px * 300px)</h2>
+<%= image_tag @crop_mode %>
+
+<br/><br/>
+
+<h2>Default Image cropped and with overlaye text</h2>
+<%= image_tag @overlay %>
+
+<br/><br/>
+
+<h2>Default Image resized and rotated by 90<sup>o</sup></h2>
+<%= image_tag @chained_transform %>
+
+<br/><br/>
+
+<h2>File Upload</h2>
+
+<%= form_with(url: {action: :upload}, multipart: true) do %>
+    <%= file_field_tag 'picture' %>
+    <%= submit_tag "Upload" %>
+<% end %>
+
+<br>
+
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+<% end %>
