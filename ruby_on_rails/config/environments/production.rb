@@ -1,9 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.imagekit={
-    private_key: "private_rCdVyDu/RQ+jMyD5+6n36NA3tM8=",
-    public_key: "public_zDv4VXT5FvgFI+ln6aSZCmOJ9KQ=",
-    url_endpoint: "https://ik.imagekit.io/violetviolinist/"
+    private_key: "<your-private-key>",
+    public_key: "<your-public-key>",
+    url_endpoint: "<endpoint-url>"
   }
   # Code is not reloaded between requests.
   config.cache_classes = true
