@@ -23,3 +23,11 @@ def init_ik
     @imagekitio = ImageKit::ImageKitClient.new(private_key, public_key, url_endpoint)
 end
 ```
+
+Now, run the server:
+```bash
+rails server
+```
+Go to http://localhost:3000/
+
+You should see the headings and the corresponding images on the home page.
