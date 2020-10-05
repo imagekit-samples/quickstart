@@ -1,5 +1,3 @@
-# vuejs
-
 # Introduction 
 
 This sample project covers:
