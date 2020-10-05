@@ -16,6 +16,8 @@ This sample project covers:
 ## Install dependencies
 
 ```
+yarn install
+OR
 npm install
 ```
 ## Setup authentication
@@ -36,6 +38,8 @@ API public key can be obtained from the [developer](https://imagekit.io/dashboar
 ## Run the React app
 
 ```
+yarn start
+OR
 npm start
 ```
 
