@@ -1,0 +1,12 @@
+<%= form_with model: @post do |form| %>
+
+    <%= label_tag(:title, "Enter title of post") %>
+    <%= form.text_field :title %>
+    
+    <%= label_tag(:picture, "Upload a picture") %>
+    <%= form.file_field :picture %>
+    
+    <%= submit_tag "Submit" %>
+<% end %>
+
+<%= link_to 'Back', posts_path %>
