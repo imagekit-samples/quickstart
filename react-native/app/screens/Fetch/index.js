@@ -28,17 +28,17 @@ function Fetch() {
 
 		switch (transformationType){
 			case 'Transformation 1' : //crop mode and url from source
+				imageSrc = "https://ik.imagekit.io/demo/img/plant.jpeg";
 				transformationArr = [{
-					"height": 200,
+					"height": 300,
 					"width": 300,
 					"cropMode" : "pad_resize",
-					"background" : "F3F3F3"
+					"background" : "435EDA"
 				}];
 				transformedImageUrl = getImagekitUrlFromSrc(imageSrc, transformationArr);
 				break;
 
 			case 'Transformation 2' : //aspect ration and url from path and transformations as query param
-				imageSrc = "https://ik.imagekit.io/demo/default-image.jpg";
 				transformationArr = [{
 					"height": 400,
 					"aspectRatio" : "3-2"
