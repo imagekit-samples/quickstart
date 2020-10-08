@@ -14,7 +14,7 @@ module.exports.getImagekitUrlFromSrc = function(imageSrc, transformationArr){
 	}
 	var imageURL = imagekit.url(ikOptions);
 
-	return imageURL;
+	return decodeURIComponent(imageURL);
 }
 
 module.exports.getImagekitUrlFromPath = function(imagePath, transformationArr, transformationPostion){
@@ -27,7 +27,7 @@ module.exports.getImagekitUrlFromPath = function(imagePath, transformationArr, t
 
 	var imageURL = imagekit.url(ikOptions);
 
-	return imageURL;
+	return decodeURIComponent(imageURL);
 }
 
 module.exports.uploadFile = function(file) {
