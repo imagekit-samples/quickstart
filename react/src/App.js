@@ -29,7 +29,9 @@ function App() {
           onError={onError}
           onSuccess={onSuccess}
         />
+      </IKContext>
 
+      <IKContext urlEndpoint={urlEndpoint}>
         <h2>Rendering image</h2>
         <IKImage path="default-image.jpg" width="400" />
 
