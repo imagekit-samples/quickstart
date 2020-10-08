@@ -1,6 +1,6 @@
 # ImageKit React Native Tutorial
 
-This project was bootstrapped with [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup). Head over to the link, choose your development OS and target OS and install its dependencies.
+This project is bootstrapped with [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup). Head over to the link, choose your development OS and target OS, and install its dependencies.
 
 ## Installation
 
@@ -24,15 +24,15 @@ Run the app in ios simulator (You need to have Xcode installed):
 npx react-native run-ios
 ```
 
-Run the app in android simulator (You need to have Android Studio installed):
+Run the app in the android simulator (You need to have Android Studio installed):
 
 ```bash
 npx react-native run-android
 ```
 
-To run the upload component you will have to
-1 - Replace your Imagekit endpoint, public key in app/config/imagekit.js (these creds can be found in your Imagekit dashboard
-2 - set up a backend server as shown below.
+To run the upload component, you will have to
+1 - Replace your Imagekit endpoint, the public key in app/config/imagekit.js (these creds can be found in your Imagekit dashboard
+2 - set up a backend server, as shown below.
 
 ## Setting up the sample backend server
 
