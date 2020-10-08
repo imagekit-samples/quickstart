@@ -28,10 +28,10 @@ Set `VUE_APP_IMAGEKIT_URL_ENDPOINT` because `urlEndpoint` is the required parame
 `publicKey` and `authenticationEndpoint` parameters are optional and only needed if you want to use the SDK for client-side file upload. You can get these parameters from the developer section in your ImageKit dashboard - https://imagekit.io/dashboard#developers.
 
 ```shell
-# Required variables. If your are running this in Codesandbox, please add secrets in your fork.
+# Required variables
 VUE_APP_IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_imagekit_endpoint
 
-# Optional - Only reqruied if you want to upload files
+# Optional - Only required if you want to upload files
 VUE_APP_IMAGEKIT_PUBLIC_KEY=public_XXXXXXXXXXXX
 VUE_APP_IMAGEKIT_PRIVATE_KEY=private_XXXXXXXXXXXX
 VUE_APP_YOUR_AUTH_ENDPOINT=http://localhost:3001/auth
@@ -45,7 +45,7 @@ yarn serve
 
 Open the page at http://localhost:8080
 
-Please note that file upload will only work if you have defined `VUE_APP_IMAGEKIT_PUBLIC_KEY`, `VUE_APP_IMAGEKIT_PRIVATE_KEY`, and `VUE_APP_YOUR_AUTH_ENDPOINT` enviroment variables by setting values in `.env` file.
+Please note that file upload will only work if you have defined `VUE_APP_IMAGEKIT_PUBLIC_KEY`, `VUE_APP_IMAGEKIT_PRIVATE_KEY`, and `VUE_APP_YOUR_AUTH_ENDPOINT` environment variables by setting values in `.env` file.
 
 # Useful links
 * Vue.js quickstart guide - https://docs.imagekit.io/getting-started/vuejs-quickstart
