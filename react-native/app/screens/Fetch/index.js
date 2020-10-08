@@ -17,8 +17,10 @@ function Fetch() {
 	
 	const [imageUrl, setImageUrl] = useState();
 	const [currentTr, setCurrentTr] = useState();
+	const [imageDimesions, setImageDimensions] = useState();
 
 	useEffect(() => {
+		currentTr == "Transformation 1" ? setImageDimensions({height : 150, width : 150}) : setImageDimensions({height : 300, width : 300});
 		showTransformedImage(currentTr);
 	}, [currentTr])
 
@@ -27,7 +29,15 @@ function Fetch() {
 		var transformedImageUrl;
 
 		switch (transformationType){
-			case 'Transformation 1' : //crop mode and url from source
+			case 'Transformation 1' : //basic image resizing
+				transformationArr = [{
+					"height": 150,
+					"width": 150
+				}];
+				transformedImageUrl = getImagekitUrlFromSrc(imageSrc, transformationArr);
+				break;
+
+			case 'Transformation 2' : //crop mode and url from source
 				imageSrc = "https://ik.imagekit.io/demo/img/plant.jpeg";
 				transformationArr = [{
 					"height": 300,
@@ -38,21 +48,12 @@ function Fetch() {
 				transformedImageUrl = getImagekitUrlFromSrc(imageSrc, transformationArr);
 				break;
 
-			case 'Transformation 2' : //aspect ration and url from path and transformations as query param
+			case 'Transformation 3' : //aspect ration and url from path and transformations as query param
 				transformationArr = [{
 					"height": 400,
 					"aspectRatio" : "3-2"
 				}];
 				transformedImageUrl = getImagekitUrlFromPath(imagePath, transformationArr, "query");
-				break;
-
-
-			case 'Transformation 3' :  //blur and readius
-				transformationArr = [{
-					"blur" : 5,
-					"radius" : 50
-				}];
-				transformedImageUrl = getImagekitUrlFromSrc(imageSrc, transformationArr);
 				break;
 
 			case 'Transformation 4' : //overlay image with x,y and its height
@@ -148,8 +149,8 @@ function Fetch() {
 						<Image 
 							source={{'uri' : imageUrl}} 
 							style={{
-								width: 300,
-								height: 300,
+								width: imageDimesions.width,
+								height: imageDimesions.height,
 							}}
 						/> 
 						<View style={styleSheet.captionView}>
