@@ -48,7 +48,7 @@ Open the page at http://localhost:8080
 Please note that file upload will only work if you have defined `VUE_APP_IMAGEKIT_PUBLIC_KEY`, `VUE_APP_IMAGEKIT_PRIVATE_KEY`, and `VUE_APP_YOUR_AUTH_ENDPOINT` environment variables by setting values in `.env` file.
 
 # Useful links
-* Vue.js quickstart guide - https://docs.imagekit.io/getting-started/vuejs-quickstart
+* Offical Vue.js quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/vuejs
 * Vue.js SDK and documentation - https://github.com/imagekit-developer/imagekit-vuejs
 
 # Report a bug
