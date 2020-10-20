@@ -1,53 +1,99 @@
-# ImageKit React Native Tutorial
+# Introduction 
 
-This project was bootstrapped with [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup). Head over to the link, choose your development OS and target OS and install its dependencies.
+This sample project covers:
 
-## Installation
+1. Setting up ImageKit React SDK
+2. Rendering images
+3. Setting authentication context for the SDK
+4. Applying common image manipulations
+5. Adding overlays to images
+6. Lazy loading images
+7. Blurred image placeholder
+8. Client-side file uploading
 
-### Setup the frontend app
+# How to run locally
 
-Install packages:
+This project was bootstrapped with [React Native CLI Quickstart](https://reactnative.dev/docs/environment-setup). Head over to the link, choose your development OS and target OS and install its dependencies if not already done.
+
+## Install dependencies
 
 ```bash
 npm install
 ```
 
-Start Metro:
+## Setup authentication
+
+In `app/config/Imagekit.js`, set the following parameters for authentication:
+
+```js
+const urlEndpoint = "<YOUR_IMAGEKIT_URL_ENDPOINT>";
+const publicKey = "<YOUR_IMAGEKIT_PUBLIC_KEY>";
+const authenticationEndpoint = "http://localhost:8080/auth";
+```
+
+Required parameters are `urlEndpoint` and `publicKey`. The `authenticationEndpoint` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
+
+You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
+API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
+
+### Start Metro Server:
 
 ```bash
 npx react-native start
 ```
 
-Run the app in ios simulator (You need to have Xcode installed):
+### Run the app in ios simulator (You need to have Xcode installed):
 
 ```bash
 npx react-native run-ios
 ```
 
-Run the app in android simulator (You need to have Android Studio installed):
+### Run the app in android simulator (You need to have Android Studio installed):
 
 ```bash
 npx react-native run-android
 ```
 
-To run the upload component you will have to
-1 - Replace your Imagekit endpoint, public key in app/config/imagekit.js (these creds can be found in your Imagekit dashboard
-2 - set up a backend server as shown below.
+## Setup dummy backend for upload
 
-## Setting up the sample backend server
+Move to the server directory
+```shell
+cd server
+```
 
-There is a sample server present in the `/server` directory.
+Create `.env` file by copying `sample.env`
 
-It takes the `private key` from .env file, so create a .env file by renaming the sample.env in `/server` and paste your authentication credentials into it.
+```shell
+cp sample.env .env
+```
+
+Set the following keys in `.env`
+
+```shell
+PRIVATE_KEY=private_XXXXXXXXXXXX
+```
+
+API private key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
+
+Please note that file upload will only work if, along with the above, you have also defined `publicKey`, `urlEndpoint`, and `authenticationEndpoint` variables in `app/config/Imagekit.js`.
 
 Install packages:
 
 ```bash
-cd server
 npm install
 ```
-To run this server:
+
+## Run the Node.js server
 
 ```
 npm start
 ```
+
+Node server will run at `http://localhost:8080`.
+
+# Useful links
+* React Native quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/react-native
+* Javascript SDK and documentation - https://github.com/imagekit-developer/imagekit-javascript
+
+# Report a bug
+If something doesn't work as expected, report a bug at support@imagekit.io.
