@@ -5343,10 +5343,10 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-imagekit-javascript@^1.3.5:
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/imagekit-javascript/-/imagekit-javascript-1.3.5.tgz#c409e887cb0b6655e09c94f7efcdb5a1dba7565a"
-  integrity sha512-fHqdaCygqpL/l+maecUbq+XULyQpPzHusdSyfprtB9JpPxCMhSAKwLZW3SH6vUO6+FN1gF9HJNinaE+qbLD5MQ==
+imagekit-javascript@^1.3.6:
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/imagekit-javascript/-/imagekit-javascript-1.3.6.tgz#2318158a481a077dfdaa4e4f61b8e47f8bdd281b"
+  integrity sha512-zKr8vOvLdF/K0w6QGHuAVibneTqDxE6LRotQNTd1eUUDYdro7rrywuKqQb0XFbG43RQXdHNE+mB1RCj+/wQgIw==
 
 imagekit@^3.1.0:
   version "3.1.0"
@@ -5358,12 +5358,12 @@ imagekit@^3.1.0:
     request "^2.88.0"
     uuid "^3.3.3"
 
-imagekitio-react@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/imagekitio-react/-/imagekitio-react-1.0.7.tgz#870ba9dc0be12332a45f52c04f30076f26f982e9"
-  integrity sha512-ykt9NdLP6s6oCBx153SOc4JmFNbryNGRRQqWncY4Tcn49bIUS1MFZ2YGGAJeq4wJXkP1wE2nxlIS+0k0ubohZA==
+imagekitio-react@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/imagekitio-react/-/imagekitio-react-1.0.8.tgz#e285f94cd3a0096e9787a5db8470bf1e678cdca1"
+  integrity sha512-9ys45LbdtSNALPyK76gIuckw6lxdG5M/LOJz4uWEKpjB8KL/VbFZVGmXJta1ouWAptNL7pmxd9Qb0aoldnVKBw==
   dependencies:
-    imagekit-javascript "^1.3.5"
+    imagekit-javascript "^1.3.6"
     prop-types "^15.7.2"
 
 immer@1.10.0:
