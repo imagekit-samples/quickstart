@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        _ = ImageKit.init(clientPublicKey: "public_K0hLzl8KvshMKkSvKsEGxMSf5SI=", imageKitEndpoint: "https://ik.imagekit.io/demo", transformationPosition: TransformationPosition.PATH, authenticationEndpoint: "http://localhost:8080/auth")
+        _ = ImageKit.init(clientPublicKey: "YOUR_IMAGEKIT_CLIENT_KEY", imageKitEndpoint: "https://ik.imagekit.io/demo", transformationPosition: TransformationPosition.PATH, authenticationEndpoint: "http://localhost:8080/auth")
 
         return true
     }
