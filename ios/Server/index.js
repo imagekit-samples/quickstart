@@ -7,22 +7,15 @@ app.use(cors());
 
 dotenv.config();
 
-const uuid = require('uuid');
-const crypto = require("crypto");
-
-const privateKey = process.env.PRIVATE_KEY;
+const ImageKit = require('imagekit');
+const imagekit = new ImageKit({ privateKey: process.env.PRIVATE_KEY, publicKey: "NOTUSED", urlEndpoint: "https://ik.imagekit.io/demo" })
 
 router.get("/auth", function(req, res) {
-    var token = req.query.token || uuid.v4();
+    var token = req.query.token || "";
     var expire = req.query.expire || parseInt(Date.now()/1000)+2400;
-    var privateAPIKey = `${privateKey}`;
-    var signature = crypto.createHmac('sha1', privateAPIKey).update(token+expire).digest('hex');
+    var signature = imagekit.getAuthenticationParameters(token, expire);
     res.status(200);
-    res.send({
-        token : token,
-        expire : expire,
-        signature : signature
-    });
+    res.send(signature);
 });
 
 app.use("/",router);
