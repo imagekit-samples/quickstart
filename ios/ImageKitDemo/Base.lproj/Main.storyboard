@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fbl-Mz-uur">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="AYe-XD-d3b">
+            <objects>
+                <navigationController id="fbl-Mz-uur" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RyH-bY-t4d">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ts5-pt-1UL" kind="relationship" relationship="rootViewController" id="lco-aA-4VI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YxC-jx-hmE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-568" y="-565"/>
+        </scene>
+        <!--ImageKit Demo-->
+        <scene sceneID="K3Y-Sa-Hr5">
+            <objects>
+                <viewController id="Ts5-pt-1UL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kWK-56-WED">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UmV-Ei-F4T">
+                                <rect key="frame" x="32" y="136" width="350" height="176"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lJD-VZ-9RV">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="zu6-Bw-Z74"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Fetch Images"/>
+                                        <connections>
+                                            <segue destination="kDh-yJ-br7" kind="show" id="i7X-HD-2Zi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYE-MF-b9J">
+                                        <rect key="frame" x="0.0" y="64" width="350" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="DOh-Ow-IyT"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Upload Image"/>
+                                        <connections>
+                                            <segue destination="8df-tm-aNs" kind="show" id="c8j-wf-B9O"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1sy-nL-3Ws">
+                                        <rect key="frame" x="0.0" y="128" width="350" height="48"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="xMS-2y-awL"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Upload File"/>
+                                        <connections>
+                                            <segue destination="RHg-LI-gsQ" kind="show" id="THC-OO-JeX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="UmV-Ei-F4T" firstAttribute="top" secondItem="2Xt-4G-Gil" secondAttribute="top" constant="48" id="SWY-IP-Z3x"/>
+                            <constraint firstItem="2Xt-4G-Gil" firstAttribute="trailing" secondItem="UmV-Ei-F4T" secondAttribute="trailing" constant="32" id="eXt-My-cWq"/>
+                            <constraint firstItem="UmV-Ei-F4T" firstAttribute="leading" secondItem="2Xt-4G-Gil" secondAttribute="leading" constant="32" id="ned-u7-C09"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Xt-4G-Gil"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="ImageKit Demo" id="FeG-ht-QId"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hhy-XC-J9O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="211" y="-564"/>
+        </scene>
+        <!--Upload Image View Controller-->
+        <scene sceneID="aOO-Z9-485">
+            <objects>
+                <viewController id="8df-tm-aNs" customClass="UploadImageViewController" customModule="ImageKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k7j-5n-yRO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pau-lb-S8I">
+                                <rect key="frame" x="32" y="120" width="350" height="48"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Tuc-qS-MNr"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Select Image"/>
+                                <connections>
+                                    <action selector="OnClickSelect:" destination="8df-tm-aNs" eventType="touchUpInside" id="5gt-KL-H3i"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s4V-vB-Sfx">
+                                <rect key="frame" x="32" y="184" width="350" height="598"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeU-0t-Z2h">
+                                <rect key="frame" x="32" y="798" width="350" height="48"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="HhV-6D-Vxg"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Upload Image"/>
+                                <connections>
+                                    <action selector="OnClickUpload:" destination="8df-tm-aNs" eventType="touchUpInside" id="m6H-ny-xOi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pau-lb-S8I" firstAttribute="leading" secondItem="Fim-uQ-Cil" secondAttribute="leading" constant="32" id="4E1-M5-NnH"/>
+                            <constraint firstItem="Fim-uQ-Cil" firstAttribute="trailing" secondItem="s4V-vB-Sfx" secondAttribute="trailing" constant="32" id="8xd-bb-hOY"/>
+                            <constraint firstItem="Fim-uQ-Cil" firstAttribute="trailing" secondItem="DeU-0t-Z2h" secondAttribute="trailing" constant="32" id="CY6-qi-hds"/>
+                            <constraint firstItem="s4V-vB-Sfx" firstAttribute="leading" secondItem="Fim-uQ-Cil" secondAttribute="leading" constant="32" id="MsF-gn-Epq"/>
+                            <constraint firstItem="DeU-0t-Z2h" firstAttribute="top" secondItem="s4V-vB-Sfx" secondAttribute="bottom" constant="16" id="Pjs-hB-qqM"/>
+                            <constraint firstItem="Fim-uQ-Cil" firstAttribute="bottom" secondItem="DeU-0t-Z2h" secondAttribute="bottom" constant="16" id="Yh6-Y0-mLy"/>
+                            <constraint firstItem="pau-lb-S8I" firstAttribute="top" secondItem="Fim-uQ-Cil" secondAttribute="top" constant="32" id="ZLi-Aw-OLJ"/>
+                            <constraint firstItem="Fim-uQ-Cil" firstAttribute="trailing" secondItem="pau-lb-S8I" secondAttribute="trailing" constant="32" id="gE5-pZ-s9n"/>
+                            <constraint firstItem="DeU-0t-Z2h" firstAttribute="leading" secondItem="Fim-uQ-Cil" secondAttribute="leading" constant="32" id="kpv-V3-c6E"/>
+                            <constraint firstItem="s4V-vB-Sfx" firstAttribute="top" secondItem="pau-lb-S8I" secondAttribute="bottom" constant="16" id="yDC-V9-ayN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fim-uQ-Cil"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="u1T-Oq-dKq"/>
+                    <connections>
+                        <outlet property="imageView" destination="s4V-vB-Sfx" id="com-Bo-31Q"/>
+                        <outlet property="selectImage" destination="pau-lb-S8I" id="Lqi-KW-xQx"/>
+                        <outlet property="uploadImage" destination="DeU-0t-Z2h" id="hwZ-J3-mgZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r8V-vT-GHG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="210" y="157"/>
+        </scene>
+        <!--Fetch Image View Controller-->
+        <scene sceneID="Ff9-Z6-W1g">
+            <objects>
+                <viewController id="kDh-yJ-br7" customClass="FetchImageViewController" customModule="ImageKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XH4-nr-8nZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="AUV-eM-A0F">
+                                <rect key="frame" x="32" y="104" width="350" height="160"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HQ7-wr-3oF">
+                                        <rect key="frame" x="0.0" y="0.0" width="350" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oda-II-aBP">
+                                                <rect key="frame" x="0.0" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="7Fl-88-1UK"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 1"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation1:" destination="kDh-yJ-br7" eventType="touchUpInside" id="e22-qF-ZYd"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="La2-fT-J3S">
+                                                <rect key="frame" x="179" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="32Z-P0-gls"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 2"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation2:" destination="kDh-yJ-br7" eventType="touchUpInside" id="gac-Mw-QmN"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="La2-fT-J3S" firstAttribute="width" secondItem="oda-II-aBP" secondAttribute="width" id="ZwE-Uh-3dh"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="atH-Km-j2b">
+                                        <rect key="frame" x="0.0" y="56" width="350" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5l-kj-MKb">
+                                                <rect key="frame" x="0.0" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="joB-P5-7q4"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 3"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation3:" destination="kDh-yJ-br7" eventType="touchUpInside" id="qMT-aM-MjY"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugM-LQ-p6i">
+                                                <rect key="frame" x="179" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="Zrq-Xj-lfR"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 4"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation4:" destination="kDh-yJ-br7" eventType="touchUpInside" id="39i-Of-KQf"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="ugM-LQ-p6i" firstAttribute="width" secondItem="q5l-kj-MKb" secondAttribute="width" id="wM6-vC-fKu"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KWd-XZ-iPS">
+                                        <rect key="frame" x="0.0" y="112" width="350" height="48"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyv-1p-D9x">
+                                                <rect key="frame" x="0.0" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="XB0-OV-nV1"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 5"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation5:" destination="kDh-yJ-br7" eventType="touchUpInside" id="ZFt-Mw-aa6"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMu-xc-JBv">
+                                                <rect key="frame" x="179" y="0.0" width="171" height="48"/>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="oeL-yn-x2p"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Transformation 6"/>
+                                                <connections>
+                                                    <action selector="OnClickTransformation6:" destination="kDh-yJ-br7" eventType="touchUpInside" id="1Pr-dT-0Ns"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="mMu-xc-JBv" firstAttribute="width" secondItem="Uyv-1p-D9x" secondAttribute="width" id="3yq-Ih-zf8"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transformation Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDH-HH-bK0">
+                                <rect key="frame" x="32" y="280" width="350" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yz2-TO-jgH">
+                                <rect key="frame" x="32" y="316.5" width="350" height="529.5"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gDH-HH-bK0" firstAttribute="leading" secondItem="sCh-D6-E6U" secondAttribute="leading" constant="32" id="9IO-RE-5KS"/>
+                            <constraint firstItem="sCh-D6-E6U" firstAttribute="trailing" secondItem="yz2-TO-jgH" secondAttribute="trailing" constant="32" id="BwY-Zj-MHE"/>
+                            <constraint firstItem="sCh-D6-E6U" firstAttribute="trailing" secondItem="gDH-HH-bK0" secondAttribute="trailing" constant="32" id="CEU-6R-4Bf"/>
+                            <constraint firstItem="AUV-eM-A0F" firstAttribute="top" secondItem="sCh-D6-E6U" secondAttribute="top" constant="16" id="Frc-0W-htE"/>
+                            <constraint firstItem="gDH-HH-bK0" firstAttribute="top" secondItem="AUV-eM-A0F" secondAttribute="bottom" constant="16" id="Fxs-kA-0cA"/>
+                            <constraint firstItem="gDH-HH-bK0" firstAttribute="top" secondItem="AUV-eM-A0F" secondAttribute="bottom" constant="16" id="O8A-u3-muZ"/>
+                            <constraint firstItem="sCh-D6-E6U" firstAttribute="bottom" secondItem="yz2-TO-jgH" secondAttribute="bottom" constant="16" id="Qcq-zS-yi0"/>
+                            <constraint firstItem="gDH-HH-bK0" firstAttribute="leading" secondItem="sCh-D6-E6U" secondAttribute="leading" constant="32" id="aph-cK-3vS"/>
+                            <constraint firstItem="sCh-D6-E6U" firstAttribute="trailing" secondItem="AUV-eM-A0F" secondAttribute="trailing" constant="32" id="bq5-n0-Yrh"/>
+                            <constraint firstItem="sCh-D6-E6U" firstAttribute="trailing" secondItem="gDH-HH-bK0" secondAttribute="trailing" constant="32" id="hTi-Op-PUh"/>
+                            <constraint firstItem="AUV-eM-A0F" firstAttribute="leading" secondItem="sCh-D6-E6U" secondAttribute="leading" constant="32" id="mLf-3T-zOe"/>
+                            <constraint firstItem="yz2-TO-jgH" firstAttribute="leading" secondItem="sCh-D6-E6U" secondAttribute="leading" constant="32" id="mMv-bs-nnD"/>
+                            <constraint firstItem="yz2-TO-jgH" firstAttribute="top" secondItem="gDH-HH-bK0" secondAttribute="bottom" constant="16" id="tlE-U4-qY8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sCh-D6-E6U"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="3RX-8o-3Zr"/>
+                    <connections>
+                        <outlet property="imageView" destination="yz2-TO-jgH" id="t4l-jb-k5T"/>
+                        <outlet property="transformationName" destination="gDH-HH-bK0" id="inQ-r5-3ZR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kd5-DR-Fbz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="-565"/>
+        </scene>
+        <!--Upload File View Controller-->
+        <scene sceneID="Lbh-s8-DBH">
+            <objects>
+                <viewController id="RHg-LI-gsQ" customClass="UploadFileViewController" customModule="ImageKitDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9b1-3P-GaF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AYm-aA-uEO">
+                                <rect key="frame" x="32" y="120" width="350" height="48"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="sAg-kX-PhC"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Select File"/>
+                                <connections>
+                                    <action selector="OnClickSelect:" destination="RHg-LI-gsQ" eventType="touchUpInside" id="x2q-ky-9ao"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yk7-hY-rvd">
+                                <rect key="frame" x="32" y="184" width="350" height="598"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AMd-1i-RMb">
+                                <rect key="frame" x="32" y="798" width="350" height="48"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="lGf-rH-wvt"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Upload File"/>
+                                <connections>
+                                    <action selector="OnClickUpload:" destination="RHg-LI-gsQ" eventType="touchUpInside" id="X0i-h6-92V"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="AYm-aA-uEO" firstAttribute="leading" secondItem="JTV-0k-vxA" secondAttribute="leading" constant="32" id="CJx-o3-raQ"/>
+                            <constraint firstItem="JTV-0k-vxA" firstAttribute="trailing" secondItem="AYm-aA-uEO" secondAttribute="trailing" constant="32" id="Y3V-Oq-bau"/>
+                            <constraint firstItem="JTV-0k-vxA" firstAttribute="bottom" secondItem="AMd-1i-RMb" secondAttribute="bottom" constant="16" id="eBs-ai-cIp"/>
+                            <constraint firstItem="JTV-0k-vxA" firstAttribute="trailing" secondItem="yk7-hY-rvd" secondAttribute="trailing" constant="32" id="glD-Eg-JAD"/>
+                            <constraint firstItem="yk7-hY-rvd" firstAttribute="top" secondItem="AYm-aA-uEO" secondAttribute="bottom" constant="16" id="n9P-Xw-oH5"/>
+                            <constraint firstItem="yk7-hY-rvd" firstAttribute="leading" secondItem="JTV-0k-vxA" secondAttribute="leading" constant="32" id="omw-UF-3Hd"/>
+                            <constraint firstItem="AMd-1i-RMb" firstAttribute="leading" secondItem="JTV-0k-vxA" secondAttribute="leading" constant="32" id="qv9-Gk-WoN"/>
+                            <constraint firstItem="AMd-1i-RMb" firstAttribute="top" secondItem="yk7-hY-rvd" secondAttribute="bottom" constant="16" id="tiI-Sz-Agz"/>
+                            <constraint firstItem="JTV-0k-vxA" firstAttribute="trailing" secondItem="AMd-1i-RMb" secondAttribute="trailing" constant="32" id="toJ-bY-gBu"/>
+                            <constraint firstItem="AYm-aA-uEO" firstAttribute="top" secondItem="JTV-0k-vxA" secondAttribute="top" constant="32" id="wWa-BQ-QE8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="JTV-0k-vxA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="v5o-6e-NQG"/>
+                    <connections>
+                        <outlet property="filePreview" destination="yk7-hY-rvd" id="W8d-St-gz9"/>
+                        <outlet property="uploadFile" destination="AMd-1i-RMb" id="prA-oY-Phh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ShF-Bq-mot" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="157"/>
+        </scene>
+    </scenes>
+</document>
