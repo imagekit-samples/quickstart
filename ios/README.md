@@ -103,7 +103,7 @@ If the following error is encountered `Transport security has blocked a cleartex
 
 # Useful links
 * Offical iOS quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/ios
-* Javascript SDK and documentation - https://github.com/imagekit-developer/imagekit-ios
+* iOS SDK and documentation - https://github.com/imagekit-developer/imagekit-ios
 
 # Report a bug
 If something doesn't work as expected, report a bug at support@imagekit.io.
