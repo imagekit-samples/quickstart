@@ -27,10 +27,11 @@ In `ImageKitDemo/AppDelegate.swift`, set the following parameters for authentica
 _ = ImageKit.init(clientPublicKey: "<YOUR_IMAGEKIT_PUBLIC_KEY>", imageKitEndpoint: "<YOUR_IMAGEKIT_URL_ENDPOINT>", authenticationEndpoint: "http://localhost:8080/auth")
 ```
 
-Required parameters are `imageKitEndpoint`. The `clientPublicKey` and `authenticationEndpoint` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
+`imageKitEndpoint` is a required parameter.  `clientPublicKey` and `authenticationEndpoint` parameters are optional and only needed if you want to use the SDK for client-side file upload. 
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
-API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
+
+API public key can be obtained from the [developers](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
 
 ### Run the app in ios simulator:
@@ -59,7 +60,7 @@ Set the following keys in `.env`
 PRIVATE_KEY=private_XXXXXXXXXXXX
 ```
 
-API private key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
+API private key can be obtained from the [developers](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
 Please note that file upload will only work if, along with the above, you have also defined `publicKey`, `urlEndpoint`, and `authenticationEndpoint` variables in `app/config/Imagekit.js`.
 
@@ -79,7 +80,7 @@ Node server will run at `http://localhost:8080`.
 
 
 ### Important Note
-Since iOS enforces `App Transport Security`, for the purposes for the demo, the project has `http://localhost:8080` as an exception to it.
+Since iOS enforces `App Transport Security`, for the demo, the project has `http://localhost:8080` as an exception.
 
 If the following error is encountered `Transport security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.`, the following code should be added to `Info.plist` file
 ```xml
