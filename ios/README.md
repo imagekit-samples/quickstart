@@ -223,7 +223,7 @@ ImageKit.shared.uploader().upload(
 ```
 
 # Useful links
-* React Native quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/ios
+* iOS quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/ios
 * Javascript SDK and documentation - https://github.com/imagekit-developer/imagekit-ios
 
 # Report a bug
