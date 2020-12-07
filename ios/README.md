@@ -62,7 +62,7 @@ PRIVATE_KEY=private_XXXXXXXXXXXX
 
 API private key can be obtained from the [developers](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
-Please note that file upload will only work if, along with the above, you have also defined `publicKey`, `urlEndpoint`, and `authenticationEndpoint` variables in `app/config/Imagekit.js`.
+Please note that file upload will only work if, along with the above, you have also defined `publicKey`, `urlEndpoint`, and `authenticationEndpoint` variables in `ImageKitDemo/AppDelegate.swift`.
 
 Install packages:
 
