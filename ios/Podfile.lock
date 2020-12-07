@@ -1,20 +1,16 @@
 PODS:
-  - Alamofire (4.8.2)
-  - ImageKitIO (1.1.1):
-    - Alamofire (~> 4.8.2)
+  - ImageKitIO (2.0.1)
 
 DEPENDENCIES:
-  - ImageKitIO (~> 1.1.1)
+  - ImageKitIO
 
 SPEC REPOS:
   trunk:
-    - Alamofire
     - ImageKitIO
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  ImageKitIO: 80d210caeb5c1d24a43db80ad006e9b678b735eb
+  ImageKitIO: 9a64766164376eada86e3ce3f028292945bfaa7b
 
-PODFILE CHECKSUM: 558af11bdf14557fbceb01aa245cd07d2d06488e
+PODFILE CHECKSUM: 4a22c965d8a570971c2b1304374fcf69aea5054d
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0

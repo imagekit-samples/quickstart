@@ -6,6 +6,6 @@ target 'ImageKitDemo' do
   use_frameworks!
 
   # Pods for ImageKitDemo
-  pod 'ImageKitIO', '~> 1.1.1'
+  pod 'ImageKitIO'
 
 end

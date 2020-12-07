@@ -24,10 +24,10 @@ pod install
 In `ImageKitDemo/AppDelegate.swift`, set the following parameters for authentication:
 
 ```swift
-_ = ImageKit.init(publicKey: "<YOUR_IMAGEKIT_PUBLIC_KEY>", imageKitEndpoint: "<YOUR_IMAGEKIT_URL_ENDPOINT>", authenticationEndpoint: "http://localhost:8080/auth")
+_ = ImageKit.init(publicKey: "<YOUR_IMAGEKIT_PUBLIC_KEY>", urlEndpoint: "<YOUR_IMAGEKIT_URL_ENDPOINT>", authenticationEndpoint: "http://localhost:8080/auth")
 ```
 
-`imageKitEndpoint` is a required parameter.  `publicKey` and `authenticationEndpoint` parameters are optional and only needed if you want to use the SDK for client-side file upload. 
+`urlEndpoint` is a required parameter.  `publicKey` and `authenticationEndpoint` parameters are optional and only needed if you want to use the SDK for client-side file upload. 
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
 
