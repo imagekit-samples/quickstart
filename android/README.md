@@ -170,8 +170,8 @@ ImageKit.getInstance().uploader().upload(
 ```
 
 # Useful links
-* React Native quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/android
-* Javascript SDK and documentation - https://github.com/imagekit-developer/imagekit-android
+* Android quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/android
+* Android SDK and documentation - https://github.com/imagekit-developer/imagekit-android
 
 # Report a bug
 If something doesn't work as expected, report a bug at support@imagekit.io.
