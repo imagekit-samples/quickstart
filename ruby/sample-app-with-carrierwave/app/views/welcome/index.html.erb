@@ -1,0 +1,14 @@
+<h3>File Upload</h3>
+<%= form_with(url: {action: :upload}, multipart: true) do %>
+    <%= file_field_tag 'picture' %>
+    <%= submit_tag "Upload" %>
+<% end %>
+
+<br>
+
+<% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, class: "alert alert-info" %>
+<% end %>
+
+
+<%#= image_tag "https://ik.imagekit.io/dprgn5iwl2n/new_file_6yrxdRNyNYY.jpg?updatedAt=1638791260596" %>
