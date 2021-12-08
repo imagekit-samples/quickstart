@@ -19,6 +19,9 @@ ruby app.rb
 
 All the outputs will rendered on the terminal.
 
-## **Find More on docs**
+## **Useful links**
 
 * [Ruby](ghttps://docs.imagekit.io/getting-started/quickstart-guides/ruby)
+
+## Report a bug
+If something doesn't work as expected, report a bug at support@imagekit.io.

@@ -34,6 +34,9 @@ bin/webpack-dev-server
 In your web browser, navigate to [`http://localhost:3000/posts`](http://localhost:3000/posts)
 
 
-## **Find More on docs**
+## **Useful links**
 
 * [Ruby](ghttps://docs.imagekit.io/getting-started/quickstart-guides/ruby)
+
+## Report a bug
+If something doesn't work as expected, report a bug at support@imagekit.io.
