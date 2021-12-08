@@ -1,24 +1,41 @@
-# README
+# Ruby on Rails with activestorage
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a sample to show you how to integrate ImageKit in the Ruby on rails application with activestorage gem.
 
-Things you may want to cover:
+## Setting up ImageKit Ruby on Rails SDK
 
-* Ruby version
+Open `config/initializers/imagekitio.rb` it and add your public and private API keys, as well as the URL Endpoint as follows: (You can find these keys in the Developer section of your ImageKit Dashboard)
 
-* System dependencies
+```ruby
+ImageKitIo.configure do |config|
+  if Rails.env.development?
+    config.public_key = 'YOUR_PUBLIC_KEY'
+    config.private_key = 'YOUR_PRIVATE_KEY'
+    config.url_endpoint = 'YOUR_URL_ENDPOINT' #https://ik.imagekit.io/dgn23df2n
+  end
+  config.service = :active_storage
+  # config.constants.MISSING_PRIVATE_KEY = 'custom error message'
+end
 
-* Configuration
+```
+Then create install gems and database:
+```bash
+bundle install
+rails db:create
+rails db:migrate
+rails active_storage:install
+rails db:migrate
+```
 
-* Database creation
+Then run the server:
 
-* Database initialization
+```ruby
+rails server
+```
 
-* How to run the test suite
+In your web browser, navigate to [`http://localhost:3000/posts`](http://localhost:3000/posts)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## **Find More on docs**
 
-* ...
+* [Ruby](ghttps://docs.imagekit.io/getting-started/quickstart-guides/ruby)
