@@ -27,6 +27,12 @@ rails active_storage:install
 rails db:migrate
 ```
 
+In another terminal run the webpacker:
+```bash
+yarn 
+bin/webpack-dev-server
+```
+
 Then run the server:
 
 ```ruby

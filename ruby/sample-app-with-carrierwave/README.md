@@ -25,6 +25,11 @@ rails db:create
 rails db:migrate
 rails server
 ```
+In another terminal run the webpacker:
+```bash
+yarn 
+bin/webpack-dev-server
+```
 
 In your web browser, navigate to [`http://localhost:3000/posts`](http://localhost:3000/posts)
 
