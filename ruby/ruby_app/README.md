@@ -7,9 +7,9 @@ This is a sample to show you how to integrate ImageKit in the plain Ruby applica
 Open `app.rb` it and add your public and private API keys, as well as the URL Endpoint as follows: (You can find these keys in the Developer section of your ImageKit Dashboard)
 
 ```ruby
-public_key = 'YOUR_PUBLIC_KEY'
-private_key = 'YOUR_PRIVATE_KEY'
-url_endpoint = 'YOUR_URL_ENDPOINT' #https://ik.imagekit.io/4xrvxesdft/
+public_key = 'your_public_key'
+private_key = 'your_private_key'
+url_endpoint = 'your_url_endpoint' # https://ik.imagekit.io/your_imagekit_id/
 ```
 
 Then run application using:

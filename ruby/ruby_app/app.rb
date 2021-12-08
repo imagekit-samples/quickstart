@@ -1,9 +1,9 @@
 require 'imagekitio'
 require "base64"
 
-public_key = 'YOUR_PUBLIC_KEY'
-private_key = 'YOUR_PRIVATE_KEY'
-url_endpoint = 'YOUR_URL_ENDPOINT' #https://ik.imagekit.io/4xrvxesdft/
+public_key = 'your_public_key'
+private_key = 'your_private_key'
+url_endpoint = 'your_url_endpoint' # https://ik.imagekit.io/your_imagekit_id/
 
 # dummy image url
 url = "https://homepages.cae.wisc.edu/~ece533/images/cat.png"
