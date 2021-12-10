@@ -5,5 +5,5 @@ This repository contains quick start sample integrations of ImageKit.io in diffe
 * [iOS](/ios)
 * [React](/react)
 * [React Native](/react-native)
-* [Ruby on Rails](/ruby-on-rails)
+* [Ruby](/ruby)
 * [Vue.js](/vuejs)

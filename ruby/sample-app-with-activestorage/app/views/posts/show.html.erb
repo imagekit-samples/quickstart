@@ -1,0 +1,10 @@
+<div class="post">
+    <div class="image">
+        <%= image_tag @post.picture.url %>
+    </div>
+
+    <div class="content">
+        <%= link_to "#{@post.title}", post_path(@post), class: "header" %>
+    </div>
+</div>
+<%= link_to 'Back', posts_path %>
