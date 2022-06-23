@@ -83,12 +83,8 @@ class App {
 
 	private static void generateUrl(BaseFile baseFile) {
 		System.out.println(Color.ANSI_CYAN+">> URL Generation:"+Color.ANSI_RESET);
-        String urlEndpoint=ImageKit.getInstance().getConfig().getUrlEndpoint();
 
-		Map<String, String> queryParam=new HashMap<>();
-		queryParam.put("v","123");
-
-		List<Map<String, String>> transformation=new ArrayList<Map<String, String>>();
+		List<Map<String, String>> transformation= new ArrayList<>();
 		Map<String, String> scale=new HashMap<>();
 		scale.put("height","600");
 		scale.put("width","400");
@@ -105,40 +101,12 @@ class App {
 		format.put("blur","5%");
 
 		transformation.add(format);
-
-
 		Map<String, Object> options=new HashMap();
 		options.put("path",baseFile.getFilePath());
 		options.put("transformation", transformation);
 
 		String url1=ImageKit.getInstance().getUrl(options);
-
-		options.clear();
-		options.put("path",baseFile.getFilePath());
-		options.put("urlEndpoint",urlEndpoint);
-		options.put("queryParameters",queryParam);
-		options.put("transformation", transformation);
-		options.put("transformationPosition", "query");
-		options.put("signed",true);
-		options.put("expireSeconds",10);
-
-		String url2 = ImageKit.getInstance().getUrl(options);
-
-		options.remove("transformationPosition");
-		String url3 = ImageKit.getInstance().getUrl(options);
-
-		options.clear();
-		options.put("src",baseFile.getUrl());
-		options.put("queryParameters",queryParam);
-		options.put("transformation",transformation);
-
-		String url4 = ImageKit.getInstance().getUrl(options);
-
-
 		System.out.println(">> Generated URL #1:\t"+url1);
-		System.out.println(">> Generated URL #2:\t"+url2);
-		System.out.println(">> Generated URL #3:\t"+url3);
-		System.out.println(">> Generated URL #4:\t"+url4);
 		System.out.println("\n\n");
 	}
 
