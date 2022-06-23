@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 class App {
 	public static void main(String[] args) throws Exception {
 		ImageKit imageKit = ImageKit.getInstance();
-		Configuration config = Utils.getSystemConfig(App.class);
+		Configuration config = new Configuration("your_public_key", "your_private_key", "your_url_endpoint");
 		imageKit.setConfig(config);
 
 		uploadFromURL();
@@ -88,6 +88,7 @@ class App {
 		Map<String, String> scale=new HashMap<>();
 		scale.put("height","600");
 		scale.put("width","400");
+		scale.put("raw", "ar-4-3,q-40");
 		transformation.add(scale);
 		Map<String, String> rotate=new HashMap<>();
 		rotate.put("rotation","90");
