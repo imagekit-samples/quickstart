@@ -34,6 +34,7 @@ class App {
         copyFile();
         moveFile();
         renameFile();
+		restoreFileVersion();
         createFolder();
         deleteFolder();
         copyFolder();
@@ -541,6 +542,20 @@ class App {
 		System.out.println(resultRenameFile);
 		System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
 		System.out.println(resultRenameFile.getResponseMetaData().getMap());
+		System.out.println("\n\n");
+	}
+
+	private static void restoreFileVersion() throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, NotFoundException, BadRequestException, UnknownException {
+		System.out.println(Color.ANSI_CYAN+">> Uploading Image from file:"+Color.ANSI_RESET);
+		System.out.println(">> Start uploading...");
+		Result result = ImageKit.getInstance().restoreFileVersion("62a9c3ccd875ec6fd658c854", "62b97749f63122840530fda9");
+		System.out.println(">> Uploading done.");
+		System.out.println(Color.ANSI_GREEN+">> Response:"+Color.ANSI_RESET);
+		System.out.println(result);
+		System.out.println(Color.ANSI_GREEN+">> Raw Response:"+Color.ANSI_RESET);
+		System.out.println(result.getResponseMetaData().getRaw());
+		System.out.println(Color.ANSI_GREEN+">> Map Response:"+Color.ANSI_RESET);
+		System.out.println(result.getResponseMetaData().getMap());
 		System.out.println("\n\n");
 	}
 
