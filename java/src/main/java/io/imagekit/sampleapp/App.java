@@ -253,8 +253,18 @@ class App {
 		System.out.println(Color.ANSI_CYAN + ">> Get Uploaded file as List:" + Color.ANSI_RESET);
 		System.out.println(">> Fetching list...");
 		Map<String, String> options = new HashMap<>();
-		options.put("skip", "" + skip);
-		options.put("limit", "" + limit);
+		List<String> tags = new ArrayList<>();
+		tags.add("Software");
+		tags.add("Developer");
+		tags.add("Engineer");
+		options.put("skip", "" + 0);
+		options.put("limit", "" + 1);
+		options.put("type", "file");
+		options.put("sort", "ASC_CREATED");
+		options.put("path", "/");
+		options.put("fileType", "all");
+		options.put("searchQuery","createdAt >= '2d' OR size < '2mb' OR format='png'");
+		options.put("tags", String.valueOf(tags));
 		ResultList resultList = ImageKit.getInstance().getFileList(options);
 		System.out.println(">> Fetching done...");
 		System.out.println(Color.ANSI_GREEN + ">> Response:" + Color.ANSI_RESET);
@@ -506,7 +516,7 @@ class App {
 		CopyFileRequest copyFileRequest = new CopyFileRequest();
 		copyFileRequest.setSourceFilePath("/new_car11.jpg");
 		copyFileRequest.setDestinationPath("/demo1/");
-		copyFileRequest.setIncludeVersions(true);
+		copyFileRequest.setIncludeFileVersions(true);
 		ResultNoContent resultNoContent = ImageKit.getInstance().copyFile(copyFileRequest);
 		System.out.println(">> Copy file done.");
 		System.out.println(Color.ANSI_GREEN + ">> Response Copy File :" + Color.ANSI_RESET);
@@ -591,6 +601,7 @@ class App {
 		CopyFolderRequest copyFolderRequest = new CopyFolderRequest();
 		copyFolderRequest.setSourceFolderPath("/test1");
 		copyFolderRequest.setDestinationPath("/demo1");
+		copyFolderRequest.setIncludeFileVersions(true);
 		ResultOfFolderActions resultOfFolderActions = ImageKit.getInstance().copyFolder(copyFolderRequest);
 		System.out.println(">> Copy folder done.");
 		System.out.println(Color.ANSI_GREEN + ">> Response Bulk job status :" + Color.ANSI_RESET);
