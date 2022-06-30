@@ -50,6 +50,25 @@ upload = imagekitio.upload_file(
 puts "------------------------------------------", "\n"
 puts "Upload Private with binary => ", upload
 
+# Get all file versions
+versions = imagekitio.file_versions(file_id: upload[:response]['fileId'])
+puts '-------------------------------------------', "\n"
+puts "File versions =>", versions
+
+# Get file version detail
+details = imagekitio.file_version_detail(file_id: upload[:response]['fileId'], version_id: upload[:response]['versionInfo']['id'])
+puts '-------------------------------------------', "\n"
+puts "File version detail =>", details
+
+# Restore file version
+details = imagekitio.restore_file_version(file_id: upload[:response]['fileId'], version_id: upload[:response]['versionInfo']['id'])
+puts '-------------------------------------------', "\n"
+puts "Restore file version =>", details
+
+# Delete file version
+details = imagekitio.delete_file_version(file_id: upload[:response]['fileId'], version_id: upload[:response]['versionInfo']['id'])
+puts '-------------------------------------------', "\n"
+puts "Delete file version =>", details
 
 # signed url
 url = imagekitio.url({path: upload[:response]["filePath"],
@@ -222,7 +241,7 @@ updated_detail = imagekitio.update_file_details(
     }
       # "tags": ['image_tag1'],
       # "custom_coordinates": "10,10,100,200"
-    
+
 )
 puts '--------------------------------'
 puts "updated details => #{updated_detail}"
