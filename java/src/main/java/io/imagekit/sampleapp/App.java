@@ -186,26 +186,50 @@ class App {
 		System.out.println("\n\n");
 	}
 
-	private static void updateDetails(String fileId) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException {
-		System.out.println(Color.ANSI_CYAN + ">> Updating file details:" + Color.ANSI_RESET);
-		System.out.println(">> Updating file details...");
-		List<String> tags = new ArrayList<>();
-		tags.add("Software");
-		tags.add("Developer");
-		tags.add("Engineer");
-		FileUpdateRequest fileUpdateRequest = new FileUpdateRequest(fileId);
-		fileUpdateRequest.setTags(tags);
-		fileUpdateRequest.setCustomCoordinates("10,10,40,40");
-		Result result = ImageKit.getInstance().updateFileDetail(fileUpdateRequest);
-		System.out.println(">> Updating done...");
-		System.out.println(Color.ANSI_GREEN + ">> Response:" + Color.ANSI_RESET);
-		System.out.println(result);
-		System.out.println(Color.ANSI_GREEN + ">> Raw Response:" + Color.ANSI_RESET);
-		System.out.println(result.getResponseMetaData().getRaw());
-		System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
-		System.out.println(result.getResponseMetaData().getMap());
-		System.out.println("\n\n");
-	}
+    private static void updateDetails(String fileId) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException {
+        System.out.println(Color.ANSI_CYAN + ">> Updating file details:" + Color.ANSI_RESET);
+        System.out.println(">> Updating file details...");
+        List<String> tags = new ArrayList<>();
+        tags.add("Software");
+        tags.add("Developer");
+        tags.add("Engineer");
+
+        List<String> aiTags = new ArrayList<>();
+        aiTags.add("Plant");
+        FileUpdateRequest fileUpdateRequest = new FileUpdateRequest(fileId);
+        fileUpdateRequest.setRemoveAITags(aiTags);
+        fileUpdateRequest.setWebhookUrl("https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e");
+
+        JsonObject optionsInnerObject = new JsonObject();
+        optionsInnerObject.addProperty("add_shadow", true);
+        optionsInnerObject.addProperty("bg_color", "yellow");
+        JsonObject innerObject1 = new JsonObject();
+        innerObject1.addProperty("name", "remove-bg");
+        innerObject1.add("options", optionsInnerObject);
+        JsonObject innerObject2 = new JsonObject();
+        innerObject2.addProperty("name", "google-auto-tagging");
+        innerObject2.addProperty("minConfidence", 15);
+        innerObject2.addProperty("maxTags", 20);
+        JsonArray jsonArray = new JsonArray();
+        jsonArray.add(innerObject1);
+        jsonArray.add(innerObject2);
+
+        fileUpdateRequest.setExtensions(jsonArray);
+        fileUpdateRequest.setTags(tags);
+        fileUpdateRequest.setCustomCoordinates("10,10,40,40");
+        JsonObject jsonObjectCustomMetadata = new JsonObject();
+        jsonObjectCustomMetadata.addProperty("test10", 11);
+        fileUpdateRequest.setCustomMetadata(jsonObjectCustomMetadata);
+        Result result = ImageKit.getInstance().updateFileDetail(fileUpdateRequest);
+        System.out.println(">> Updating done...");
+        System.out.println(Color.ANSI_GREEN + ">> Response:" + Color.ANSI_RESET);
+        System.out.println(result);
+        System.out.println(Color.ANSI_GREEN + ">> Raw Response:" + Color.ANSI_RESET);
+        System.out.println(result.getResponseMetaData().getRaw());
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(result.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
 
 	private static void getFileMetaData(String fileId) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException {
 		System.out.println(Color.ANSI_CYAN + ">> Get file Metadata:" + Color.ANSI_RESET);
