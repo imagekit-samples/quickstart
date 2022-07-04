@@ -463,28 +463,199 @@ class App {
 		System.out.println("\n\n");
 	}
 
-	private static void createCustomMetaDataFields()
-			throws BadRequestException, UnknownException {
-		CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
-		customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Number);
-		customMetaDataFieldSchemaObject.setValueRequired(false);
-		customMetaDataFieldSchemaObject.setMinValue(10);
-		customMetaDataFieldSchemaObject.setMaxValue(100);
 
-		CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
-		customMetaDataFieldCreateRequest.setName("NameHe1");
-		customMetaDataFieldCreateRequest.setLabel("LabelHe1");
-		customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+    private static void createCustomMetaDataFields_Text()
+            throws BadRequestException, UnknownException {
 
-		ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
-				.createCustomMetaDataFields(customMetaDataFieldCreateRequest);
-		System.out.println(">> Create CustomMetaDataFields done.");
-		System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
-		System.out.println(resultCustomMetaDataField);
-		System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
-		System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
-		System.out.println("\n\n");
-	}
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Text);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue(20);
+        customMetaDataFieldSchemaObject.setMinLength(10);
+        customMetaDataFieldSchemaObject.setMaxLength(100);
+
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+
+    private static void createCustomMetaDataFields_Textarea()
+            throws BadRequestException, UnknownException {
+
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Textarea);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue(20);
+        customMetaDataFieldSchemaObject.setMinLength(10);
+        customMetaDataFieldSchemaObject.setMaxLength(100);
+
+
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+    private static void createCustomMetaDataFields_Number()
+            throws BadRequestException, UnknownException {
+
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Number);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue(10);
+        customMetaDataFieldSchemaObject.setMinValue(1);
+        customMetaDataFieldSchemaObject.setMaxValue(20);
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+    private static void createCustomMetaDataFields_Date()
+            throws BadRequestException, UnknownException {
+
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Date);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue("2022-11-30T10:11:10+00:00");
+        customMetaDataFieldSchemaObject.setMinValue("2022-11-30T10:11:10+00:00");
+        customMetaDataFieldSchemaObject.setMaxValue("2022-12-30T10:11:10+00:00");
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+    private static void createCustomMetaDataFields_Boolean()
+            throws BadRequestException, UnknownException {
+
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.Boolean);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue(true);
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+    private static void createCustomMetaDataFields_SingleSelect()
+            throws BadRequestException, UnknownException {
+        List<Object> objectList = new ArrayList<>();
+        objectList.add("small");
+        objectList.add("medium");
+        objectList.add("large");
+        objectList.add(30);
+        objectList.add(40);
+        objectList.add(true);
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.SingleSelect);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue("small");
+        customMetaDataFieldSchemaObject.setSelectOptions(objectList);
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
+
+    private static void createCustomMetaDataFields_MultiSelect()
+            throws BadRequestException, UnknownException {
+
+        List<Object> objectList = new ArrayList<>();
+        objectList.add("small");
+        objectList.add("medium");
+        objectList.add("large");
+        objectList.add(30);
+        objectList.add(40);
+        objectList.add(true);
+
+        List<Object> defaultValueObject = new ArrayList<>();
+        defaultValueObject.add("small");
+        defaultValueObject.add(30);
+        defaultValueObject.add(true);
+        CustomMetaDataFieldSchemaObject customMetaDataFieldSchemaObject = new CustomMetaDataFieldSchemaObject();
+        customMetaDataFieldSchemaObject.setType(CustomMetaDataTypeEnum.MultiSelect);
+        customMetaDataFieldSchemaObject.setValueRequired(true);
+        customMetaDataFieldSchemaObject.setDefaultValue(defaultValueObject);
+        customMetaDataFieldSchemaObject.setSelectOptions(objectList);
+
+        CustomMetaDataFieldCreateRequest customMetaDataFieldCreateRequest = new CustomMetaDataFieldCreateRequest();
+        customMetaDataFieldCreateRequest.setName("Name");
+        customMetaDataFieldCreateRequest.setLabel("Label");
+        customMetaDataFieldCreateRequest.setSchema(customMetaDataFieldSchemaObject);
+
+        ResultCustomMetaDataField resultCustomMetaDataField = ImageKit.getInstance()
+                .createCustomMetaDataFields(customMetaDataFieldCreateRequest);
+        System.out.println(">> Create CustomMetaDataFields done.");
+        System.out.println(Color.ANSI_GREEN + ">> Response create CustomMetaDataFields :" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField);
+        System.out.println(Color.ANSI_GREEN + ">> Map Response:" + Color.ANSI_RESET);
+        System.out.println(resultCustomMetaDataField.getResponseMetaData().getMap());
+        System.out.println("\n\n");
+    }
 
 	private static void deleteCustomMetaDataField(String id)
 			throws NotFoundException, UnknownException {
