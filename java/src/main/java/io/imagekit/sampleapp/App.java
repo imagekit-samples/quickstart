@@ -42,7 +42,13 @@ class App {
         addTags();
         removeTags();
         removeAITags();
-        createCustomMetaDataFields();
+		createCustomMetaDataFields_Text();
+		createCustomMetaDataFields_Textarea();
+        createCustomMetaDataFields_Number();
+		createCustomMetaDataFields_Date();
+		createCustomMetaDataFields_Boolean();
+		createCustomMetaDataFields_SingleSelect();
+		createCustomMetaDataFields_MultiSelect();
         updateCustomMetaDataFields();
         deleteCustomMetaDataField("629f3de17eb0fe4053615450");
         getCustomMetaDataFields();
