@@ -64,9 +64,9 @@ In `src/main/resources/config.properties`, set the following parameters for auth
 
 ```editorconfig
 # Put essential values of keys [UrlEndpoint, PrivateKey, PublicKey]
-UrlEndpoint=<-YOUR-ENDPOINT-URL-HERE->
-PrivateKey=<-YOUR-PRIVATE-KEY-HERE->
-PublicKey=<-YOUR-PUBLIC-KEY-HERE->
+UrlEndpoint=your_url_endpoint
+PrivateKey=your_private_key
+PublicKey=your_public_key
 ```
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
