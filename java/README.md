@@ -89,9 +89,22 @@ class App {
 }
 ```
 
-All these parameters are required. API private key can also be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
+or
 
-Please note that file upload will only work if, along with the above, you have also defined `YOUR_IMAGEKIT_PUBLIC_KEY`, `YOUR_IMAGEKIT_URL_ENDPOINT`, and `YOUR_IMAGEKIT_PRIVATE_KEY` variables in `config.properties`.
+ ```java
+import io.imagekit.sdk.ImageKit;
+import io.imagekit.sdk.config.Configuration;
+import io.imagekit.sdk.utils.Utils;
+class App {
+    public static void main(String[] args) {
+        ImageKit imageKit = ImageKit.getInstance();
+        Configuration config = new Configuration("your_public_key", "your_private_key", "your_url_endpoint");
+        imageKit.setConfig(config);
+    }
+}
+```
+
+All these parameters are required. API private key can also be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
 # Useful links
 * React quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/java
