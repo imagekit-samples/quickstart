@@ -1,24 +1,25 @@
 # Introduction 
 
-This sample project covers:
-
-1. Setting up ImageKit React SDK
-2. Rendering images
-3. Setting authentication context for the SDK
-4. Applying common image manipulations
-5. Adding overlays to images
-6. Lazy loading images
-7. Blurred image placeholder
-8. Client-side file uploading
+This sample project shows an implementation of all methods exposed by Java SDK. You can copy-paste code snippet from here in your application and edit the values as per your requirement.
 
 # How to run locally
 
-You will find `App.java` in `src/main/java/io/imagekit/sampleapp/` directory. Edit program as you need, then run `App.java`. If you are using CLI Tool (Terminal/Command Prompt) Then Open Project in CLI and execute using gradle**
+You will find `App.java` in `src/main/java/io/imagekit/sampleapp/` directory. 
+
+Open this file and replace placeholder credentials with actual values. You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard. API keys can be obtained from the [developer](https://imagekit.io/dashboard/developer/api-keys) section in your ImageKit dashboard.
+
+```java
+Configuration config = new Configuration("your_public_key", "your_private_key", "your_url_endpoint");
+```
+
+Now run `App.java`. If you are using CLI Tool (Terminal/Command prompt), open the project in CLI and execute it using Gradle.
+
 ```shell
 cd project-name
 ./gradlew run
 ```
-- You will find jar in "imagekit-sdk/build/libs/" directory.
+
+- You will find the jar in "imagekit-sdk/build/libs/" directory.
 
 ## Install dependencies
 
@@ -27,18 +28,19 @@ cd project-name
 Step 1. Add the JitPack repository to your build file
 ```
 allprojects {
-	repositories {
-		...
-		maven { url 'https://jitpack.io' }
-	}
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
 }
 ```
-Step 2. Add the dependency on project's `build.gradle`:
+Step 2. Add the dependency on the project's `build.gradle`:
 ```
 dependencies {
         implementation 'com.github.imagekit-developer:imagekit-java:2.0.0'
 }
 ```
+
 ### Maven users
 Step 1. Add the JitPack repository to your build file
 ```
@@ -49,7 +51,7 @@ Step 1. Add the JitPack repository to your build file
     </repository>
 </repositories>
 ```
-Step 2. Add the dependency in POM file:
+Step 2. Add the dependency in the POM file:
 ```
 <dependency>
     <groupId>com.github.imagekit-developer</groupId>
@@ -58,44 +60,9 @@ Step 2. Add the dependency in POM file:
 </dependency>
 ```
 
-## Setup authentication
-
-In `src/main/resources/config.properties`, set the following parameters for authentication, no need to use quote(' or ") in values.:
-
-```editorconfig
-# Put essential values of keys [UrlEndpoint, PrivateKey, PublicKey]
-UrlEndpoint=your_url_endpoint
-PrivateKey=your_private_key
-PublicKey=your_public_key
-```
-
-You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
-API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
-
-## Setup dummy backend for upload
-
-Set the following keys in `src/main/java/io/imagekit/sampleapp/App.java`
-
- ```java
-import io.imagekit.sdk.ImageKit;
-import io.imagekit.sdk.config.Configuration;
-import io.imagekit.sdk.utils.Utils;
-class App {
-    public static void main(String[] args){
-        ImageKit imageKit=ImageKit.getInstance();
-        Configuration config=Utils.getSystemConfig(App.class);
-        imageKit.setConfig(config);
-    }
-}
-```
-
-All these parameters are required. API private key can also be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
-
-Please note that file upload will only work if, along with the above, you have also defined `YOUR_IMAGEKIT_PUBLIC_KEY`, `YOUR_IMAGEKIT_URL_ENDPOINT`, and `YOUR_IMAGEKIT_PRIVATE_KEY` variables in `config.properties`.
-
 # Useful links
-* React quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/java
-* React SDK and documentation - https://github.com/imagekit-developer/imagekit-java/
+* Java quickstart guide - https://docs.imagekit.io/getting-started/quickstart-guides/java
+* Java SDK and documentation - https://github.com/imagekit-developer/imagekit-java/
 
 # Report a bug
 If something doesn't work as expected, report a bug at support@imagekit.io.
