@@ -5,9 +5,33 @@ import com.google.gson.JsonObject;
 
 import io.imagekit.sdk.config.Configuration;
 import io.imagekit.sdk.ImageKit;
+import io.imagekit.sdk.exceptions.BadRequestException;
+import io.imagekit.sdk.exceptions.ConflictException;
+import io.imagekit.sdk.exceptions.ForbiddenException;
+import io.imagekit.sdk.exceptions.InternalServerException;
+import io.imagekit.sdk.exceptions.NotFoundException;
+import io.imagekit.sdk.exceptions.PartialSuccessException;
+import io.imagekit.sdk.exceptions.TooManyRequestsException;
+import io.imagekit.sdk.exceptions.UnauthorizedException;
+import io.imagekit.sdk.exceptions.UnknownException;
+import io.imagekit.sdk.models.AITagsRequest;
 import io.imagekit.sdk.models.BaseFile;
+import io.imagekit.sdk.models.CopyFileRequest;
+import io.imagekit.sdk.models.CopyFolderRequest;
+import io.imagekit.sdk.models.CreateFolderRequest;
+import io.imagekit.sdk.models.CustomMetaDataFieldCreateRequest;
+import io.imagekit.sdk.models.CustomMetaDataFieldSchemaObject;
+import io.imagekit.sdk.models.CustomMetaDataFieldUpdateRequest;
+import io.imagekit.sdk.models.CustomMetaDataTypeEnum;
+import io.imagekit.sdk.models.DeleteFileVersionRequest;
+import io.imagekit.sdk.models.DeleteFolderRequest;
 import io.imagekit.sdk.models.FileCreateRequest;
 import io.imagekit.sdk.models.FileUpdateRequest;
+import io.imagekit.sdk.models.GetFileListRequest;
+import io.imagekit.sdk.models.MoveFileRequest;
+import io.imagekit.sdk.models.MoveFolderRequest;
+import io.imagekit.sdk.models.RenameFileRequest;
+import io.imagekit.sdk.models.TagsRequest;
 import io.imagekit.sdk.models.results.*;
 import io.imagekit.sdk.utils.Utils;
 
@@ -134,7 +158,7 @@ class App {
 		System.out.println("\n\n");
 	}
 
-	private static void getPurgeCacheStatus(String requestId) {
+	private static void getPurgeCacheStatus(String requestId) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException {
 		System.out.println(Color.ANSI_CYAN + ">> Fetching cache status:" + Color.ANSI_RESET);
 		System.out.println(">> Sending request...");
 		ResultCacheStatus result = ImageKit.getInstance().getPurgeCacheStatus(requestId);
@@ -177,7 +201,7 @@ class App {
 		System.out.println("\n\n");
 	}
 
-	private static void deleteFiles(List<BaseFile> files) throws ForbiddenException, TooManyRequestsException, InternalServerException, PartialSuccessException, UnauthorizedException, NotFoundException, BadRequestException, UnknownException {
+	private static void deleteFiles(List<BaseFile> files) throws ForbiddenException, TooManyRequestsException, InternalServerException, PartialSuccessException, UnauthorizedException, NotFoundException, BadRequestException, UnknownException, PartialSuccessException, NotFoundException {
 		List<String> fileIds = files.stream().map(baseFile -> baseFile.getFileId()).collect(Collectors.toList());
 		System.out.println(Color.ANSI_CYAN + ">> Deleting file:" + Color.ANSI_RESET);
 		System.out.println(">> Sending file id: " + fileIds);
@@ -279,7 +303,7 @@ class App {
 		System.out.println("\n\n");
 	}
 
-	private static List<BaseFile> getList(int skip, int limit) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException {
+	private static List<BaseFile> getList(int skip, int limit) throws ForbiddenException, TooManyRequestsException, InternalServerException, UnauthorizedException, BadRequestException, UnknownException, IllegalAccessException, InstantiationException {
 		System.out.println(Color.ANSI_CYAN + ">> Get Uploaded file as List:" + Color.ANSI_RESET);
 		System.out.println(">> Fetching list...");
         String[] tags = new String[3];
