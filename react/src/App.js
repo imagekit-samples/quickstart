@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import { IKContext, IKImage, IKImgUpload } from 'imagekitio-react';
 
-const publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
-const urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
+const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT;
 const authenticationEndpoint = 'http://localhost:3001/auth';
 
-const onError = err => {
-  console.log("Error", err);
-};
+const App = () => {
+  const [uploadedImageSource, setUploadedImageSource] = useState();
 
-const onSuccess = res => {
-  console.log("Success", res);
-};
+  const onError = err => {
+    console.log("Error", err);
+  };
 
-function App() {
+  const onSuccess = res => {
+    console.log("Success", res);
+    console.log(res.$ResponseMetadata.statusCode); // 200
+    console.log(res.$ResponseMetadata.headers);
+    setUploadedImageSource(res.url);
+  };
+
   return (
     <div className="App">
       <IKContext
@@ -22,13 +27,24 @@ function App() {
         urlEndpoint={urlEndpoint}
         authenticationEndpoint={authenticationEndpoint}
       >
-        <h1>ImageKit React quick start</h1>
-        <h2>File upload</h2>
-        <IKUpload
-          fileName="test-upload.png"
+        <p>File upload along with upload API options - To use this funtionality please remember to setup the server</p>
+        <IKImgUpload
+          publicKey={publicKey}
+          authenticationEndpoint={authenticationEndpoint}
+          urlEndpoint={urlEndpoint}
+          fileName="test.jpg"
+          tags={["sample-tag1", "sample-tag2"]}
+          customCoordinates={"10,10,10,10"}
+          isPrivateFile={false}
+          useUniqueFileName={true}
+          responseFields={["tags"]}
+          folder={"/test"}
           onError={onError}
           onSuccess={onSuccess}
         />
+
+        <p>Your uploaded file will appear here </p>
+        <IKImage urlEndpoint={urlEndpoint} src={uploadedImageSource} />
       </IKContext>
 
       <IKContext urlEndpoint={urlEndpoint}>
@@ -135,6 +151,18 @@ function App() {
           loading="lazy"
           height="300"
           width="400"
+        />
+
+        <h3>disabled low-quality placeholders</h3>
+        <IKImage
+          urlEndpoint={urlEndpoint}
+          className={'lazyload-lqip'}
+          path={path}
+          transformation={[{
+            "height": "200",
+            "width": "200"
+          }]}
+          lqip={{ active: false }}
         />
       </IKContext>
     </div>

@@ -8,9 +8,9 @@ const app = express();
 const ImageKit = require('imagekit');
 
 const imagekit = new ImageKit({
-  urlEndpoint: '<YOUR_IMAGEKIT_URL_ENDPOINT>',
-  publicKey: '<YOUR_IMAGEKIT_PUBLIC_KEY>',
-  privateKey: '<YOUR_IMAGEKIT_PRIVATE_KEY>',
+  urlEndpoint: process.env.APP_URL_ENDPOINT,
+  publicKey: process.env.PUBLIC_KEY,
+  privateKey: process.env.PRIVATE_KEY,
 });
 
 // allow cross-origin requests
