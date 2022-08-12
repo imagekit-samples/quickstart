@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
-import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import { IKContext, IKImage, IKUpload, IKCore } from 'imagekitio-react';
 
 const publicKey = process.env.REACT_APP_PUBLIC_KEY;
 const urlEndpoint = process.env.REACT_APP_URL_ENDPOINT;
 const authenticationEndpoint = 'http://localhost:3001/auth';
 
 const App = () => {
+  const [imgIkcore, setImgIkCore] = useState('');
   const [imgTr, setImgTr] = useState([{ height: 300, width: 300 }])
   const [uploadedImageSource, setUploadedImageSource] = useState();
   const [error, setError] = useState();
+
+  useEffect(() => {
+    createCustomeImg()
+  }, [])
 
   const onError = err => {
     console.log("Error", err);
@@ -22,6 +27,23 @@ const App = () => {
     console.log(res.$ResponseMetadata.headers);
     setUploadedImageSource(res.url);
   };
+
+  const createCustomeImg = () => {
+    const imagekit = new IKCore({
+      urlEndpoint: urlEndpoint
+    });
+    if (imagekit) {
+      let imageURL = imagekit.url({
+        path: "/default-image.jpg",
+        urlEndpoint: urlEndpoint,
+        transformation: [{
+          "height": "300",
+          "width": "400"
+        }]
+      });
+      setImgIkCore(imageURL)
+    }
+  }
 
   return (
     <div className="App">
@@ -89,6 +111,9 @@ const App = () => {
         transformation={[{ height: 200, width: 200 }]}
         className={"uploaded-img-ik"}
         />
+
+      <h1>Render Image Using IKCore Sdk</h1>
+      {imgIkcore && <img src={imgIkcore} className="image-ikcore" />}
     </div>
   );
 }
