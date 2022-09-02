@@ -182,7 +182,7 @@ if __name__ == "__main__":
     list_files = imagekit.list_files(options=ListAndSearchFileRequestOptions(type="file", sort="ASC_CREATED", path="/",
                                                                              search_query="created_at >= '2d' OR size < '2mb' OR format='png'",
                                                                              file_type="all", limit=5, skip=0,
-                                                                             tags="Software, Developer, Engineer"))
+                                                                             tags="tag-1, tag-2, tag-3"))
     bulk_ids = [
         list_files.list[0].file_id,
         list_files.list[1].file_id
@@ -193,8 +193,10 @@ if __name__ == "__main__":
     print("-------------------------------------")
     # Final Result
     print(list_files, end="\n\n")
+
     # Raw Response
     print(list_files.response_metadata.raw)
+
     # print the first file's ID
     print(list_files.list[0].file_id)
 
@@ -204,8 +206,10 @@ if __name__ == "__main__":
     print("-------------------------------------")
     # Final Result
     print(details, end="\n\n")
+
     # Raw Response
     print(details.response_metadata.raw)
+
     # print that file's id
     print(details.file_id)
 
@@ -293,7 +297,7 @@ if __name__ == "__main__":
     # print the first file's id
     print(remove_tags.successfully_updated_file_ids[0])
 
-    remove_ai_tags = imagekit.remove_ai_tags(file_ids=['62a9c3ccd875ec6fd658c854'], a_i_tags=['Plant'])
+    remove_ai_tags = imagekit.remove_ai_tags(file_ids=['file_id_1', 'file_id_2'], a_i_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
     print("-------------------------------------")
     print("Remove AI tags")
     print("-------------------------------------")
@@ -330,7 +334,7 @@ if __name__ == "__main__":
     # Raw Response
     print(delete_file_version.response_metadata.raw)
 
-    bulk_file_delete = imagekit.bulk_file_delete(file_ids=['62ad8a3b514f86178637fdcb'])
+    bulk_file_delete = imagekit.bulk_file_delete(file_ids=['file-id-1', 'file-id-2'])
     print("-------------------------------------")
     print("Bulk file delete")
     print("-------------------------------------")
@@ -347,7 +351,7 @@ if __name__ == "__main__":
     print(bulk_file_delete.successfully_deleted_file_ids[0])
 
     copy_file = imagekit.copy_file(
-        options=CopyFileRequestOptions(source_file_path="/file.jpg",
+        options=CopyFileRequestOptions(source_file_path="/your_file_name.jpg",
                                        destination_path="/test",
                                        include_file_versions=True))
     print("-------------------------------------")
@@ -359,7 +363,7 @@ if __name__ == "__main__":
     # Raw Response
     print(copy_file.response_metadata.raw)
 
-    move_file = imagekit.move_file(options=MoveFileRequestOptions(source_file_path="/file.jpg",
+    move_file = imagekit.move_file(options=MoveFileRequestOptions(source_file_path="/your_file_name.jpg",
                                                                   destination_path="/test"))
     print("-------------------------------------")
     print("Move file")
@@ -435,7 +439,7 @@ if __name__ == "__main__":
     # print the job's id
     print(copy_folder.job_id)
 
-    move_folder = imagekit.move_folder(options=MoveFolderRequestOptions(source_folder_path="/demo1/testing"
+    move_folder = imagekit.move_folder(options=MoveFolderRequestOptions(source_folder_path="/source-folder"
                                                                         , destination_path="/"))
     print("-------------------------------------")
     print("Move folder")
@@ -678,7 +682,7 @@ if __name__ == "__main__":
     # print the first customMetadataField schema's type
     print(get_custom_metadata_fields.list[0].schema.type)
 
-    update_custom_metadata_fields = imagekit.update_custom_metadata_fields(custom_metadata_field_identifier="id",
+    update_custom_metadata_fields = imagekit.update_custom_metadata_fields(custom_metadata_field_identifier="id_of_custom_metadata_field",
                                                  options=UpdateCustomMetadataFieldsRequestOptions(label="test-update",
                                                                                                   schema=CustomMetadataFieldsSchema(
                                                                                                       min_value=100,
