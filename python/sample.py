@@ -19,16 +19,16 @@ if __name__ == "__main__":
 
     upload = imagekit.upload_file(
         file=open("sample.jpg", "rb"),
-        file_name="testing_upload_binary_signed_private.jpg",
+        file_name="sample_file.jpg",
         options=UploadFileRequestOptions(use_unique_file_name=False, tags=["abc", "def"],
                                          folder="/testing-python-folder/", is_private_file=True,
                                          custom_coordinates="10,10,20,20",
                                          response_fields=["tags", "custom_coordinates", "is_private_file",
                                                           "embedded_metadata",
                                                           "custom_metadata"],
-                                         extensions=(
+                                         extensions=[
                                              {"name": "remove-bg", "options": {"add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}),
+                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
                                          overwrite_file=True, overwrite_a_i_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
@@ -52,9 +52,9 @@ if __name__ == "__main__":
                                          folder="/testing-python-folder/", is_private_file=True,
                                          custom_coordinates="10,10,20,20",
                                          response_fields=["is_private_file"],
-                                         extensions=(
+                                         extensions=[
                                              {"name": "remove-bg", "options": {"add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}),
+                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
                                          overwrite_file=False, overwrite_a_i_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
@@ -81,9 +81,9 @@ if __name__ == "__main__":
                                          folder="/testing-python-folder/", is_private_file=False,
                                          custom_coordinates="10,10,20,20",
                                          response_fields=["is_private_file", "custom_metadata", "tags"],
-                                         extensions=(
+                                         extensions=[
                                              {"name": "remove-bg", "options": {"add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}),
+                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
                                          overwrite_file=False, overwrite_a_i_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
@@ -200,7 +200,7 @@ if __name__ == "__main__":
     # print the first file's ID
     print(list_files.list[0].file_id)
 
-    details = imagekit.get_file_details(file_identifier="file_id")
+    details = imagekit.get_file_details(file_id="file_id")
     print("-------------------------------------")
     print("Get file details")
     print("-------------------------------------")
@@ -213,7 +213,7 @@ if __name__ == "__main__":
     # print that file's id
     print(details.file_id)
 
-    file_versions = imagekit.get_file_versions(file_identifier='62a9c3ccd875ec6fd658c854')
+    file_versions = imagekit.get_file_versions(file_id='62a9c3ccd875ec6fd658c854')
     print("-------------------------------------")
     print("Get file versions")
     print("-------------------------------------")
@@ -225,8 +225,8 @@ if __name__ == "__main__":
     # print that file's version id
     print(file_versions.list[0].version_info.id)
 
-    file_versions_details = imagekit.get_file_version_details(file_identifier='62a9c3ccd875ec6fd658c854',
-                                                              version_identifier='62b97749f63122840530fda9')
+    file_versions_details = imagekit.get_file_version_details(file_id='62a9c3ccd875ec6fd658c854',
+                                                              version_id='62b97749f63122840530fda9')
     print("-------------------------------------")
     print("Get file version details")
     print("-------------------------------------")
@@ -244,7 +244,7 @@ if __name__ == "__main__":
 
     updated_detail = imagekit.update_file_details(
         file_id="62d92afaef493b90ba8ce296",
-        options=UpdateFileRequestOptions(remove_a_i_tags=['remove-ai-tag-1', 'remove-ai-tag-2'],
+        options=UpdateFileRequestOptions(remove_a_i_tags =['remove-ai-tag-1', 'remove-ai-tag-2'],
                                          webhook_url="url",
                                          extensions=[
                                              {"name": "remove-bg", "options": {"add_shadow": True, "bg_color": "red"}},
@@ -297,7 +297,8 @@ if __name__ == "__main__":
     # print the first file's id
     print(remove_tags.successfully_updated_file_ids[0])
 
-    remove_ai_tags = imagekit.remove_ai_tags(file_ids=['file_id_1', 'file_id_2'], a_i_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
+    remove_ai_tags = imagekit.remove_ai_tags(file_ids=['file_id_1', 'file_id_2'],
+                                             a_i_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
     print("-------------------------------------")
     print("Remove AI tags")
     print("-------------------------------------")
@@ -526,12 +527,13 @@ if __name__ == "__main__":
     print(get_metadata.width)
     print(get_metadata.exif.image.x_resolution)
 
-    create_custom_metadata_fields_number = imagekit.create_custom_metadata_fields(options=CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                                                            label="test",
-                                                                                            schema=CustomMetadataFieldsSchema(
-                                                                                                type=CustomMetaDataTypeEnum.Number,
-                                                                                                min_value=100,
-                                                                                                max_value=200)))
+    create_custom_metadata_fields_number = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(name="test",
+                                                         label="test",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             type=CustomMetaDataTypeEnum.Number,
+                                                             min_value=100,
+                                                             max_value=200)))
     print("-------------------------------------")
     print("Create custom metadata fields number type")
     print("-------------------------------------")
@@ -547,14 +549,15 @@ if __name__ == "__main__":
     # print the schema's type of created custom metadata fields
     print(create_custom_metadata_fields_number.schema.type)
 
-    create_custom_metadata_fields_textarea = imagekit.create_custom_metadata_fields(CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                                                    label="test",
-                                                                                    schema=CustomMetadataFieldsSchema(
-                                                                                        type=CustomMetaDataTypeEnum.Textarea,
-                                                                                        is_value_required=True,
-                                                                                        default_value="The",
-                                                                                        min_length=3,
-                                                                                        max_length=200)))
+    create_custom_metadata_fields_textarea = imagekit.create_custom_metadata_fields(
+        CreateCustomMetadataFieldsRequestOptions(name="test",
+                                                 label="test",
+                                                 schema=CustomMetadataFieldsSchema(
+                                                     type=CustomMetaDataTypeEnum.Textarea,
+                                                     is_value_required=True,
+                                                     default_value="The",
+                                                     min_length=3,
+                                                     max_length=200)))
     print("-------------------------------------")
     print("Create custom metadata fields textarea type")
     print("-------------------------------------")
@@ -570,13 +573,14 @@ if __name__ == "__main__":
     # print the schema's type of created custom metadata fields
     print(create_custom_metadata_fields_textarea.schema.type)
 
-    create_custom_metadata_fields_date = imagekit.create_custom_metadata_fields(options=CreateCustomMetadataFieldsRequestOptions(name="test-date",
-                                                                                            label="test-date",
-                                                                                            schema=CustomMetadataFieldsSchema(
-                                                                                                type=CustomMetaDataTypeEnum.Date,
-                                                                                                min_value="2022-11-29T10:11:10+00:00",
-                                                                                                max_value="2022-11-30T10:11:10+00:00"))
-                                           )
+    create_custom_metadata_fields_date = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(name="test-date",
+                                                         label="test-date",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             type=CustomMetaDataTypeEnum.Date,
+                                                             min_value="2022-11-29T10:11:10+00:00",
+                                                             max_value="2022-11-30T10:11:10+00:00"))
+        )
     print("-------------------------------------")
     print("Create custom metadata fields date type")
     print("-------------------------------------")
@@ -592,13 +596,14 @@ if __name__ == "__main__":
     # print the schema's min value of created custom metadata fields
     print(create_custom_metadata_fields_date.schema.min_value)
 
-    create_custom_metadata_fields_boolean = imagekit.create_custom_metadata_fields(options=CreateCustomMetadataFieldsRequestOptions(name="test-boolean",
-                                                                                            label="test-boolean",
-                                                                                            schema=CustomMetadataFieldsSchema(
-                                                                                                type=CustomMetaDataTypeEnum.Boolean,
-                                                                                                is_value_required=True,
-                                                                                                default_value=True))
-                                           )
+    create_custom_metadata_fields_boolean = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(name="test-boolean",
+                                                         label="test-boolean",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             type=CustomMetaDataTypeEnum.Boolean,
+                                                             is_value_required=True,
+                                                             default_value=True))
+        )
     print("-------------------------------------")
     print("Create custom metadata fields boolean type")
     print("-------------------------------------")
@@ -611,17 +616,18 @@ if __name__ == "__main__":
     # print the label of created custom metadata fields
     print(create_custom_metadata_fields_boolean.label)
 
-    create_custom_metadata_fields_single_select = imagekit.create_custom_metadata_fields(options=CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                                                            label="test",
-                                                                                            schema=CustomMetadataFieldsSchema(
-                                                                                                type=CustomMetaDataTypeEnum.SingleSelect,
-                                                                                                select_options=[
-                                                                                                    "small",
-                                                                                                    "medium",
-                                                                                                    "large", 30,
-                                                                                                    40,
-                                                                                                    True]))
-                                           )
+    create_custom_metadata_fields_single_select = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(name="test",
+                                                         label="test",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             type=CustomMetaDataTypeEnum.SingleSelect,
+                                                             select_options=[
+                                                                 "small",
+                                                                 "medium",
+                                                                 "large", 30,
+                                                                 40,
+                                                                 True]))
+        )
     print("-------------------------------------")
     print("Create custom metadata fields SingleSelect type")
     print("-------------------------------------")
@@ -637,20 +643,21 @@ if __name__ == "__main__":
     # print the schema's select options of created custom metadata fields
     print(create_custom_metadata_fields_single_select.schema.select_options)
 
-    create_custom_metadata_fields_multi_select = imagekit.create_custom_metadata_fields(options=CreateCustomMetadataFieldsRequestOptions(name="test-MultiSelect",
-                                                                                                label="test-MultiSelect",
-                                                                                                schema=CustomMetadataFieldsSchema(
-                                                                                                    type=CustomMetaDataTypeEnum.MultiSelect,
-                                                                                                    is_value_required=True,
-                                                                                                    default_value=[
-                                                                                                        "small", 30,
-                                                                                                        True],
-                                                                                                    select_options=[
-                                                                                                        "small",
-                                                                                                        "medium",
-                                                                                                        "large", 30, 40,
-                                                                                                        True]))
-                                               )
+    create_custom_metadata_fields_multi_select = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(name="test-MultiSelect",
+                                                         label="test-MultiSelect",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             type=CustomMetaDataTypeEnum.MultiSelect,
+                                                             is_value_required=True,
+                                                             default_value=[
+                                                                 "small", 30,
+                                                                 True],
+                                                             select_options=[
+                                                                 "small",
+                                                                 "medium",
+                                                                 "large", 30, 40,
+                                                                 True]))
+        )
     print("-------------------------------------")
     print("Create custom metadata fields MultiSelect type")
     print("-------------------------------------")
@@ -682,12 +689,13 @@ if __name__ == "__main__":
     # print the first customMetadataField schema's type
     print(get_custom_metadata_fields.list[0].schema.type)
 
-    update_custom_metadata_fields = imagekit.update_custom_metadata_fields(custom_metadata_field_identifier="id_of_custom_metadata_field",
-                                                 options=UpdateCustomMetadataFieldsRequestOptions(label="test-update",
-                                                                                                  schema=CustomMetadataFieldsSchema(
-                                                                                                      min_value=100,
-                                                                                                      max_value=200))
-                                                 )
+    update_custom_metadata_fields = imagekit.update_custom_metadata_fields(
+        field_id="id_of_custom_metadata_field",
+        options=UpdateCustomMetadataFieldsRequestOptions(label="test-update",
+                                                         schema=CustomMetadataFieldsSchema(
+                                                             min_value=100,
+                                                             max_value=200))
+        )
     print("-------------------------------------")
     print("Update custom metadata fields")
     print("-------------------------------------")
@@ -703,7 +711,8 @@ if __name__ == "__main__":
     # print the schema's min value of updated custom metadata fields
     print(update_custom_metadata_fields.schema.min_value)
 
-    delete_custom_metadata_field = imagekit.delete_custom_metadata_field(custom_metadata_field_identifier="62a85e97663ef7E5173ba63f")
+    delete_custom_metadata_field = imagekit.delete_custom_metadata_field(
+        field_id="62a85e97663ef7E5173ba63f")
     print("-------------------------------------")
     print("Delete custom metatdata fields via custom metatdata fields's id")
     print("-------------------------------------")
