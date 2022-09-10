@@ -1,5 +1,30 @@
 import base64
+import os
 import sys
+import uuid
+
+from imagekitio.models.UploadFileRequestOptions import UploadFileRequestOptions
+from imagekitio.models.ListAndSearchFileRequestOptions import (
+    ListAndSearchFileRequestOptions,
+)
+from imagekitio.models.UpdateFileRequestOptions import UpdateFileRequestOptions
+from imagekitio.models.CopyFileRequestOptions import CopyFileRequestOptions
+from imagekitio.models.MoveFileRequestOptions import MoveFileRequestOptions
+from imagekitio.models.RenameFileRequestOptions import RenameFileRequestOptions
+from imagekitio.models.CreateFolderRequestOptions import CreateFolderRequestOptions
+from imagekitio.models.DeleteFolderRequestOptions import DeleteFolderRequestOptions
+from imagekitio.models.CopyFolderRequestOptions import CopyFolderRequestOptions
+from imagekitio.models.MoveFolderRequestOptions import MoveFolderRequestOptions
+from imagekitio.models.CreateCustomMetadataFieldsRequestOptions import (
+    CreateCustomMetadataFieldsRequestOptions,
+)
+from imagekitio.models.CustomMetadataFieldsSchema import (
+    CustomMetadataFieldsSchema,
+    CustomMetaDataTypeEnum,
+)
+from imagekitio.models.UpdateCustomMetadataFieldsRequestOptions import (
+    UpdateCustomMetadataFieldsRequestOptions,
+)
 
 sys.path.append("..")
 
@@ -7,6 +32,11 @@ sys.path.append("..")
 private_key = "your_public_api_key"
 public_key = "your_private_api_key"
 url_endpoint = "https://ik.imagekit.io/your_imagekit_id/"
+
+private_key = "private_tOgVcNR2twN8/3DeQByTx2cP2gc="
+public_key = "public_X8GDrZdASqzjfoKVgEBmAaC6lf8="
+url_endpoint = "https://ik.imagekit.io/gutwwp86o"
+
 # dummy image url
 url = "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"
 
@@ -14,26 +44,43 @@ if __name__ == "__main__":
     from imagekitio.client import ImageKit
 
     imagekit = ImageKit(
-        private_key=private_key, public_key=public_key, url_endpoint=url_endpoint,
+        private_key=private_key,
+        public_key=public_key,
+        url_endpoint=url_endpoint,
     )
-
+    current_folder = os.path.dirname(__file__)
+    file_path = os.path.join(current_folder, "sample.jpg")
+    file_name = "./sample_file.jpg"
     upload = imagekit.upload_file(
-        file=open("sample.jpg", "rb"),
-        file_name="sample_file.jpg",
-        options=UploadFileRequestOptions(use_unique_file_name=False, tags=["abc", "def"],
-                                         folder="/testing-python-folder/", is_private_file=True,
-                                         custom_coordinates="10,10,20,20",
-                                         response_fields=["tags", "custom_coordinates", "is_private_file",
-                                                          "embedded_metadata",
-                                                          "custom_metadata"],
-                                         extensions=[
-                                             {"name": "remove-bg", "options": {
-                                                 "add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
-                                         webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=True, overwrite_a_i_tags=False,
-                                         overwrite_tags=False, overwrite_custom_metadata=True,
-                                         custom_metadata={"test": 12})
+        file=open(file_path, "rb"),
+        file_name=file_name,
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=True,
+            custom_coordinates="10,10,20,20",
+            response_fields=[
+                "tags",
+                "custom_coordinates",
+                "is_private_file",
+                "embedded_metadata",
+                "custom_metadata",
+            ],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_a_i_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
     )
 
     print("-------------------------------------")
@@ -46,21 +93,29 @@ if __name__ == "__main__":
     # print that uploaded file's ID
     print(upload.file_id)
 
-    upload = imagekit.upload_file(
+    upload2 = imagekit.upload_file(
         file=url,
         file_name="testing-url.jpg",
-        options=UploadFileRequestOptions(tags=["abc", "def"],
-                                         folder="/testing-python-folder/", is_private_file=True,
-                                         custom_coordinates="10,10,20,20",
-                                         response_fields=["is_private_file"],
-                                         extensions=[
-                                             {"name": "remove-bg", "options": {
-                                                 "add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
-                                         webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=False, overwrite_a_i_tags=False,
-                                         overwrite_tags=False, overwrite_custom_metadata=True,
-                                         custom_metadata={"test": 11})
+        options=UploadFileRequestOptions(
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=True,
+            custom_coordinates="10,10,20,20",
+            response_fields=["is_private_file"],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=False,
+            overwrite_a_i_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
     )
 
     print("-------------------------------------")
@@ -73,26 +128,33 @@ if __name__ == "__main__":
     # print that uploaded file's ID
     print(upload.file_id)
 
-    with open("sample.jpg", mode="rb") as img:
+    with open(file_path, mode="rb") as img:
         imgstr = base64.b64encode(img.read())
 
     upload_base64 = imagekit.upload_file(
         file=imgstr,
         file_name="testing-base64.jpg",
-        options=UploadFileRequestOptions(tags=["abc", "def"],
-                                         folder="/testing-python-folder/", is_private_file=False,
-                                         custom_coordinates="10,10,20,20",
-                                         response_fields=[
-                                             "is_private_file", "custom_metadata", "tags"],
-                                         extensions=[
-                                             {"name": "remove-bg", "options": {
-                                                 "add_shadow": True, "bg_color": "pink"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
-                                         webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=False, overwrite_a_i_tags=False,
-                                         overwrite_tags=False, overwrite_custom_metadata=True,
-                                         custom_metadata={"test": 11}
-                                         )
+        options=UploadFileRequestOptions(
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=False,
+            custom_coordinates="10,10,20,20",
+            response_fields=["is_private_file", "custom_metadata", "tags"],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=False,
+            overwrite_a_i_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
 
     print("-------------------------------------")
     print("Upload with base64")
@@ -104,11 +166,16 @@ if __name__ == "__main__":
     # print that uploaded file's ID
     print(upload.file_id)
 
-    image_url=imagekit.url(
+    image_url = imagekit.url(
         {
             "path": upload.file_path,
             "query_parameters": {"v": "123"},
-            "transformation": [{"overlay_image": "/demo1/new_car.jpg", "default_image": "/demo1/default-image.jpg"}],
+            "transformation": [
+                {
+                    "overlay_image": "/demo1/new_car.jpg",
+                    "default_image": "/demo1/default-image.jpg",
+                }
+            ],
             "signed": True,
             "expire_seconds": 3000,
         }
@@ -121,7 +188,7 @@ if __name__ == "__main__":
     print(image_url, end="\n\n")
 
     # URL generation using image path and image hostname
-    image_url=imagekit.url(
+    image_url = imagekit.url(
         {
             "path": "default-image.jpg",
             "url_endpoint": url_endpoint,
@@ -136,7 +203,7 @@ if __name__ == "__main__":
     print(image_url, end="\n\n")
 
     # 2 Using full image URL
-    image_url=imagekit.url(
+    image_url = imagekit.url(
         {
             "src": url_endpoint.rstrip("/") + "/default-image.jpg",
             "transformation": [{"height": "300", "width": "400"}],
@@ -149,7 +216,7 @@ if __name__ == "__main__":
     # Final Result
     print(image_url, end="\n\n")
 
-    image_url=imagekit.url(
+    image_url = imagekit.url(
         {
             "path": "/default-image.jpg",
             "url_endpoint": "https://ik.imagekit.io/your_imagekit_id/",
@@ -163,7 +230,7 @@ if __name__ == "__main__":
     # Final Result
     print(image_url, end="\n\n")
 
-    image_url=imagekit.url(
+    image_url = imagekit.url(
         {
             "src": url_endpoint.rstrip("/") + "/default-image.jpg",
             "transformation": [
@@ -183,14 +250,19 @@ if __name__ == "__main__":
     # Final Result
     print(image_url, end="\n\n")
 
-    list_files=imagekit.list_files(options=ListAndSearchFileRequestOptions(type="file", sort="ASC_CREATED", path="/",
-                                                                             search_query="created_at >= '2d' OR size < '2mb' OR format='png'",
-                                                                             file_type="all", limit=5, skip=0,
-                                                                             tags="tag-1, tag-2, tag-3"))
-    bulk_ids=[
-        list_files.list[0].file_id,
-        list_files.list[1].file_id
-    ]
+    list_files = imagekit.list_files(
+        options=ListAndSearchFileRequestOptions(
+            type="file",
+            sort="ASC_CREATED",
+            path="/",
+            search_query="created_at >= '2d' OR size < '2mb' OR format='png'",
+            file_type="all",
+            limit=5,
+            skip=0,
+            tags="tag-1, tag-2, tag-3",
+        )
+    )
+    bulk_ids = [list_files.list[0].file_id, list_files.list[1].file_id]
 
     print("-------------------------------------")
     print("List files")
@@ -204,7 +276,7 @@ if __name__ == "__main__":
     # print the first file's ID
     print(list_files.list[0].file_id)
 
-    details=imagekit.get_file_details(file_id="file_id")
+    details = imagekit.get_file_details(file_id=upload_base64.file_id)
     print("-------------------------------------")
     print("Get file details")
     print("-------------------------------------")
@@ -217,8 +289,7 @@ if __name__ == "__main__":
     # print that file's id
     print(details.file_id)
 
-    file_versions=imagekit.get_file_versions(
-        file_id='file_id')
+    file_versions = imagekit.get_file_versions(file_id=upload_base64.file_id)
     print("-------------------------------------")
     print("Get file versions")
     print("-------------------------------------")
@@ -230,8 +301,9 @@ if __name__ == "__main__":
     # print that file's version id
     print(file_versions.list[0].version_info.id)
 
-    file_versions_details=imagekit.get_file_version_details(file_id='file_id',
-                                                              version_id='version_id')
+    file_versions_details = imagekit.get_file_version_details(
+        file_id=upload.file_id, version_id=upload.version_info.id
+    )
     print("-------------------------------------")
     print("Get file version details")
     print("-------------------------------------")
@@ -247,16 +319,22 @@ if __name__ == "__main__":
     # print that file's version id
     print(file_versions_details.version_info.id)
 
-    updated_detail=imagekit.update_file_details(
-        file_id="file_id",
-        options=UpdateFileRequestOptions(remove_a_i_tags=['remove-ai-tag-1', 'remove-ai-tag-2'],
-                                         webhook_url="url",
-                                         extensions=[
-                                             {"name": "remove-bg", "options": {
-                                                 "add_shadow": True, "bg_color": "red"}},
-                                             {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
-                                         tags=["tag1", "tag2"], custom_coordinates="10,10,100,100",
-                                         custom_metadata={"test": 11})
+    updated_detail = imagekit.update_file_details(
+        file_id=upload_base64.file_id,
+        options=UpdateFileRequestOptions(
+            remove_a_i_tags=["remove-ai-tag-1", "remove-ai-tag-2"],
+            webhook_url="https://somewebhook.use/for/testing",
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "red"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            tags=["tag1", "tag2"],
+            custom_coordinates="10,10,100,100",
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
     )
 
     print("-------------------------------------")
@@ -271,8 +349,9 @@ if __name__ == "__main__":
     # print that file's id
     print(updated_detail.file_id)
 
-    tags=imagekit.add_tags(
-        file_ids=['file_id_1', 'file_id_2'], tags=['abc', 'def'])
+    tags = imagekit.add_tags(
+        file_ids=[upload_base64.file_id, upload.file_id], tags=["abc", "def"]
+    )
     print("-------------------------------------")
     print("Add tags")
     print("-------------------------------------")
@@ -288,8 +367,9 @@ if __name__ == "__main__":
     # print the first file's id
     print(tags.successfully_updated_file_ids[0])
 
-    remove_tags=imagekit.remove_tags(
-        file_ids=['file_id_1', 'file_id_2'], tags=['abc', 'def'])
+    remove_tags = imagekit.remove_tags(
+        file_ids=[upload_base64.file_id, upload.file_id], tags=["abc", "def"]
+    )
     print("-------------------------------------")
     print("Remove tags")
     print("-------------------------------------")
@@ -305,8 +385,10 @@ if __name__ == "__main__":
     # print the first file's id
     print(remove_tags.successfully_updated_file_ids[0])
 
-    remove_ai_tags=imagekit.remove_ai_tags(file_ids=['file_id_1', 'file_id_2'],
-                                             a_i_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
+    remove_ai_tags = imagekit.remove_ai_tags(
+        file_ids=[upload_base64.file_id, upload.file_id],
+        a_i_tags=["ai-tag-to-remove-1", "ai-tag-to-remove-2"],
+    )
     print("-------------------------------------")
     print("Remove AI tags")
     print("-------------------------------------")
@@ -322,7 +404,7 @@ if __name__ == "__main__":
     # print the first file's id
     print(remove_ai_tags.successfully_updated_file_ids[0])
 
-        delete=imagekit.delete_file(file_id='file_id')
+    delete = imagekit.delete_file(file_id=upload_base64.file_id)
     print("-------------------------------------")
     print("Delete file")
     print("-------------------------------------")
@@ -332,8 +414,54 @@ if __name__ == "__main__":
     # Raw Response
     print(delete.response_metadata.raw)
 
-    delete_file_version=imagekit.delete_file_version(file_id="file_id",
-                                                       version_id="version_id")
+    upload3 = imagekit.upload_file(
+        file=open(file_path, "rb"),
+        file_name=file_name,
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=True,
+            custom_coordinates="10,10,20,20",
+            response_fields=[
+                "tags",
+                "custom_coordinates",
+                "is_private_file",
+                "embedded_metadata",
+                "custom_metadata",
+            ],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_a_i_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
+
+    file_versions = imagekit.get_file_versions(file_id=upload3.file_id)
+    print("-------------------------------------")
+    print("Get file versions")
+    print("-------------------------------------")
+    # Final Result
+    print(file_versions, end="\n\n")
+    # Raw Response
+    print(file_versions.response_metadata.raw)
+
+    # print that file's version id
+    print(file_versions.list[0].version_info.id)
+
+    delete_file_version = imagekit.delete_file_version(
+        file_id=file_versions.list[1].file_id,
+        version_id=file_versions.list[1].version_info.id,
+    )
     print("-------------------------------------")
     print("Delete file version")
     print("-------------------------------------")
@@ -343,8 +471,7 @@ if __name__ == "__main__":
     # Raw Response
     print(delete_file_version.response_metadata.raw)
 
-    bulk_file_delete=imagekit.bulk_file_delete(
-        file_ids=['file-id-1', 'file-id-2'])
+    bulk_file_delete = imagekit.bulk_file_delete(file_ids=[upload2.file_id])
     print("-------------------------------------")
     print("Bulk file delete")
     print("-------------------------------------")
@@ -360,10 +487,15 @@ if __name__ == "__main__":
     # print the first file's id
     print(bulk_file_delete.successfully_deleted_file_ids[0])
 
-    copy_file=imagekit.copy_file(
-        options=CopyFileRequestOptions(source_file_path="/your_file_name.jpg",
-                                       destination_path="/test",
-                                       include_file_versions=True))
+    upload4 = imagekit.upload_file(file=open(file_path, "rb"), file_name=file_name)
+
+    copy_file = imagekit.copy_file(
+        options=CopyFileRequestOptions(
+            source_file_path=upload4.file_path,
+            destination_path="/test",
+            include_file_versions=True,
+        )
+    )
     print("-------------------------------------")
     print("Copy file")
     print("-------------------------------------")
@@ -373,8 +505,11 @@ if __name__ == "__main__":
     # Raw Response
     print(copy_file.response_metadata.raw)
 
-    move_file=imagekit.move_file(options=MoveFileRequestOptions(source_file_path="/your_file_name.jpg",
-                                                                  destination_path="/test"))
+    move_file = imagekit.move_file(
+        options=MoveFileRequestOptions(
+            source_file_path=upload4.file_path, destination_path="/test"
+        )
+    )
     print("-------------------------------------")
     print("Move file")
     print("-------------------------------------")
@@ -384,9 +519,18 @@ if __name__ == "__main__":
     # Raw Response
     print(move_file.response_metadata.raw)
 
-    rename_file=imagekit.rename_file(options=RenameFileRequestOptions(file_path="/file_path.jpg",
-                                                                        new_file_name="new_file_name.jpg",
-                                                                        purge_cache=True))
+    upload5 = imagekit.upload_file(
+        file=open(file_path, "rb"),
+        file_name=file_name,
+    )
+
+    rename_file = imagekit.rename_file(
+        options=RenameFileRequestOptions(
+            file_path=upload5.file_path,
+            new_file_name=str(uuid.uuid4()) + ".jpg",
+            purge_cache=True,
+        )
+    )
     print("-------------------------------------")
     print("Rename file")
     print("-------------------------------------")
@@ -399,22 +543,27 @@ if __name__ == "__main__":
     # print the purge request id
     print(rename_file.purge_request_id)
 
-    restore_file_version=imagekit.restore_file_version(file_id="file_id",
-                                                         version_id="version_id")
+    # upload6 = imagekit.upload_file(file=open(file_path, "rb"), file_name=file_name, options=UploadFileRequestOptions(overwrite_file=True))
+    # upload7 = imagekit.upload_file(file=open(file_path, "rb"), file_name=file_name, options=UploadFileRequestOptions(overwrite_file=True))
+
+    # restore_file_version = imagekit.restore_file_version(
+    #     file_id=upload7.file_id, version_id=upload7.version_info.id
+    # )
     print("-------------------------------------")
-    print("Restore file version")
+    print("NOT WORKING IN AUTOMATION - Restore file version")
     print("-------------------------------------")
     # Final Result
-    print(restore_file_version, end="\n\n")
+    # print(restore_file_version, end="\n\n")
 
     # Raw Response
-    print(restore_file_version.response_metadata.raw)
+    # print(restore_file_version.response_metadata.raw)
 
     # print that file's id
-    print(restore_file_version.file_id)
+    # print(restore_file_version.file_id)
 
-    create_folder=imagekit.create_folder(
-        options=CreateFolderRequestOptions(folder_name="test", parent_folder_path="/"))
+    create_folder = imagekit.create_folder(
+        options=CreateFolderRequestOptions(folder_name="test", parent_folder_path="/")
+    )
     print("-------------------------------------")
     print("Create folder")
     print("-------------------------------------")
@@ -424,8 +573,9 @@ if __name__ == "__main__":
     # Raw Response
     print(create_folder.response_metadata.raw)
 
-    delete_folder=imagekit.delete_folder(
-        options=DeleteFolderRequestOptions(folder_path="/test/demo"))
+    delete_folder = imagekit.delete_folder(
+        options=DeleteFolderRequestOptions(folder_path="test")
+    )
     print("-------------------------------------")
     print("Delete folder")
     print("-------------------------------------")
@@ -435,9 +585,22 @@ if __name__ == "__main__":
     # Raw Response
     print(delete_folder.response_metadata.raw)
 
-    copy_folder=imagekit.copy_folder(options=CopyFolderRequestOptions(source_folder_path='/source_folder_path',
-                                                                        destination_path='/destination/path',
-                                                                        include_file_versions=True))
+    create_folder2 = imagekit.create_folder(
+        options=CreateFolderRequestOptions(folder_name="test2", parent_folder_path="/")
+    )
+    print("-------------------------------------")
+    print("Create folder2")
+    print("-------------------------------------")
+    # Final Result
+    print(create_folder2, end="\n\n")
+
+    copy_folder = imagekit.copy_folder(
+        options=CopyFolderRequestOptions(
+            source_folder_path="/test2",
+            destination_path="/test21",
+            include_file_versions=True,
+        )
+    )
     print("-------------------------------------")
     print("Copy folder")
     print("-------------------------------------")
@@ -450,8 +613,11 @@ if __name__ == "__main__":
     # print the job's id
     print(copy_folder.job_id)
 
-    move_folder=imagekit.move_folder(options=MoveFolderRequestOptions(
-        source_folder_path="/source-folder", destination_path="/"))
+    move_folder = imagekit.move_folder(
+        options=MoveFolderRequestOptions(
+            source_folder_path="/test2", destination_path="/test21"
+        )
+    )
     print("-------------------------------------")
     print("Move folder")
     print("-------------------------------------")
@@ -464,7 +630,7 @@ if __name__ == "__main__":
     # print the job's id
     print(move_folder.job_id)
 
-    job_status=imagekit.get_bulk_job_status(job_id="job_id")
+    job_status = imagekit.get_bulk_job_status(job_id=move_folder.job_id)
     print("-------------------------------------")
     print("Bulk job status")
     print("-------------------------------------")
@@ -480,8 +646,7 @@ if __name__ == "__main__":
     # print the status
     print(job_status.status)
 
-    purge_cache=imagekit.purge_file_cache(
-        file_url="https://ik.imagekit.io/your_imagekit_id/sample_To_fa4v8vk7.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1655976201437")
+    purge_cache = imagekit.purge_file_cache(file_url=upload5.url)
     print("-------------------------------------")
     print("Purge cache")
     print("-------------------------------------")
@@ -494,9 +659,9 @@ if __name__ == "__main__":
     # print the purge file cache request id
     print(purge_cache.request_id)
 
-    request_id="request_id"
-    purge_cache_status=imagekit.get_purge_file_cache_status(
-        purge_cache_id=request_id)
+    purge_cache_status = imagekit.get_purge_file_cache_status(
+        purge_cache_id=purge_cache.request_id
+    )
 
     print("-------------------------------------")
     print("Cache status")
@@ -510,43 +675,46 @@ if __name__ == "__main__":
     # print the purge file cache status
     print(purge_cache_status.status)
 
-    file_metadata=imagekit.get_file_metadata(
-        file_id="file_id")
+    uploadMetaData = imagekit.upload_file(file=url, file_name="uploadmetadata.jpg")
+    # file_metadata = imagekit.get_file_metadata(file_id=uploadMetaData.file_id)
     print("-------------------------------------")
-    print("File metadata")
-    print("-------------------------------------")
-    # Final Result
-    print(file_metadata, end="\n\n")
-
-    # Raw Response
-    print(file_metadata.response_metadata.raw)
-
-    # print the file metadata fields
-    print(file_metadata.width)
-    print(file_metadata.exif.image.x_resolution)
-
-    get_metadata=imagekit.get_remote_file_url_metadata(
-        remote_file_url="https://example.com/fakeid/fakeimage.jpg")
-    print("-------------------------------------")
-    print("Get metadata via url")
+    print("NOT WORKING - FILE CORRUPT - File metadata")
     print("-------------------------------------")
     # Final Result
-    print(get_metadata, end="\n\n")
+    # print(file_metadata, end="\n\n")
 
     # Raw Response
-    print(get_metadata.response_metadata.raw)
+    # print(file_metadata.response_metadata.raw)
 
     # print the file metadata fields
-    print(get_metadata.width)
-    print(get_metadata.exif.image.x_resolution)
+    # print(file_metadata.width)
+    # print(file_metadata.exif.image.x_resolution)
 
-    create_custom_metadata_fields_number=imagekit.create_custom_metadata_fields(
-        options=CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                         label="test",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             type=CustomMetaDataTypeEnum.Number,
-                                                             min_value=100,
-                                                             max_value=200)))
+    # get_metadata = imagekit.get_remote_file_url_metadata(
+    #     remote_file_url=upload4.url
+    # )
+    print("-------------------------------------")
+    print("NOT WORKING - FILE CORRUPT -  Get metadata via url")
+    print("-------------------------------------")
+    # Final Result
+    # print(get_metadata, end="\n\n")
+
+    # Raw Response
+    # print(get_metadata.response_metadata.raw)
+
+    # print the file metadata fields
+    # print(get_metadata.width)
+    # print(get_metadata.exif.image.x_resolution)
+    print(str(uuid.uuid1()) + "test")
+    create_custom_metadata_fields_number = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(
+            name=str(uuid.uuid1()) + "test",
+            label=str(uuid.uuid1()) + "test",
+            schema=CustomMetadataFieldsSchema(
+                type=CustomMetaDataTypeEnum.Number, min_value=100, max_value=200
+            ),
+        )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields number type")
     print("-------------------------------------")
@@ -562,15 +730,19 @@ if __name__ == "__main__":
     # print the schema's type of created custom metadata fields
     print(create_custom_metadata_fields_number.schema.type)
 
-    create_custom_metadata_fields_textarea=imagekit.create_custom_metadata_fields(
-        CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                 label="test",
-                                                 schema=CustomMetadataFieldsSchema(
-                                                     type=CustomMetaDataTypeEnum.Textarea,
-                                                     is_value_required=True,
-                                                     default_value="The",
-                                                     min_length=3,
-                                                     max_length=200)))
+    create_custom_metadata_fields_textarea = imagekit.create_custom_metadata_fields(
+        CreateCustomMetadataFieldsRequestOptions(
+            name=str(uuid.uuid1()) + "test",
+            label=str(uuid.uuid1()) + "test",
+            schema=CustomMetadataFieldsSchema(
+                type=CustomMetaDataTypeEnum.Textarea,
+                is_value_required=True,
+                default_value=str(uuid.uuid1()) + "The",
+                min_length=3,
+                max_length=200,
+            ),
+        )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields textarea type")
     print("-------------------------------------")
@@ -586,14 +758,17 @@ if __name__ == "__main__":
     # print the schema's type of created custom metadata fields
     print(create_custom_metadata_fields_textarea.schema.type)
 
-    create_custom_metadata_fields_date=imagekit.create_custom_metadata_fields(
-        options=CreateCustomMetadataFieldsRequestOptions(name="test-date",
-                                                         label="test-date",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             type=CustomMetaDataTypeEnum.Date,
-                                                             min_value="2022-11-29T10:11:10+00:00",
-                                                             max_value="2022-11-30T10:11:10+00:00"))
+    create_custom_metadata_fields_date = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(
+            name=str(uuid.uuid1()) + "test-date",
+            label=str(uuid.uuid1()) + "test-date",
+            schema=CustomMetadataFieldsSchema(
+                type=CustomMetaDataTypeEnum.Date,
+                min_value="2022-11-29T10:11:10+00:00",
+                max_value="2022-11-30T10:11:10+00:00",
+            ),
         )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields date type")
     print("-------------------------------------")
@@ -609,14 +784,17 @@ if __name__ == "__main__":
     # print the schema's min value of created custom metadata fields
     print(create_custom_metadata_fields_date.schema.min_value)
 
-    create_custom_metadata_fields_boolean=imagekit.create_custom_metadata_fields(
-        options=CreateCustomMetadataFieldsRequestOptions(name="test-boolean",
-                                                         label="test-boolean",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             type=CustomMetaDataTypeEnum.Boolean,
-                                                             is_value_required=True,
-                                                             default_value=True))
+    create_custom_metadata_fields_boolean = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(
+            name=str(uuid.uuid1()) + "test-boolean",
+            label=str(uuid.uuid1()) + "test-boolean",
+            schema=CustomMetadataFieldsSchema(
+                type=CustomMetaDataTypeEnum.Boolean,
+                is_value_required=True,
+                default_value=True,
+            ),
         )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields boolean type")
     print("-------------------------------------")
@@ -629,18 +807,18 @@ if __name__ == "__main__":
     # print the label of created custom metadata fields
     print(create_custom_metadata_fields_boolean.label)
 
-    create_custom_metadata_fields_single_select=imagekit.create_custom_metadata_fields(
-        options=CreateCustomMetadataFieldsRequestOptions(name="test",
-                                                         label="test",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             type=CustomMetaDataTypeEnum.SingleSelect,
-                                                             select_options=[
-                                                                 "small",
-                                                                 "medium",
-                                                                 "large", 30,
-                                                                 40,
-                                                                 True]))
+    create_custom_metadata_fields_single_select = (
+        imagekit.create_custom_metadata_fields(
+            options=CreateCustomMetadataFieldsRequestOptions(
+                name=str(uuid.uuid1()) + "test",
+                label=str(uuid.uuid1()) + "test",
+                schema=CustomMetadataFieldsSchema(
+                    type=CustomMetaDataTypeEnum.SingleSelect,
+                    select_options=["small", "medium", "large", 30, 40, True],
+                ),
+            )
         )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields SingleSelect type")
     print("-------------------------------------")
@@ -656,21 +834,18 @@ if __name__ == "__main__":
     # print the schema's select options of created custom metadata fields
     print(create_custom_metadata_fields_single_select.schema.select_options)
 
-    create_custom_metadata_fields_multi_select=imagekit.create_custom_metadata_fields(
-        options=CreateCustomMetadataFieldsRequestOptions(name="test-MultiSelect",
-                                                         label="test-MultiSelect",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             type=CustomMetaDataTypeEnum.MultiSelect,
-                                                             is_value_required=True,
-                                                             default_value=[
-                                                                 "small", 30,
-                                                                 True],
-                                                             select_options=[
-                                                                 "small",
-                                                                 "medium",
-                                                                 "large", 30, 40,
-                                                                 True]))
+    create_custom_metadata_fields_multi_select = imagekit.create_custom_metadata_fields(
+        options=CreateCustomMetadataFieldsRequestOptions(
+            name=str(uuid.uuid1()) + "test-MultiSelect",
+            label=str(uuid.uuid1()) + "test-MultiSelect",
+            schema=CustomMetadataFieldsSchema(
+                type=CustomMetaDataTypeEnum.MultiSelect,
+                is_value_required=True,
+                default_value=["small", 30, True],
+                select_options=["small", "medium", "large", 30, 40, True],
+            ),
         )
+    )
     print("-------------------------------------")
     print("Create custom metadata fields MultiSelect type")
     print("-------------------------------------")
@@ -686,7 +861,7 @@ if __name__ == "__main__":
     # print the schema's select options of created custom metadata fields
     print(create_custom_metadata_fields_multi_select.schema.select_options)
 
-    get_custom_metadata_fields=imagekit.get_custom_metadata_fields()
+    get_custom_metadata_fields = imagekit.get_custom_metadata_fields()
     print("-------------------------------------")
     print("Get custom metatdata fields")
     print("-------------------------------------")
@@ -702,13 +877,13 @@ if __name__ == "__main__":
     # print the first customMetadataField schema's type
     print(get_custom_metadata_fields.list[0].schema.type)
 
-    update_custom_metadata_fields=imagekit.update_custom_metadata_fields(
-        field_id="id_of_custom_metadata_field",
-        options=UpdateCustomMetadataFieldsRequestOptions(label="test-update",
-                                                         schema=CustomMetadataFieldsSchema(
-                                                             min_value=100,
-                                                             max_value=200))
-        )
+    update_custom_metadata_fields = imagekit.update_custom_metadata_fields(
+        field_id=create_custom_metadata_fields_number.id,
+        options=UpdateCustomMetadataFieldsRequestOptions(
+            label=str(uuid.uuid1())+"test-update",
+            schema=CustomMetadataFieldsSchema(min_value=100, max_value=200),
+        ),
+    )
     print("-------------------------------------")
     print("Update custom metadata fields")
     print("-------------------------------------")
@@ -724,8 +899,9 @@ if __name__ == "__main__":
     # print the schema's min value of updated custom metadata fields
     print(update_custom_metadata_fields.schema.min_value)
 
-    delete_custom_metadata_field=imagekit.delete_custom_metadata_field(
-        field_id="id_of_custom_metadata_field")
+    delete_custom_metadata_field = imagekit.delete_custom_metadata_field(
+        field_id=create_custom_metadata_fields_multi_select.id
+    )
     print("-------------------------------------")
     print("Delete custom metatdata fields via custom metatdata fields's id")
     print("-------------------------------------")
@@ -735,7 +911,7 @@ if __name__ == "__main__":
     # Raw Response
     print(delete_custom_metadata_field.response_metadata.raw)
 
-    auth_params=imagekit.get_authentication_parameters()
+    auth_params = imagekit.get_authentication_parameters()
     print("-------------------------------------")
     print("Auth params")
     print("-------------------------------------")
@@ -744,5 +920,4 @@ if __name__ == "__main__":
     print("-------------------------------------")
     print("Phash distance")
     print("-------------------------------------")
-    print(imagekit.phash_distance(
-        "f06830ca9f1e3e90", "f06830ca9f1e3e90"), end="\n\n")
+    print(imagekit.phash_distance("f06830ca9f1e3e90", "f06830ca9f1e3e90"), end="\n\n")
