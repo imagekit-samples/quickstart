@@ -4,8 +4,8 @@ import sys
 sys.path.append("..")
 
 # #### set your private_key public_key, url_endpoint, url ### ##
-private_key = "your_public_api_key"
-public_key = "your_private_api_key"
+private_key = "your_private_api_key"
+public_key = "your_public_api_key"
 url_endpoint = "https://ik.imagekit.io/your_imagekit_id/"
 # dummy image url
 url = "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"
@@ -31,7 +31,7 @@ if __name__ == "__main__":
                                                  "add_shadow": True, "bg_color": "pink"}},
                                              {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=True, overwrite_a_i_tags=False,
+                                         overwrite_file=True, overwrite_ai_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
                                          custom_metadata={"test": 12})
     )
@@ -58,7 +58,7 @@ if __name__ == "__main__":
                                                  "add_shadow": True, "bg_color": "pink"}},
                                              {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=False, overwrite_a_i_tags=False,
+                                         overwrite_file=False, overwrite_ai_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
                                          custom_metadata={"test": 11})
     )
@@ -89,7 +89,7 @@ if __name__ == "__main__":
                                                  "add_shadow": True, "bg_color": "pink"}},
                                              {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10}],
                                          webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
-                                         overwrite_file=False, overwrite_a_i_tags=False,
+                                         overwrite_file=False, overwrite_ai_tags=False,
                                          overwrite_tags=False, overwrite_custom_metadata=True,
                                          custom_metadata={"test": 11}
                                          )
@@ -249,7 +249,7 @@ if __name__ == "__main__":
 
     updated_detail=imagekit.update_file_details(
         file_id="file_id",
-        options=UpdateFileRequestOptions(remove_a_i_tags=['remove-ai-tag-1', 'remove-ai-tag-2'],
+        options=UpdateFileRequestOptions(remove_ai_tags=['remove-ai-tag-1', 'remove-ai-tag-2'],
                                          webhook_url="url",
                                          extensions=[
                                              {"name": "remove-bg", "options": {
@@ -306,7 +306,7 @@ if __name__ == "__main__":
     print(remove_tags.successfully_updated_file_ids[0])
 
     remove_ai_tags=imagekit.remove_ai_tags(file_ids=['file_id_1', 'file_id_2'],
-                                             a_i_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
+                                             ai_tags=['ai-tag-to-remove-1', 'ai-tag-to-remove-2'])
     print("-------------------------------------")
     print("Remove AI tags")
     print("-------------------------------------")
