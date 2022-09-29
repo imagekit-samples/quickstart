@@ -10,6 +10,7 @@ This sample project covers:
 6. Lazy loading images
 7. Blurred image placeholder
 8. Client-side file uploading
+9. Rendering videos
 
 # How to run locally
 

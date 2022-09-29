@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './App.css';
-import { IKContext, IKImage, IKUpload } from 'imagekitio-react';
+import { IKContext, IKImage, IKUpload, IKVideo } from 'imagekitio-react';
 
 const publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
 const urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
 const authenticationEndpoint = 'http://localhost:3001/auth';
+const videoUrlEndpoint = 'https://ik.imagekit.io/demo/';
+const videoPath = "sample-video.mp4";
 
 const onError = err => {
   console.log("Error", err);
@@ -14,7 +16,16 @@ const onSuccess = res => {
   console.log("Success", res);
 };
 
+const onUploadProgress = progress => {
+  console.log("Progress", progress);
+};
+
+const onUploadStart = evt => {
+  console.log("Start", evt);
+};
+
 function App() {
+  const reftest = useRef(null);
   return (
     <div className="App">
       <IKContext
@@ -29,6 +40,40 @@ function App() {
           onError={onError}
           onSuccess={onSuccess}
         />
+        <h2>Advanced file upload</h2>
+        <IKUpload
+          fileName="test-upload.jpg"
+          tags={["sample-tag1", "sample-tag2"]}
+          customCoordinates={"10,10,10,10"}
+          isPrivateFile={false}
+          useUniqueFileName={true}
+          responseFields={["tags"]}
+          folder={"/sample-folder"}
+          extensions={[{
+            "name": "remove-bg",
+            "options": {
+              "add_shadow": true,
+            },
+          }]}
+          webhookUrl="https://www.example.com/imagekit-webhook" // replace with your webhookUrl
+          overwriteFile={true}
+          overwriteAITags={true}
+          overwriteTags={true}
+          overwriteCustomMetadata={true}
+          customMetadata={{
+            "brand": "Nike",
+            "color": "red",
+          }}
+          onError={onError}
+          onSuccess={onSuccess}
+          onUploadProgress={onUploadProgress}
+          onUploadStart={onUploadStart}
+          inputRef={reftest}
+        />
+        <p>Custom Upload Button</p>
+        {reftest && <button onClick={() => reftest.current.click()}>Upload</button>}
+        <p>Abort upload request</p>
+        {reftest && <button onClick={() => reftest.current.abort()}>Abort request</button>}
       </IKContext>
 
       <IKContext urlEndpoint={urlEndpoint}>
@@ -135,6 +180,24 @@ function App() {
           loading="lazy"
           height="300"
           width="400"
+        />
+      </IKContext>
+      <IKContext publicKey={publicKey} authenticationEndpoint={authenticationEndpoint} urlEndpoint={videoUrlEndpoint}>
+        <h2>Video Element</h2>
+        <IKVideo
+          className='ikvideo-default'
+          path={videoPath}
+          transformation={[{ height: 200, width: 200 }]}
+          controls={true}
+        />
+
+        <br />
+        <h2>Video with some advance transformation</h2>
+        <IKVideo
+          className='ikvideo-with-tr'
+          path={videoPath}
+          transformation={[{ height: 200, width: 600, b: '5_red', q: 95 }]}
+          controls={true}
         />
       </IKContext>
     </div>
