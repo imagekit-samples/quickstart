@@ -1,3 +1,3 @@
 requests==2.22.0
 
-imagekitio~=2.2.8
+imagekitio~=3.0.0

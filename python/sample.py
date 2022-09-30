@@ -50,7 +50,7 @@ if __name__ == "__main__":
     )
     current_folder = os.path.dirname(__file__)
     file_path = os.path.join(current_folder, "sample.jpg")
-    file_name = "./sample_file.jpg"
+    file_name = "sample_file.jpg"
     upload = imagekit.upload_file(
         file=open(file_path, "rb"),
         file_name=file_name,
@@ -301,6 +301,7 @@ if __name__ == "__main__":
     # print that file's version id
     print(file_versions.list[0].version_info.id)
 
+
     file_versions_details = imagekit.get_file_version_details(
         file_id=upload.file_id, version_id=upload.version_info.id
     )
@@ -543,23 +544,60 @@ if __name__ == "__main__":
     # print the purge request id
     print(rename_file.purge_request_id)
 
-    # upload6 = imagekit.upload_file(file=open(file_path, "rb"), file_name=file_name, options=UploadFileRequestOptions(overwrite_file=True))
-    # upload7 = imagekit.upload_file(file=open(file_path, "rb"), file_name=file_name, options=UploadFileRequestOptions(overwrite_file=True))
+    upload_base64_version = imagekit.upload_file(
+        file=imgstr,
+        file_name="testing-base64.jpg",
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=False,
+            custom_coordinates="10,10,20,20",
+            response_fields=["is_private_file", "custom_metadata", "tags"],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_ai_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
 
-    # restore_file_version = imagekit.restore_file_version(
-    #     file_id=upload7.file_id, version_id=upload7.version_info.id
-    # )
+    upload_base64_version_again = imagekit.upload_file(
+        file=imgstr,
+        file_name="testing-base64.jpg",
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/testing-python-folder/",
+            is_private_file=False,
+            custom_coordinates="10,10,20,20",
+            response_fields=["is_private_file", "custom_metadata", "tags"],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_ai_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
+
+    file_versions_latest = imagekit.get_file_versions(file_id=upload_base64_version.file_id)
+
+    restore_file_version = imagekit.restore_file_version(
+        file_id=file_versions_latest.list[1].file_id, version_id=file_versions_latest.list[1].version_info.id
+    )
     print("-------------------------------------")
-    print("NOT WORKING IN AUTOMATION - Restore file version")
+    print("Restore file version")
     print("-------------------------------------")
     # Final Result
-    # print(restore_file_version, end="\n\n")
+    print(restore_file_version, end="\n\n")
 
     # Raw Response
-    # print(restore_file_version.response_metadata.raw)
+    print(restore_file_version.response_metadata.raw)
 
     # print that file's id
-    # print(restore_file_version.file_id)
+    print(restore_file_version.file_id)
 
     create_folder = imagekit.create_folder(
         options=CreateFolderRequestOptions(folder_name="test", parent_folder_path="/")
@@ -675,36 +713,36 @@ if __name__ == "__main__":
     # print the purge file cache status
     print(purge_cache_status.status)
 
-    uploadMetaData = imagekit.upload_file(file=url, file_name="uploadmetadata.jpg")
-    # file_metadata = imagekit.get_file_metadata(file_id=uploadMetaData.file_id)
+    uploadMetaData = imagekit.upload_file(file="https://picsum.photos/200/300", file_name="uploadmetadata.jpg")
+    file_metadata = imagekit.get_file_metadata(file_id=uploadMetaData.file_id)
     print("-------------------------------------")
-    print("NOT WORKING - FILE CORRUPT - File metadata")
-    print("-------------------------------------")
-    # Final Result
-    # print(file_metadata, end="\n\n")
-
-    # Raw Response
-    # print(file_metadata.response_metadata.raw)
-
-    # print the file metadata fields
-    # print(file_metadata.width)
-    # print(file_metadata.exif.image.x_resolution)
-
-    # get_metadata = imagekit.get_remote_file_url_metadata(
-    #     remote_file_url=upload4.url
-    # )
-    print("-------------------------------------")
-    print("NOT WORKING - FILE CORRUPT -  Get metadata via url")
+    print("File metadata")
     print("-------------------------------------")
     # Final Result
-    # print(get_metadata, end="\n\n")
+    print(file_metadata, end="\n\n")
 
     # Raw Response
-    # print(get_metadata.response_metadata.raw)
+    print(file_metadata.response_metadata.raw)
 
     # print the file metadata fields
-    # print(get_metadata.width)
-    # print(get_metadata.exif.image.x_resolution)
+    print(file_metadata.width)
+    print(file_metadata.exif.image.x_resolution)
+
+    get_metadata = imagekit.get_remote_file_url_metadata(
+        remote_file_url=uploadMetaData.url
+    )
+    print("-------------------------------------")
+    print("Get metadata via url")
+    print("-------------------------------------")
+    # Final Result
+    print(get_metadata, end="\n\n")
+
+    # Raw Response
+    print(get_metadata.response_metadata.raw)
+
+    # print the file metadata fields
+    print(get_metadata.width)
+    print(get_metadata.exif.image.x_resolution)
     print(str(uuid.uuid1()) + "test")
     create_custom_metadata_fields_number = imagekit.create_custom_metadata_fields(
         options=CreateCustomMetadataFieldsRequestOptions(
