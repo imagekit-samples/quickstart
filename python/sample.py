@@ -34,7 +34,7 @@ public_key = "your_public_api_key"
 url_endpoint = "https://ik.imagekit.io/your_imagekit_id/"
 
 # dummy image url
-url = "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"
+dummy_url = "https://picsum.photos/200/300"
 
 if __name__ == "__main__":
     from imagekitio.client import ImageKit
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     print(upload.file_id)
 
     upload2 = imagekit.upload_file(
-        file=url,
+        file=dummy_url,
         file_name="testing-url.jpg",
         options=UploadFileRequestOptions(
             tags=["abc", "def"],
@@ -225,6 +225,70 @@ if __name__ == "__main__":
     print("-------------------------------------")
     # Final Result
     print(image_url, end="\n\n")
+
+    upload_demo = imagekit.upload_file(
+        file=open(file_path, "rb"),
+        file_name="new_car.jpg",
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/demo1/",
+            is_private_file=False,
+            custom_coordinates="10,10,20,20",
+            response_fields=[
+                "tags",
+                "custom_coordinates",
+                "is_private_file",
+                "embedded_metadata",
+                "custom_metadata",
+            ],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_ai_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
+
+    upload_another_demo = imagekit.upload_file(
+        file=open(file_path, "rb"),
+        file_name="default-image.jpg",
+        options=UploadFileRequestOptions(
+            use_unique_file_name=False,
+            tags=["abc", "def"],
+            folder="/demo1/",
+            is_private_file=False,
+            custom_coordinates="10,10,20,20",
+            response_fields=[
+                "tags",
+                "custom_coordinates",
+                "is_private_file",
+                "embedded_metadata",
+                "custom_metadata",
+            ],
+            extensions=[
+                {
+                    "name": "remove-bg",
+                    "options": {"add_shadow": True, "bg_color": "pink"},
+                },
+                {"name": "google-auto-tagging", "minConfidence": 80, "maxTags": 10},
+            ],
+            webhook_url="https://webhook.site/c78d617f-33bc-40d9-9e61-608999721e2e",
+            overwrite_file=True,
+            overwrite_ai_tags=False,
+            overwrite_tags=False,
+            overwrite_custom_metadata=True,
+            # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+        ),
+    )
 
     image_url = imagekit.url(
         {
