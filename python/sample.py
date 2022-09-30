@@ -33,10 +33,6 @@ private_key = "your_private_api_key"
 public_key = "your_public_api_key"
 url_endpoint = "https://ik.imagekit.io/your_imagekit_id/"
 
-private_key = "private_tOgVcNR2twN8/3DeQByTx2cP2gc="
-public_key = "public_X8GDrZdASqzjfoKVgEBmAaC6lf8="
-url_endpoint = "https://ik.imagekit.io/gutwwp86o"
-
 # dummy image url
 url = "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"
 
