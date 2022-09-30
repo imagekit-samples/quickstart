@@ -34,7 +34,7 @@ public_key = "your_public_api_key"
 url_endpoint = "https://ik.imagekit.io/your_imagekit_id/"
 
 # dummy image url
-url = "https://file-examples.com/wp-content/uploads/2017/10/file_example_JPG_100kB.jpg"
+dummy_url = "https://picsum.photos/200/300"
 
 if __name__ == "__main__":
     from imagekitio.client import ImageKit
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     print(upload.file_id)
 
     upload2 = imagekit.upload_file(
-        file=url,
+        file=dummy_url,
         file_name="testing-url.jpg",
         options=UploadFileRequestOptions(
             tags=["abc", "def"],
