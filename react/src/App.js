@@ -60,10 +60,10 @@ function App() {
           overwriteAITags={true}
           overwriteTags={true}
           overwriteCustomMetadata={true}
-          customMetadata={{
-            "brand": "Nike",
-            "color": "red",
-          }}
+          // customMetadata={{
+          //   "brand": "Nike",
+          //   "color": "red",
+          // }}
           onError={onError}
           onSuccess={onSuccess}
           onUploadProgress={onUploadProgress}
