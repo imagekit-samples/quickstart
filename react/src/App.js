@@ -25,7 +25,8 @@ const onUploadStart = evt => {
 };
 
 function App() {
-  const reftest = useRef(null);
+  const inputRefTest = useRef(null);
+  const ikUploadRefTest = useRef(null);
   return (
     <div className="App">
       <IKContext
@@ -49,6 +50,7 @@ function App() {
           useUniqueFileName={true}
           responseFields={["tags"]}
           folder={"/sample-folder"}
+          validateFile={file => file.size < 2000000}
           extensions={[{
             "name": "remove-bg",
             "options": {
@@ -68,12 +70,14 @@ function App() {
           onSuccess={onSuccess}
           onUploadProgress={onUploadProgress}
           onUploadStart={onUploadStart}
-          inputRef={reftest}
+          // style={{display: 'none'}} // hide the default input and use the custom upload button
+          inputRef={inputRefTest}
+          ref={ikUploadRefTest}
         />
         <p>Custom Upload Button</p>
-        {reftest && <button onClick={() => reftest.current.click()}>Upload</button>}
+        {inputRefTest && <button onClick={() => inputRefTest.current.click()}>Upload</button>}
         <p>Abort upload request</p>
-        {reftest && <button onClick={() => reftest.current.abort()}>Abort request</button>}
+        {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.abort()}>Abort request</button>}
       </IKContext>
 
       <IKContext urlEndpoint={urlEndpoint}>
