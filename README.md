@@ -9,3 +9,4 @@ This repository contains quick start sample integrations of ImageKit.io in diffe
 * [React Native](/react-native)
 * [Ruby](/ruby)
 * [Vue.js](/vuejs)
+* [Angular](/angular)
