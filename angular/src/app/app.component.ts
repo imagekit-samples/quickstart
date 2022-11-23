@@ -24,7 +24,7 @@ export class AppComponent {
   flexibleTransformationTwo: Array<Transformation> = [{
     height: "200",
     width: "200"
- }];
+  }];
 
   videoAdvanceTransformation: Array<Transformation> = [{
     height: "200",
@@ -36,12 +36,12 @@ export class AppComponent {
   lqipOne = { active: true, quality: 20, blur: 10 };
   lqipTwo = { active: true, quality: 20, blur: 30 };
 
-  lazyload = "lazy";
+  lazyload = "lazy" as const;
 
   uploadedImageSource = "https://ik.imagekit.io/demo/default-image.jpg";
   uploadErrorMessage = "";
 
-  applyImgTransformationOne(res) {
+  applyImgTransformationOne(res: any) {
     this.flexibleTransformationOne = [{
       "height": "200",
       "width": "600",
@@ -58,7 +58,7 @@ export class AppComponent {
     }];
   }
 
-  applyImgTransformationTwo(res) {
+  applyImgTransformationTwo(res: any) {
     this.flexibleTransformationTwo = [{
       "height": "200",
       "width": "200",
@@ -66,14 +66,14 @@ export class AppComponent {
     }];
   }
 
-  handleUploadSuccess(res) {
+  handleUploadSuccess(res: any) {
     console.log('File upload success with response: ', res);
     console.log(res.$ResponseMetadata.statusCode); // 200
     console.log(res.$ResponseMetadata.headers); // headers
     this.uploadedImageSource = res.url;
   }
 
-  handleUploadError(err) {
+  handleUploadError(err: any) {
     console.log('There was an error in upload: ', err);
     this.uploadErrorMessage = 'File upload failed.';
   }
