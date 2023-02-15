@@ -44,6 +44,14 @@ Open the page at `http://localhost:4200`.
 
 ## Run the sample backend server
 
+Create .env file with PRIVATE_KEY attribute.
+
+```
+PRIVATE_KEY=<your_private_key>
+```
+
+Then run the following commands.
+
 ```
 cd sample-server
 npm install
