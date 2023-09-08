@@ -4,17 +4,17 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.imagekit.android.ImageKit
 import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
 import com.imagekit.android.entity.UploadResponse
-import kotlinx.android.synthetic.main.activity_upload_image.*
+import io.imagekit.imagekitdemo.databinding.ActivityUploadImageBinding
 import java.io.FileNotFoundException
 
 class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickListener {
@@ -23,6 +23,8 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
     private var loadingDialog: AlertDialog? = null
 
     private var bitmap: Bitmap? = null
+
+    private var binding: ActivityUploadImageBinding? = null
 
     override fun onClick(v: View?) {
         when (v!!.id) {
@@ -35,10 +37,11 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_upload_image)
+        binding = ActivityUploadImageBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
-        btSelect.setOnClickListener(this)
-        btUpload.setOnClickListener(this)
+        binding?.btSelect?.setOnClickListener(this)
+        binding?.btUpload?.setOnClickListener(this)
     }
 
     private fun selectImage() {
@@ -56,12 +59,13 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
 
             val filename = "icLauncher.png"
             ImageKit.getInstance().uploader().upload(
-                file = bitmap!!
-                , fileName = filename
-                , useUniqueFilename = true
-                , tags = arrayOf("nice", "copy", "books")
-                , folder = "/dummy/folder/"
-                , imageKitCallback = this
+                file = bitmap!!,
+                token = "",
+                fileName = filename,
+                useUniqueFileName = true,
+                tags = arrayOf("nice", "copy", "books"),
+                folder = "/dummy/folder/",
+                imageKitCallback = this
             )
         }
     }
@@ -75,10 +79,10 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
                 val imageUri = data!!.data
                 val imageStream = contentResolver.openInputStream(imageUri!!)
                 val selectedImage = BitmapFactory.decodeStream(imageStream)
-                ivImage.setImageBitmap(selectedImage)
+                binding?.ivImage?.setImageBitmap(selectedImage)
 
                 bitmap = selectedImage
-                btUpload.visibility = View.VISIBLE
+                binding?.btUpload?.visibility = View.VISIBLE
             } catch (e: FileNotFoundException) {
                 e.printStackTrace()
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()

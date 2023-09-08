@@ -5,32 +5,32 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.imagekit.android.ImageKit
 import com.imagekit.android.entity.TransformationPosition
-
-import kotlinx.android.synthetic.main.activity_main.*
+import io.imagekit.imagekitdemo.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private var binding: ActivityMainBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
 
         ImageKit.init(
             context = applicationContext,
-            publicKey = "public_K0hLzl8KvshMKkSvKsEGxMSf5SI=",
-            urlEndpoint = "https://ik.imagekit.io/demo",
+            publicKey = "IMAGEKIT_PUBLIC_KEY",
+            urlEndpoint = "https://ik.imagekit.io/IMAGEKIT_ID",
             transformationPosition = TransformationPosition.PATH,
-            authenticationEndpoint = "http://localhost:8080/auth"
         )
 
-        btUrlConstruct.setOnClickListener{
+        binding?.btUrlConstruct?.setOnClickListener{
             startActivity(Intent(this@MainActivity, FetchImageActivity::class.java))
         }
 
-        btUploadImage.setOnClickListener{
+        binding?.btUploadImage?.setOnClickListener{
             startActivity(Intent(this@MainActivity, UploadImageActivity::class.java))
         }
 
-        btUploadFile.setOnClickListener {
+        binding?.btUploadFile?.setOnClickListener {
             startActivity(Intent(this@MainActivity, UploadFileActivity::class.java))
         }
 

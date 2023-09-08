@@ -1,18 +1,17 @@
 package io.imagekit.imagekitdemo
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.imagekit.android.ImageKit
 import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
 import com.imagekit.android.entity.UploadResponse
-import kotlinx.android.synthetic.main.activity_upload_file.*
+import io.imagekit.imagekitdemo.databinding.ActivityUploadFileBinding
 import java.io.*
-import java.net.URI
 
 
 class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickListener {
@@ -21,6 +20,8 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
     private var loadingDialog: AlertDialog? = null
 
     private var file: File? = null
+
+    private var binding: ActivityUploadFileBinding? = null
 
     override fun onClick(v: View?) {
         val intent = Intent().setType("*/*").setAction(Intent.ACTION_GET_CONTENT)
@@ -32,17 +33,17 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
         if (requestCode == 24 && resultCode == RESULT_OK) {
             val selectedFile = data?.data
             if (selectedFile != null){
-                file = File(FileUtils.getPath(this, selectedFile))
+                file = FileUtils.getPath(this, selectedFile)?.let { File(it) }
                 uploadFile()
             }
-
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_upload_file)
-        btUpload.setOnClickListener(this)
+        binding = ActivityUploadFileBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
+        binding?.btUpload?.setOnClickListener(this)
     }
 
     private fun uploadFile() {
@@ -54,12 +55,13 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
 
 
             ImageKit.getInstance().uploader().upload(
-                file = file!!
-                , fileName = file!!.name
-                , useUniqueFilename = true
-                , tags = arrayOf("nice", "copy", "books")
-                , folder = "/dummy/folder/"
-                , imageKitCallback = this
+                file = file!!,
+                token = "",
+                fileName = file!!.name,
+                useUniqueFileName = true,
+                tags = arrayOf("nice", "copy", "books"),
+                folder = "/dummy/folder/",
+                imageKitCallback = this
             )
         }
     }
