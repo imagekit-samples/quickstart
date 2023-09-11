@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         ImageKit.init(
             context = applicationContext,
-            publicKey = "IMAGEKIT_PUBLIC_KEY",
-            urlEndpoint = "https://ik.imagekit.io/IMAGEKIT_ID",
+            publicKey = "public_5P5QM23aRv9XkOcfJO1okZ0DzOw=",
+            urlEndpoint = "https://ik.imagekit.io/tqhfz73me",
             transformationPosition = TransformationPosition.PATH,
         )
 
@@ -34,7 +34,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, UploadFileActivity::class.java))
         }
 
-
+        binding?.btAdaptiveStream?.setOnClickListener {
+            startActivity(Intent(this@MainActivity, AdaptiveVideoStreamActivity::class.java))
+        }
     }
 
 }
