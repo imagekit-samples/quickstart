@@ -4,13 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
 import com.imagekit.android.ImageKit
 import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
+import com.imagekit.android.entity.UploadPolicy
 import com.imagekit.android.entity.UploadResponse
 import io.imagekit.imagekitdemo.databinding.ActivityUploadFileBinding
+import kotlinx.coroutines.launch
 import java.io.*
 
 
@@ -22,6 +27,7 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
     private var file: File? = null
 
     private var binding: ActivityUploadFileBinding? = null
+    private val viewModel: UploadAuthViewModel by viewModels()
 
     override fun onClick(v: View?) {
         val intent = Intent().setType("*/*").setAction(Intent.ACTION_GET_CONTENT)
@@ -47,22 +53,51 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
     }
 
     private fun uploadFile() {
+        val tags = arrayOf("nice", "copy", "books")
+        val targetFolder = "/dummy/folder/"
+        val extensions = listOf(
+            mapOf("name" to "remove-bg", "options" to mapOf("add_shadow" to true)),
+            mapOf("name" to "google-auto-tagging", "minConfidence" to 80, "maxTags" to 5),
+        )
+        val overwriteAITags = false
+        val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
         file?.let {
             loadingDialog = AlertDialog.Builder(this)
                 .setMessage("Uploading file...")
                 .setCancelable(false)
                 .show()
 
+                lifecycleScope.launch {
+                    val authToken = viewModel.getUploadToken(
+                        mapOf(
+                            "fileName" to it.name,
+                            "useUniqueFileName" to "true",
+                            "tags" to tags.joinToString(","),
+                            "folder" to targetFolder,
+                            "extensions" to Gson().toJson(extensions),
+                            "overwriteAITags" to overwriteAITags.toString(),
+                            "customMetadata" to Gson().toJson(customMetadata)
+                        )
+                    )?.let { it["token"] }.toString()
 
-            ImageKit.getInstance().uploader().upload(
-                file = file!!,
-                token = "",
-                fileName = file!!.name,
-                useUniqueFileName = true,
-                tags = arrayOf("nice", "copy", "books"),
-                folder = "/dummy/folder/",
-                imageKitCallback = this
-            )
+                    ImageKit.getInstance().uploader().upload(
+                        file = it,
+                        token = authToken,
+                        fileName = it.name,
+                        useUniqueFileName = true,
+                        tags = tags,
+                        folder = targetFolder,
+                        policy = UploadPolicy.Builder()
+                            .requireNetworkType(UploadPolicy.NetworkType.UNMETERED)
+                            .maxRetries(3)
+                            .backoffCriteria(
+                                backoffMillis = 200L,
+                                backoffPolicy = UploadPolicy.BackoffPolicy.EXPONENTIAL
+                            )
+                            .build(),
+                        imageKitCallback = this@UploadFileActivity
+                    )
+                }
         }
     }
 

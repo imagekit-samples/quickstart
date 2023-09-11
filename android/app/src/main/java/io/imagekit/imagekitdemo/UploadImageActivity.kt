@@ -8,13 +8,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
 import com.imagekit.android.ImageKit
 import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
 import com.imagekit.android.entity.UploadResponse
 import io.imagekit.imagekitdemo.databinding.ActivityUploadImageBinding
+import kotlinx.coroutines.launch
 import java.io.FileNotFoundException
 
 class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickListener {
@@ -25,6 +29,7 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
     private var bitmap: Bitmap? = null
 
     private var binding: ActivityUploadImageBinding? = null
+    private val viewModel: UploadAuthViewModel by viewModels()
 
     override fun onClick(v: View?) {
         when (v!!.id) {
@@ -51,22 +56,48 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
     }
 
     private fun uploadImage() {
+        val tags = arrayOf("nice", "copy", "books")
+        val targetFolder = "/dummy/folder"
+        val extensions = listOf(
+            mapOf("name" to "remove-bg", "options" to mapOf("add_shadow" to true)),
+            mapOf("name" to "google-auto-tagging", "minConfidence" to 80, "maxTags" to 5),
+        )
+        val overwriteAITags = false
+        val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
+
         bitmap?.let {
             loadingDialog = AlertDialog.Builder(this)
                 .setMessage("Uploading image...")
                 .setCancelable(false)
                 .show()
 
-            val filename = "icLauncher.png"
-            ImageKit.getInstance().uploader().upload(
-                file = bitmap!!,
-                token = "",
-                fileName = filename,
-                useUniqueFileName = true,
-                tags = arrayOf("nice", "copy", "books"),
-                folder = "/dummy/folder/",
-                imageKitCallback = this
-            )
+                lifecycleScope.launch {
+                    val filename = "icLauncher.png"
+                    val authToken = viewModel.getUploadToken(
+                        mapOf(
+                            "fileName" to filename,
+                            "useUniqueFileName" to "true",
+                            "tags" to tags.joinToString(","),
+                            "folder" to targetFolder,
+                            "extensions" to Gson().toJson(extensions),
+                            "overwriteAITags" to overwriteAITags.toString(),
+                            "customMetadata" to Gson().toJson(customMetadata)
+                        )
+                    )?.let { it["token"] }.toString()
+
+                    ImageKit.getInstance().uploader().upload(
+                        file = it,
+                        token = authToken,
+                        fileName = filename,
+                        useUniqueFileName = true,
+                        tags = tags,
+                        folder = targetFolder,
+                        extensions = extensions,
+                        overwriteAITags = overwriteAITags,
+                        customMetadata = customMetadata,
+                        imageKitCallback = this@UploadImageActivity
+                    )
+                }
         }
     }
 
