@@ -21,6 +21,7 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAdaptiveVideoStreamBinding
     var qualityList: List<Pair<String, TrackSelectionOverride>> = listOf()
     var isInitialized: Boolean = false
+    var player: ExoPlayer? = null
 
     @androidx.media3.common.util.UnstableApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,12 +29,12 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
         binding = ActivityAdaptiveVideoStreamBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val selector = DefaultTrackSelector(this, AdaptiveTrackSelection.Factory())
-        val player = ExoPlayer.Builder(this)
+        player = ExoPlayer.Builder(this)
             .setTrackSelector(selector)
             .build()
         binding.videoPlayer.player = player
         binding.videoPlayer.controllerShowTimeoutMs = 2000
-        player.run {
+        player?.run {
             setMediaItem(
                 MediaItem.fromUri(
                 ImageKit.getInstance().url(path = "sample_stock_vid.mp4")
@@ -70,7 +71,7 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
                             }
                         }
                         if (!isInitialized) {
-                            player.trackSelector?.let {
+                            player?.trackSelector?.let {
                                 it.parameters = it.parameters
                                     .buildUpon()
                                     .addOverride(qualityList[0].second)
@@ -129,5 +130,13 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
             }
         }
         return trackOverrideList
+    }
+
+    override fun onStop() {
+        super.onStop()
+        player?.run {
+            stop()
+            release()
+        }
     }
 }
