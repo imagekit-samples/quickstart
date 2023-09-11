@@ -17,9 +17,10 @@ import com.imagekit.android.entity.StreamingFormat
 import io.imagekit.imagekitdemo.databinding.ActivityAdaptiveVideoStreamBinding
 
 class AdaptiveVideoStreamActivity : AppCompatActivity() {
-    private var resolutionsPopUp: PopupMenu? = null
+    private var qualityPopUp: PopupMenu? = null
     private lateinit var binding: ActivityAdaptiveVideoStreamBinding
-    var resolutionsList = ArrayList<Pair<String, TrackSelectionOverride>>()
+    var qualityList: List<Pair<String, TrackSelectionOverride>> = listOf()
+    var isInitialized: Boolean = false
 
     @androidx.media3.common.util.UnstableApi
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,38 +50,43 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
                 override fun onPlaybackStateChanged(playbackState: Int) {
                     if (playbackState == Player.STATE_READY) {
                         generateResolutionsList(selector).let { list ->
-                            resolutionsList = list
-                            resolutionsPopUp = PopupMenu(this@AdaptiveVideoStreamActivity, binding.btnQuality)
-                            resolutionsList.let {
+                            qualityList = list
+                            qualityPopUp = PopupMenu(this@AdaptiveVideoStreamActivity, binding.btnQuality)
+                            qualityList.let {
                                 for ((i, videoQuality) in it.withIndex()) {
-                                    resolutionsPopUp?.menu?.add(0, i, 0, videoQuality.first)
+                                    qualityPopUp?.menu?.add(0, i, 0, videoQuality.first)
                                 }
                             }
-                            resolutionsPopUp?.setOnMenuItemClickListener { menuItem ->
-                                resolutionsList[menuItem.itemId].let {
+                            qualityPopUp?.setOnMenuItemClickListener { menuItem ->
+                                qualityList[menuItem.itemId].let {
                                     trackSelector?.parameters = trackSelector!!.parameters
                                         .buildUpon()
                                         .clearOverridesOfType(C.TRACK_TYPE_VIDEO)
                                         .addOverride(it.second)
                                         .build()
-                                    binding.txtQuality.text = "Current resolution: ${it.second.mediaTrackGroup.getFormat(menuItem.itemId).height}p"
+                                    binding.txtQuality.text = "Current quality: ${it.second.mediaTrackGroup.getFormat(menuItem.itemId).height}p"
                                 }
                                 true
                             }
                         }
-                        player.trackSelector?.parameters = trackSelector!!.parameters
-                            .buildUpon()
-                            .addOverride(resolutionsList[0].second)
-                            .build()
-                        binding.txtQuality.text = "Current resolution: ${resolutionsList[0].second.mediaTrackGroup.getFormat(resolutionsList[0].second.trackIndices[0]).height}p"
-                        this@run.play()
+                        if (!isInitialized) {
+                            player.trackSelector?.let {
+                                it.parameters = it.parameters
+                                    .buildUpon()
+                                    .addOverride(qualityList[0].second)
+                                    .build()
+                            }
+                            binding.txtQuality.text = "Current quality: ${qualityList[0].second.mediaTrackGroup.getFormat(qualityList[0].second.trackIndices[0]).height}p"
+                            this@run.play()
+                            isInitialized = true
+                        }
                     }
                 }
             })
             prepare()
         }
         binding.btnQuality.setOnClickListener {
-            resolutionsPopUp?.show()
+            qualityPopUp?.show()
         }
     }
 
