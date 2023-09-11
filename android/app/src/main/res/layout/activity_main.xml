@@ -28,7 +28,7 @@
         android:layout_marginTop="48dp"
         android:background="@drawable/button_bg_shape"
         android:text="Upload Image"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvheading" />
@@ -40,7 +40,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_bg_shape"
         android:text="Upload File"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btUploadImage" />
@@ -52,7 +52,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_bg_shape"
         android:text="Fetch Images"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btUploadFile" />
@@ -64,7 +64,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_bg_shape"
         android:text="Adaptive video stream"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btUrlConstruct" />

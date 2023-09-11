@@ -29,7 +29,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 1"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/btTran2"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 2"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btTran1"
         app:layout_constraintTop_toBottomOf="@+id/tvheading" />
@@ -55,7 +55,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 3"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/btTran4"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +69,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 4"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btTran3"
         app:layout_constraintTop_toBottomOf="@id/btTran1" />
@@ -81,7 +81,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 5"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toStartOf="@+id/btTran6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btTran3" />
@@ -94,7 +94,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/button_bg_shape"
         android:text="Transformation 6"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btTran5"
         app:layout_constraintTop_toBottomOf="@id/btTran3" />
