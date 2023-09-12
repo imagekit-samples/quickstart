@@ -48,6 +48,11 @@ dependencies {
     implementation 'com.github.imagekit-developer.imagekit-android:imagekit-picasso-extension:3.0.1'
     implementation 'com.github.imagekit-developer.imagekit-android:imagekit-coil-extension:3.0.1'
     implementation 'com.github.imagekit-developer.imagekit-android:imagekit-fresco-extension:3.0.1'
+    implementation("com.facebook.fresco:nativeimagetranscoder") {
+        version {
+            strictly("2.6.0")
+        }
+    }
 
     implementation "androidx.media3:media3-exoplayer:1.1.1"
     implementation "androidx.media3:media3-exoplayer-dash:1.1.1"

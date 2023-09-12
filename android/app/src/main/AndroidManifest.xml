@@ -9,13 +9,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ImageExtensionsActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdaptiveVideoStreamActivity"
             android:exported="false" />
-        <activity android:name=".UploadFileActivity"
+        <activity
+            android:name=".UploadFileActivity"
             android:exported="false" />
-        <activity android:name=".UploadImageActivity"
+        <activity
+            android:name=".UploadImageActivity"
             android:exported="false" />
-        <activity android:name=".FetchImageActivity"
+        <activity
+            android:name=".FetchImageActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

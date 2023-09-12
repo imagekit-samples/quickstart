@@ -3,6 +3,7 @@ package io.imagekit.imagekitdemo
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.imagekit.android.ImageKit
 import com.imagekit.android.entity.TransformationPosition
 import io.imagekit.imagekitdemo.databinding.ActivityMainBinding
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         binding?.btAdaptiveStream?.setOnClickListener {
             startActivity(Intent(this@MainActivity, AdaptiveVideoStreamActivity::class.java))
         }
+
+        binding?.btExtensions?.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ImageExtensionsActivity::class.java))
+        }
+        Fresco.initialize(this)
     }
 
 }
