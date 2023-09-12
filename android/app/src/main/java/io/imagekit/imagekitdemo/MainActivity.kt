@@ -17,8 +17,8 @@ class MainActivity : AppCompatActivity() {
 
         ImageKit.init(
             context = applicationContext,
-            publicKey = "public_5P5QM23aRv9XkOcfJO1okZ0DzOw=",
-            urlEndpoint = "https://ik.imagekit.io/tqhfz73me",
+            publicKey = "IK_PUBLIC_KEY",
+            urlEndpoint = "https://ik.imagekit.io/IMAGEKIT_ID",
             transformationPosition = TransformationPosition.PATH,
         )
 

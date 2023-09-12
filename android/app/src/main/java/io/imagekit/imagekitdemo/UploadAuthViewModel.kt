@@ -21,7 +21,7 @@ class UploadAuthViewModel : ViewModel() {
                     TokenRequest(
                         uploadPayload = payload,
                         expire = 60,
-                        publicKey = "public_5P5QM23aRv9XkOcfJO1okZ0DzOw="
+                        publicKey = "IK_PUBLIC_KEY"
                     )
                 )
             } catch (e: Exception) {

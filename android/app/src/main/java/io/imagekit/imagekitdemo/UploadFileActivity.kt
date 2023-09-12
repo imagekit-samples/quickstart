@@ -14,6 +14,7 @@ import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
 import com.imagekit.android.entity.UploadPolicy
 import com.imagekit.android.entity.UploadResponse
+import com.imagekit.android.preprocess.VideoUploadPreprocessor
 import io.imagekit.imagekitdemo.databinding.ActivityUploadFileBinding
 import kotlinx.coroutines.launch
 import java.io.*
@@ -67,6 +68,8 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                 .setCancelable(false)
                 .show()
 
+            val isVideo = FileUtils.getMimeType(it)?.startsWith("video") ?: false
+
                 lifecycleScope.launch {
                     val authToken = viewModel.getUploadToken(
                         mapOf(
@@ -78,7 +81,7 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                             "overwriteAITags" to overwriteAITags.toString(),
                             "customMetadata" to Gson().toJson(customMetadata)
                         )
-                    )?.let { it["token"] }.toString()
+                    )?.let { response -> response["token"] }.toString()
 
                     ImageKit.getInstance().uploader().upload(
                         file = it,
@@ -95,6 +98,11 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                                 backoffPolicy = UploadPolicy.BackoffPolicy.EXPONENTIAL
                             )
                             .build(),
+                        preprocessor = if (isVideo) VideoUploadPreprocessor.Builder()
+                            .limit(400, 300)
+                            .frameRate(25)
+                            .build()
+                        else null,
                         imageKitCallback = this@UploadFileActivity
                     )
                 }

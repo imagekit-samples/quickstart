@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Point
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,6 +18,7 @@ import com.imagekit.android.ImageKit
 import com.imagekit.android.ImageKitCallback
 import com.imagekit.android.entity.UploadError
 import com.imagekit.android.entity.UploadResponse
+import com.imagekit.android.preprocess.ImageUploadPreprocessor
 import io.imagekit.imagekitdemo.databinding.ActivityUploadImageBinding
 import kotlinx.coroutines.launch
 import java.io.FileNotFoundException
@@ -95,6 +97,11 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
                         extensions = extensions,
                         overwriteAITags = overwriteAITags,
                         customMetadata = customMetadata,
+                        preprocessor = ImageUploadPreprocessor.Builder()
+                            .limit(100, 100)
+                            .crop(Point(10, 20), Point(40, 45))
+                            .rotate(45f)
+                            .build(),
                         imageKitCallback = this@UploadImageActivity
                     )
                 }
