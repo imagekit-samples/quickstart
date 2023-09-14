@@ -28,10 +28,15 @@ In `src/App.js`, set the following parameters for authentication:
 ```js
 const publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
 const urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
-const authenticationEndpoint = 'http://localhost:3001/auth';
+// only needed if you want to use the SDK for client-side file upload
+const authenticator = ()=>{
+  return new Promise((resolve,reject)=>{
+    resolve({signature,token,expiry})
+  })
+};
 ```
 
-Required parameters are `urlEndpoint` and `publicKey`. The `authenticationEndpoint` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
+Required parameters are `urlEndpoint` and `publicKey`. The `authenticator` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
 API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
@@ -60,7 +65,7 @@ const imagekit = new ImageKit({
 
 All these parameters are required. API private key can also be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
-Please note that file upload will only work if, along with the above, you have also defined `YOUR_IMAGEKIT_PUBLIC_KEY`, `YOUR_IMAGEKIT_URL_ENDPOINT`, and `YOUR_AUTHENTICATION_ENDPOINT` variables in `src/App.js`.
+Please note that file upload will only work if, along with the above, you have also defined `YOUR_IMAGEKIT_PUBLIC_KEY`, `YOUR_IMAGEKIT_URL_ENDPOINT`, and `YOUR_AUTHENTICATOR_FUNCTION` variables in `src/App.js`.
 
 ## Run the Node.js server
 

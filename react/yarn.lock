@@ -5343,10 +5343,10 @@ ignore@^4.0.6:
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==
 
-imagekit-javascript@^1.5.4:
-  version "1.5.4"
-  resolved "https://registry.yarnpkg.com/imagekit-javascript/-/imagekit-javascript-1.5.4.tgz#0b95852fdb58a464a5e39affec827048867298f5"
-  integrity sha512-TPwiq8EkOCOzG02DvuAoo76pOKakutExGD3JScpOUTejpoVO1W6X0XvWHBWLJY9LWE5Yf+gE/RP1ZzCgAFT/UA==
+imagekit-javascript@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/imagekit-javascript/-/imagekit-javascript-2.0.0.tgz#5201694825d72972d0e2c09341890975746663ee"
+  integrity sha512-F2p1DYk68Nr2rw0I6X1trki/QdTShSwbq4rf3ju1/71Bodx5smN9mPfEATGHKRx9iQeeGgmDZM8wNLUcg3HeWA==
 
 imagekit@^3.1.0:
   version "3.1.0"
@@ -5358,12 +5358,12 @@ imagekit@^3.1.0:
     request "^2.88.0"
     uuid "^3.3.3"
 
-imagekitio-react@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/imagekitio-react/-/imagekitio-react-2.0.0.tgz#36361612e6455f0a36a696b1b39d40f5b17f703c"
-  integrity sha512-CBZ8Y43RgzHenqRj3nRA9MZVQbmUATxwFoyfrDXNRomT9i6EabG0582e7zl/cmODAfcSfW0dA8Oyz19HyfP+EA==
+imagekitio-react@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/imagekitio-react/-/imagekitio-react-3.0.0.tgz#c85e9d4b99e179f304db68a6da00ce28e00defdd"
+  integrity sha512-tAqIgiyKcLdleSzLSvOo8lNODMVzMKlt8yfpdKc9oLmosyeYe16uZZTtbpmmRPhMquSoevfnaDsCisHUOLWTow==
   dependencies:
-    imagekit-javascript "^1.5.4"
+    imagekit-javascript "^2.0.0"
     prop-types "^15.7.2"
 
 immer@1.10.0:
@@ -7216,7 +7216,7 @@ oauth-sign@~0.9.0:
 object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
-  integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
+  integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
 
 object-copy@^0.1.0:
   version "0.1.0"
@@ -8515,7 +8515,7 @@ prompts@^2.0.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8523,6 +8523,15 @@ prop-types@^15.6.2, prop-types@^15.7.2:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
+
+prop-types@^15.7.2:
+  version "15.8.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
+  integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
+  dependencies:
+    loose-envify "^1.4.0"
+    object-assign "^4.1.1"
+    react-is "^16.13.1"
 
 proxy-addr@~2.0.5:
   version "2.0.6"
@@ -8726,7 +8735,7 @@ react-error-overlay@^6.0.7:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.7.tgz#1dcfb459ab671d53f660a991513cb2f0a0553108"
   integrity sha512-TAv1KJFh3RhqxNvhzxj6LeT5NWklP6rDr2a0jaTfsZ5wSZWHOGeqQyejUp3xxLfPt2UpyJEcVQB/zyPcmonNFA==
 
-react-is@^16.12.0, react-is@^16.8.1, react-is@^16.8.4:
+react-is@^16.12.0, react-is@^16.13.1, react-is@^16.8.1, react-is@^16.8.4:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
