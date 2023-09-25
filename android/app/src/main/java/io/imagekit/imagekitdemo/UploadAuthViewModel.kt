@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class UploadAuthViewModel : ViewModel() {
     private val service: UploadAuthService = Retrofit.Builder()
-        .baseUrl("AUTH_SERVER_URL")
+        .baseUrl(AUTH_SERVER_BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(UploadAuthService::class.java)
@@ -21,7 +21,7 @@ class UploadAuthViewModel : ViewModel() {
                     TokenRequest(
                         uploadPayload = payload,
                         expire = 60,
-                        publicKey = "IK_PUBLIC_KEY"
+                        publicKey = IK_PUBLIC_KEY
                     )
                 )
             } catch (e: Exception) {

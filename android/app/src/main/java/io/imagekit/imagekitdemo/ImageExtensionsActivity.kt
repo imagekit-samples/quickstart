@@ -19,7 +19,7 @@ class ImageExtensionsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityImageExtensionsBinding.inflate(layoutInflater)
         setContentView(binding?.root)
-        var urlConstructor = ImageKit.getInstance().url(path = "default-image.jpg")
+        var urlConstructor = ImageKit.getInstance().url(path = SAMPLE_IMAGE)
         binding?.run {
             btGlide.setOnClickListener {
                 ivImage2.isVisible = true

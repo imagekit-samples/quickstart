@@ -16,10 +16,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding?.root)
 
+        // Initialize the ImageKit SDK with your credentials and configurations.
         ImageKit.init(
             context = applicationContext,
-            publicKey = "IK_PUBLIC_KEY",
-            urlEndpoint = "https://ik.imagekit.io/IMAGEKIT_ID",
+            publicKey = IK_PUBLIC_KEY,
+            urlEndpoint = "https://ik.imagekit.io/$IMAGEKIT_ID",
             transformationPosition = TransformationPosition.PATH,
         )
 

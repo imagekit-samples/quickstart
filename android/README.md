@@ -34,7 +34,7 @@ You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoi
 API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
 
-### Run the app in android simulator:
+### Run the app in android emulator:
 
 Build and Run in Android Studio
 

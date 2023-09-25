@@ -32,14 +32,14 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
         showImage(
             when (v!!.id) {
                 R.id.btTran1 -> {
-                    ImageKit.getInstance().url(path = "default-image.jpg")
+                    ImageKit.getInstance().url(path = SAMPLE_IMAGE)
                         .height(150)
                         .width(150)
                         .create()
                 }
                 R.id.btTran2 -> {
                     ImageKit.getInstance().url(
-                        path = "default-image.jpg",
+                        path = SAMPLE_IMAGE,
                         transformationPosition = TransformationPosition.QUERY
                     )
                         .height(300)
@@ -50,7 +50,7 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.btTran3 -> {
                     ImageKit.getInstance().url(
-                        path = "default-image.jpg",
+                        path = SAMPLE_IMAGE,
                         transformationPosition = TransformationPosition.PATH
                     )
                         .height(600)
@@ -60,7 +60,7 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.btTran4 -> {
                     ImageKit.getInstance().url(
-                        path = "default-image.jpg",
+                        path = SAMPLE_IMAGE,
                         transformationPosition = TransformationPosition.PATH
                     )
                         .height(400)
@@ -72,7 +72,7 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.btTran5 -> {
                     ImageKit.getInstance().url(
-                        path = "default-image.jpg",
+                        path = SAMPLE_IMAGE,
                         transformationPosition = TransformationPosition.PATH
                     )
                         .raw("l-image,i-ik_logo.png,lx-20,ly-20,r-32,l-end")
@@ -80,7 +80,7 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.btTran6 -> {
                     ImageKit.getInstance().url(
-                        path = "default-image.jpg",
+                        path = SAMPLE_IMAGE,
                         transformationPosition = TransformationPosition.PATH
                     )
                         .setResponsive(
@@ -94,7 +94,7 @@ class FetchImageActivity : AppCompatActivity(), View.OnClickListener {
                         .create()
                 }
                 else ->
-                    ImageKit.getInstance().url(path = "default-image.jpg")
+                    ImageKit.getInstance().url(path = SAMPLE_IMAGE)
                         .create()
             }
         )

@@ -37,7 +37,7 @@ class AdaptiveVideoStreamActivity : AppCompatActivity() {
         player?.run {
             setMediaItem(
                 MediaItem.fromUri(
-                ImageKit.getInstance().url(path = "sample_stock_vid.mp4")
+                ImageKit.getInstance().url(path = SAMPLE_VIDEO)
                     .setAdaptiveStreaming(
                         format = StreamingFormat.DASH,
                         resolutions = listOf(360, 480, 720, 1080)
