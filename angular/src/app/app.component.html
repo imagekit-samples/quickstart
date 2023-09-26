@@ -79,6 +79,7 @@
   <p>Upload</p>
   <p>To use this funtionality please remember to setup the server</p>
   <ik-upload 
+    #upload
     fileName="test.jpg" 
     [tags]='["sample-tag1", "sample-tag2"]'
     customCoordinates="10,10,10,10"
@@ -91,6 +92,7 @@
     [validateFile]="validateFileFunction"
     [onUploadStart]="onUploadStartFunction"
     [onUploadProgress]="onUploadProgressFunction"
+    [authenticator]="authenticator"
     class="file-upload-ik">
   </ik-upload>
   <p>Your above uploaded file will appear here </p>
@@ -117,9 +119,11 @@
     (onSuccess)="handleUploadSuccess($event)"
     (onError)="handleUploadError($event)"
     [buttonRef] = 'myBtn'
+    [authenticator]="authenticator"
     >
   </ik-upload>
   <button #myBtn type="button" style="color:blue">
     <span>Upload</span>
   </button>
+  <button (click)="onAbortFunction()">Abort</button>
 </div>

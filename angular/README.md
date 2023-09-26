@@ -26,10 +26,9 @@ In `src/app/app.module.ts`, set the following parameters for authentication:
 ```js
 publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
 urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
-authenticationEndpoint = 'http://localhost:3001/auth';
 ```
 
-Required parameters are `urlEndpoint` and `publicKey`. The `authenticationEndpoint` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
+Required parameters are `urlEndpoint` and `publicKey`. The `authenticator` parameter is optional and only needed if you want to use the SDK for client-side file upload. 
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
 API public key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
