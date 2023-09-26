@@ -2,9 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "paths": { "@angular/*": [ "node_modules/@angular/*" ] },
-    "types": [ "node" ],
-    "typeRoots": [ "../node_modules/@types" ]
+    "types": [],
+    "paths": { "@angular/*": [ "node_modules/@angular/*" ] }
   },
   "files": [
     "src/main.ts",
