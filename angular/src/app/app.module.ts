@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { ImagekitioAngularModule } from "../../lib/src/imagekitio-angular/imagekitio-angular.module";
 import { environment } from 'src/environments/environment';
+import { ImagekitioAngularModule } from 'imagekitio-angular';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     ImagekitioAngularModule.forRoot({
-      urlEndpoint: environment.URL_ENDPOINT,
-      publicKey: environment.PUBLIC_KEY,
+      urlEndpoint: "your_endpoint",
+      publicKey: "your_public_key",
     })
   ],
   providers: [],
