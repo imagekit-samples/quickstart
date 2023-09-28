@@ -12,8 +12,8 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "imagekitio-vue": "^1.0.8",
-    "vue": "^2.6.11"
+    "imagekitio-vue": "^2.0.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

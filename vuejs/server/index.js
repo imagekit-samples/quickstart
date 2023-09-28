@@ -7,9 +7,9 @@ const ImageKit = require("imagekit");
 require('dotenv').config()
 
 const imagekit = new ImageKit({
-    urlEndpoint: process.env.VUE_APP_IMAGEKIT_URL_ENDPOINT,
-    publicKey: process.env.VUE_APP_IMAGEKIT_PUBLIC_KEY,
-    privateKey: process.env.VUE_APP_IMAGEKIT_PRIVATE_KEY
+    urlEndpoint: process.env.VUE_APP_URL_ENDPOINT,
+    publicKey: process.env.VUE_APP_PUBLIC_KEY,
+    privateKey: process.env.VUE_APP_PRIVATE_KEY
 })
 
 app.get("/auth", function (req, res) {
