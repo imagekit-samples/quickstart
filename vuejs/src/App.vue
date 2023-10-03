@@ -1,30 +1,31 @@
-<!-- <template>
-  <div>
-    <h1>ImageKit Vuejs quick start</h1>
-    <ik-image width="400" path="/default-image.jpg"></ik-image>
+<template>
+  <div class="sample-app">
+    <p>IK Image component</p>
+    <IKImage :urlEndpoint="urlEndpoint" :path="path" :transformation="[{ height: 200, width: 200 }, { rotation: 360 }]"
+      :lqip="{ active: true, threshold: 20, quality: 20, blur: 30 }" loading="lazy" />
 
     <h2>Loading image from an absolute path using src prop</h2>
-    <ik-image 
+    <IKImage
       width="400" 
       src="https://ik.imagekit.io/demo/default-image.jpg" />
 
     <h2>Resizing image to 300x300</h2>
-    <ik-image 
-      path="/default-image.jpg" 
+    <IKImage
+      path="/default-image.jpg"           
       :transformation="[{width: 300, height: 300}]" />
 
     <h2>Loading image a quality 40</h2>
-    <ik-image 
+    <IKImage
       path="/default-image.jpg" 
       :transformation="[{quality: 40}]" />
 
     <h2>Chained transformation</h2>
-    <ik-image 
+    <IKImage
       path="/default-image.jpg" 
       :transformation="[{width: 300, height: 300}, {rotation: 90}]" />
 
     <h2>Adding image overlay</h2>
-    <ik-image 
+    <IKImage
       path="/default-image.jpg" 
       :transformation="[{
         width: 300, 
@@ -35,131 +36,36 @@
         overlayImageBorder: '10_CDDC39'
       }]" />
 
-    <h2>Lazy loading images</h2>
-    <ik-image
-      path="/default-image.jpg"
-      :transformation="[{height:300,width:400}]"
-      loading="lazy"
-      height="300"
-      width="400"
-    />
-
-    <h2>Loading a blurred low quality image placeholder and lazy-loading original when user scrolls near them</h2> 
-    <ik-image
-      path="/default-image.jpg"
-      :transformation="[{height:300,width:400}]"
-      :lqip="{active:true}"
-      loading="lazy"
-      height="300"
-      width="400"
-    />
-
-    <h2>File upload</h2>
-    <ik-upload
-      :onError="onError"
-      :onSuccess="onSuccess" />
-
-
-  </div>
-</template> -->
-
-<template>
-  <div class="sample-app">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at ultrices odio, quis venenatis ex. Duis augue
-      magna, aliquet et vehicula ut, consequat eu eros. Fusce consequat odio ac tincidunt pharetra. Proin molestie
-      bibendum diam. Integer non turpis sagittis, venenatis metus eu, lacinia magna. Etiam erat dui, dictum ut velit id,
-      porttitor volutpat eros. Integer eu neque pharetra, suscipit lacus eu, varius erat. Aliquam porttitor tempus nisi
-      sit amet hendrerit. Proin sodales convallis dignissim. Quisque et mauris lorem. Phasellus maximus aliquam diam, ac
-      malesuada elit consectetur ut. Pellentesque nec odio convallis massa elementum faucibus. Vestibulum egestas libero
-      orci, sit amet bibendum eros placerat ac. Nam non luctus felis. Vivamus ut tincidunt urna.
-
-      Proin faucibus dolor nunc, at interdum nisi lobortis vitae. Suspendisse a augue tellus. Nulla sit amet felis
-      blandit, viverra justo ut, sodales leo. Curabitur in tristique augue. Aenean neque lacus, tempor facilisis dolor ac,
-      aliquam volutpat nunc. Mauris placerat eros non velit bibendum malesuada. Nullam mollis dolor risus, eget tempor
-      metus pretium euismod. Vivamus commodo ante at vehicula scelerisque. Integer semper ultricies rutrum. Nam ac
-      hendrerit quam. In pulvinar, sapien vel lobortis efficitur, orci magna rutrum quam, eget dictum neque sapien eu
-      dolor. Sed et augue eu mi dictum porta. Aenean tempor sodales neque, venenatis malesuada tortor malesuada ac.
-
-      Sed felis nulla, mattis interdum turpis fringilla, posuere ultricies dolor. Pellentesque rutrum vitae quam vitae
-      ornare. Quisque dapibus mi vitae dignissim mattis. Suspendisse eu risus convallis, tempor dui non, pretium dolor.
-      Vestibulum at bibendum ex. Nulla sit amet diam in diam accumsan sodales. Sed aliquet quis urna et volutpat. Nullam
-      sit amet placerat leo, vel interdum elit. Suspendisse at porttitor ipsum. Duis accumsan a massa sed vulputate.
-      Vestibulum euismod nunc in tortor iaculis bibendum.
-
-      Sed efficitur nisi nulla, sed blandit velit accumsan a. Phasellus tempus et elit at vehicula. Aenean efficitur
-      tempor nulla at imperdiet. Aliquam in libero dignissim, maximus dui ac, aliquam felis. Proin leo sapien, efficitur
-      non lacus ut, blandit auctor lacus. Morbi vel pellentesque ex, ac mattis augue. Suspendisse dignissim mauris mauris,
-      vel scelerisque nibh volutpat sit amet. Suspendisse risus velit, volutpat quis viverra ut, ultricies vel lectus.
-      Quisque lacinia metus ut convallis tincidunt. Donec lobortis felis libero, nec rutrum neque accumsan eget. Phasellus
-      velit nunc, rhoncus sit amet libero et, bibendum tempor lectus. In congue magna vel dui vulputate, quis accumsan
-      tortor egestas. Vestibulum egestas dignissim tellus, fermentum vulputate dui varius vitae. Nullam suscipit augue vel
-      augue mattis, sit amet dictum ante blandit. Donec fringilla dapibus aliquet. Nunc eget erat at augue laoreet
-      vestibulum.
-
-      Aenean egestas magna ante, a auctor purus dignissim ut. Integer ultrices egestas purus eget interdum. Curabitur nec
-      augue dolor. Fusce lobortis ex sed lectus vulputate, at dapibus turpis commodo. Sed in eleifend mauris, sit amet
-      mattis massa. Suspendisse vel eros quis massa sollicitudin facilisis. Aliquam purus mi, interdum eget elit sed,
-      placerat tempor tellus. Maecenas lectus velit, dignissim quis vehicula id, finibus vel eros. Curabitur facilisis est
-      neque, id consequat dui hendrerit placerat. Nullam quis vehicula felis. Nunc ex elit, ultrices.
-
-      Sed efficitur nisi nulla, sed blandit velit accumsan a. Phasellus tempus et elit at vehicula. Aenean efficitur
-      tempor nulla at imperdiet. Aliquam in libero dignissim, maximus dui ac, aliquam felis. Proin leo sapien, efficitur
-      non lacus ut, blandit auctor lacus. Morbi vel pellentesque ex, ac mattis augue. Suspendisse dignissim mauris mauris,
-      vel scelerisque nibh volutpat sit amet. Suspendisse risus velit, volutpat quis viverra ut, ultricies vel lectus.
-      Quisque lacinia metus ut convallis tincidunt. Donec lobortis felis libero, nec rutrum neque accumsan eget. Phasellus
-      velit nunc, rhoncus sit amet libero et, bibendum tempor lectus. In congue magna vel dui vulputate, quis accumsan
-      tortor egestas. Vestibulum egestas dignissim tellus, fermentum vulputate dui varius vitae. Nullam suscipit augue vel
-      augue mattis, sit amet dictum ante blandit. Donec fringilla dapibus aliquet. Nunc eget erat at augue laoreet
-      vestibulum.
-
-      Aenean egestas magna ante, a auctor purus dignissim ut. Integer ultrices egestas purus eget interdum. Curabitur nec
-      augue dolor. Fusce lobortis ex sed lectus vulputate, at dapibus turpis commodo. Sed in eleifend mauris, sit amet
-      mattis massa. Suspendisse vel eros quis massa sollicitudin facilisis. Aliquam purus mi, interdum eget elit sed,
-      placerat tempor tellus. Maecenas lectus velit, dignissim quis vehicula id, finibus vel eros. Curabitur facilisis est
-      neque, id consequat dui hendrerit placerat. Nullam quis vehicula felis. Nunc ex elit, ultrices.
-
-      Aenean egestas magna ante, a auctor purus dignissim ut. Integer ultrices egestas purus eget interdum. Curabitur nec
-      augue dolor. Fusce lobortis ex sed lectus vulputate, at dapibus turpis commodo. Sed in eleifend mauris, sit amet
-      mattis massa. Suspendisse vel eros quis massa sollicitudin facilisis. Aliquam purus mi, interdum eget elit sed,
-      placerat tempor tellus. Maecenas lectus velit, dignissim quis vehicula id, finibus vel eros. Curabitur facilisis est
-      neque, id consequat dui hendrerit placerat. Nullam quis vehicula felis. Nunc ex elit, ultrices.
-    </p>
-    <p>IK Image component</p>
-    <IKImage :urlEndpoint="urlEndpoint" :path="path" :transformation="[{ height: 200, width: 200 }, { rotation: 360 }]"
-      :lqip="{ active: true, threshold: 20, quality: 20, blur: 30 }" loading="lazy" />
-
-    <p>Lazy loading</p>
-    <!-- tr:h-200,w-200/default-image.jpg -->
+    <h2>Lazy loading</h2>
     <IKImage :urlEndpoint="urlEndpoint" :path="path" :transformation="[{ height: 200, width: 200 }]" loading="lazy"
       class="lazyload" />
 
-    <p>Lazyload with LQIP</p>
-    <!-- tr:h-200,w-200:q-20,bl-30/default-image.jpg -->
+    <h2>Lazyload with LQIP</h2>
     <IKImage :urlEndpoint="urlEndpoint" :path="path" :transformation="[{ height: 200, width: 200 }]"
       :lqip="{ active: true, threshold: 20, quality: 20, blur: 30 }" loading="lazy" class="lazyload-lqip" />
 
-    <p>With LQIP</p>
+    <h2>With LQIP</h2>
     <!-- tr:h-200,w-200:q-20,bl-30/default-image.jpg -->
     <IKImage :urlEndpoint="urlEndpoint" :path="path" :transformation="[{ height: 200, width: 200 }]"
       :lqip="{ active: true, threshold: 20, quality: 20, blur: 30 }" class="lqip" />
 
 
-    <p>IK Image with context</p>
+    <h2>IK Image with context</h2>
     <IKContext :publicKey="publicKey" :urlEndpoint="urlEndpoint">
       <template v-slot:default>
         <IKImage :path="path" :transformation='[{ height: 300, width: 400 }]' />
       </template>
     </IKContext>
 
-    <p>Using exported component</p>
+    <h2>Using exported component</h2>
     <IKVideo class="ikvideo-default" :urlEndpoint="urlEndpoint" :src="'https://ik.imagekit.io/demo/sample-video.mp4'"
       :transformation="[{ height: 200, width: 200 }]" />
 
-    <p>Video with some advance transformation</p>
+    <h2>Video with some advance transformation</h2>
     <IKVideo class="ikvideo-with-tr" :urlEndpoint="urlEndpoint" :src="'https://ik.imagekit.io/demo/sample-video.mp4'"
       :transformation="[{ height: 200, width: 600, b: '5_red', q: 95 }]" />
 
-    <p>File upload</p>
+    <h2>File upload</h2>
     <IKContext :publicKey="publicKey" :urlEndpoint="urlEndpoint" :authenticator="authenticator">
       <IKUpload ref="childComponentRef" :tags="['tag1', 'tag2']"
         :responseFields="['tags']" :onError="onError" :onSuccess="onSuccess" :onUploadStart="onUploadStart" :onUploadProgress="onUploadProgress"
