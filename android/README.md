@@ -76,8 +76,8 @@ npm start
 Node server will run at `http://localhost:8080`.
 
 
-### Important Note
-For ease for loading file, `app/src/main/java/io/imagekit/imagekitdemo/FileUtils.kt` can be imported into your project and used like it is demonstrated in `app/src/main/java/io/imagekit/imagekitdemo/UploadFileActivity.kt`.
+> #### Recommendation
+> For ease for loading file, `app/src/main/java/io/imagekit/imagekitdemo/FileUtils.kt` can be imported into your project and used like it is demonstrated in `app/src/main/java/io/imagekit/imagekitdemo/UploadFileActivity.kt`.
 
 # Demo Features Code Samples
 
