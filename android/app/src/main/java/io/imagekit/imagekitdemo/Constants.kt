@@ -4,7 +4,7 @@ package io.imagekit.imagekitdemo
 const val IK_PUBLIC_KEY = "IK_PUBLIC_KEY"
 
 //Replace with ImageKit URL endpoint (or CNAME) from ImageKit Dashboard (https://imagekit.io/dashboard/url-endpoints)
-const val IMAGEKIT_ID = "IMAGEKIT_ID"
+const val IK_URL_ENDPOINT = "https://ik.imagekit.io/IMAGEKIT_ID"
 
 const val AUTH_SERVER_BASE_URL = "AUTH_SERVER_URL"
 const val AUTH_API_ENDPOINT = "/"
