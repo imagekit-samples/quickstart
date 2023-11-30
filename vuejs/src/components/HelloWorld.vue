@@ -1,5 +1,4 @@
 <template>
-  abc
   <div>
     <h1>ImageKit Vuejs quick start</h1>
     <IKImage :urlEndpoint="urlEndpoint" :path="path" width="400" />
