@@ -109,6 +109,15 @@
     class="uploaded-img-ik">
   </ik-image>
 
+  <p>Upload invalid file</p>
+  <ik-upload
+    class="file-upload-error"
+    fileName="test-fail.jpg"
+    folder="/sample-folder"
+    (onError)="handleUploadError($event)"
+    (onSuccess)="handleUploadSuccess($event)">
+  </ik-upload>
+
   <p style="color:red" class="upload-error-ik">
     {{uploadErrorMessage}}
   </p>
