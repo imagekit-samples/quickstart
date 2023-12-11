@@ -172,9 +172,7 @@ function App() {
           transformation={[{
             height: 300,
             width: 300,
-            overlayText: 'ImageKit',
-            overlayTextFontSize: 50,
-            overlayTextColor: '0651D5',
+            raw: "l-text,i-Imagekit,rt-90,co-0651D5,fs-50,l-end"
           }]}
         />
 
