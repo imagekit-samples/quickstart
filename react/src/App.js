@@ -24,6 +24,24 @@ const onUploadStart = evt => {
   console.log("Start", evt);
 };
 
+const authenticator = async () => {
+  try {
+    // You can pass headers as well and later validate the request source in the backend, or you can use headers for any other use case.
+    const response = await fetch(authenticationEndpoint);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+    }
+
+    const data = await response.json();
+    const { signature, expire, token } = data;
+    return { signature, expire, token };
+  } catch (error) {
+    throw new Error(`Authentication request failed: ${error.message}`);
+  }
+};
+
 function App() {
   const inputRefTest = useRef(null);
   const ikUploadRefTest = useRef(null);
@@ -32,7 +50,7 @@ function App() {
       <IKContext
         publicKey={publicKey}
         urlEndpoint={urlEndpoint}
-        authenticationEndpoint={authenticationEndpoint}
+        authenticator={authenticator}
       >
         <h1>ImageKit React quick start</h1>
         <h2>File upload</h2>
@@ -75,7 +93,7 @@ function App() {
           ref={ikUploadRefTest}
         />
         <p>Custom Upload Button</p>
-        {inputRefTest && <button onClick={() => inputRefTest.current.click()}>Upload</button>}
+        {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.click()}>Upload</button>}
         <p>Abort upload request</p>
         {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.abort()}>Abort request</button>}
       </IKContext>
@@ -154,9 +172,7 @@ function App() {
           transformation={[{
             height: 300,
             width: 300,
-            overlayText: 'ImageKit',
-            overlayTextFontSize: 50,
-            overlayTextColor: '0651D5',
+            raw: "l-text,i-Imagekit,rt-90,co-0651D5,fs-50,l-end"
           }]}
         />
 
@@ -186,7 +202,7 @@ function App() {
           width="400"
         />
       </IKContext>
-      <IKContext publicKey={publicKey} authenticationEndpoint={authenticationEndpoint} urlEndpoint={videoUrlEndpoint}>
+      <IKContext publicKey={publicKey} authenticator={authenticator} urlEndpoint={videoUrlEndpoint}>
         <h2>Video Element</h2>
         <IKVideo
           className='ikvideo-default'

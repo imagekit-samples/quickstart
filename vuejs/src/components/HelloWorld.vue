@@ -23,10 +23,7 @@
         {
           width: 300,
           height: 300,
-          overlayImage: 'default-image.jpg',
-          overlayWidth: 100,
-          overlayX: 0,
-          overlayImageBorder: '10_CDDC39',
+          raw: 'l-image,i-default-image.jpg,w-100,b-10_CDDC39,l-end'
         },
       ]"
     />

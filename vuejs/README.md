@@ -4,11 +4,13 @@ This sample project covers:
 
 1. Setting up ImageKit Vue.js SDK
 2. Rendering images
-3. Applying common image manipulations
-4. Adding overlays to images
-5. Lazy loading images
-6. Blurred image placeholder
-7. Client-side file uploading
+3. Setting authentication context for the SDK
+4. Applying common image manipulations
+5. Adding overlays to images
+6. Lazy loading images
+7. Blurred image placeholder
+8. Client-side file uploading
+9. Rendering videos
 
 # How to run locally
 Install dependencies
