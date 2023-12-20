@@ -30,13 +30,37 @@ module.exports.getImagekitUrlFromPath = function(imagePath, transformationArr, t
 	return decodeURIComponent(imageURL);
 }
 
-module.exports.uploadFile = function(file) {
+const authenticator = async () => {
+	try {
+	  // You can pass headers as well and later validate the request source in the backend, or you can use headers for any other use case.
+	  console.log({authenticationEndpoint})
+	  const response = await fetch(authenticationEndpoint);
+	  console.log({response})
+
+	  if (!response.ok) {
+		const errorText = await response.text();
+		throw new Error(`Request failed with status ${response.status}: ${errorText}`);
+	  }
+  
+	  const data = await response.json();
+	  const { signature, expire, token } = data;
+	  return { signature, expire, token };
+	} catch (error) {
+	  throw new Error(`Authentication request failed: ${error.message}`);
+	}
+};
+  
+module.exports.uploadFile = async function(file) {
+	console.log({file})
+	const res = await authenticator();
 	return new Promise((resolve, reject) => {
 		imagekit.upload({
 			file,
 			fileName: file.name, //you can change this and generate your own name if required
-			tags: ["sample-tag-1", "sample-tag-2"] //change this or remove it if you want
+			tags: ["sample-tag-1", "sample-tag-2"], //change this or remove it if you want
+			...res
 		}, function(err, result) {
+			console.log({err,result})
 			if(err) reject(err);
 			resolve(result);
 

@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 
 import Button from '../../components/Button/';
-import Text from '../../components/Text/';
 import getStyleSheet from './styles';
 
 import { uploadFile } from '../../lib/imagekit';
@@ -50,7 +49,7 @@ function Upload() {
 				<View style={styleSheet.captionView}>
 					{
 						uploadFileUrl && 
-						<Text>Uploaded File - {uploadFileUrl}</Text>
+						<Text style={styleSheet.text}>Uploaded File - {uploadFileUrl}</Text>
 					}
 				</View>
 			</View>
