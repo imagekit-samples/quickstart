@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-function getStyleSheet(cssProps) {
+function getStyleSheet() {
   return StyleSheet.create({
     headContainer: {
       flex: 1,

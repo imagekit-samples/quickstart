@@ -78,7 +78,7 @@ function Fetch() {
       case 'Transformation 4': //overlay image with x,y and its height
         transformationArr = [
           {
-			raw: 'l-image,i-plant.jpeg,h-100,b-10_CDDC39,l-end'
+            raw: 'l-image,i-plant.jpeg,h-100,b-10_CDDC39,l-end',
           },
         ];
         transformedImageUrl = getImagekitUrlFromPath(
@@ -90,7 +90,7 @@ function Fetch() {
       case 'Transformation 5': //overlay text example
         transformationArr = [
           {
-			raw: "l-text,i-Imagekit,co-0651D5,fs-50,l-end"
+            raw: 'l-text,i-Imagekit,co-0651D5,fs-50,l-end',
           },
         ];
         transformedImageUrl = getImagekitUrlFromSrc(
@@ -178,7 +178,9 @@ function Fetch() {
               {currentTr ? (
                 <Text style={styleSheet.text}>{currentTr}</Text>
               ) : (
-                <Text style={styleSheet.text}>Image with no Transformation</Text>
+                <Text style={styleSheet.text}>
+                  Image with no Transformation
+                </Text>
               )}
             </View>
             <View style={styleSheet.captionView}>

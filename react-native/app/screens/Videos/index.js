@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {View, ScrollView, Text} from 'react-native';
 import getStyleSheet from './styles';
 import {getImagekitUrlFromSrc} from '../../lib/imagekit';
 import {urlEndpoint} from '../../config/imagekit';
 import Video from 'react-native-video';
-import Button from '../../components/Button';
 
 function Videos() {
   let styleSheet = getStyleSheet({});
@@ -54,7 +53,6 @@ function Videos() {
 
   return (
     <ScrollView>
-
       <View style={styleSheet.imgContainer}>
         <>
           <View style={styleSheet.captionView}>
