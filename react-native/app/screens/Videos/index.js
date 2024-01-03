@@ -12,12 +12,12 @@ function Videos() {
   let videoSrc = urlEndpoint + videoPath;
 
   function showTransformedVideo(transformationType) {
-    let transformationArr = [];
+    let transformationArray = [];
     let transformedVideoUrl;
 
     switch (transformationType) {
       case 'Transformation 1': //basic video resizing
-        transformationArr = [
+        transformationArray = [
           {
             height: 200,
             width: 200,
@@ -25,13 +25,13 @@ function Videos() {
         ];
         transformedVideoUrl = getImagekitUrlFromSrc(
           videoSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 
       case 'Transformation 2': //crop mode and url from source
         videoSrc = 'https://ik.imagekit.io/demo/img/sample-video.mp4';
-        transformationArr = [
+        transformationArray = [
           {
             b: '5_red',
             q: 95,
@@ -39,7 +39,7 @@ function Videos() {
         ];
         transformedVideoUrl = getImagekitUrlFromSrc(
           videoSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 

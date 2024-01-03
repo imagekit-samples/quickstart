@@ -28,12 +28,12 @@ function Fetch() {
   }, [currentTr]);
 
   function showTransformedImage(transformationType) {
-    let transformationArr = [];
+    let transformationArray = [];
     let transformedImageUrl;
 
     switch (transformationType) {
       case 'Transformation 1': //basic image resizing
-        transformationArr = [
+        transformationArray = [
           {
             height: 150,
             width: 150,
@@ -41,13 +41,13 @@ function Fetch() {
         ];
         transformedImageUrl = getImagekitUrlFromSrc(
           imageSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 
       case 'Transformation 2': //crop mode and url from source
         imageSrc = 'https://ik.imagekit.io/demo/img/plant.jpeg';
-        transformationArr = [
+        transformationArray = [
           {
             height: 300,
             width: 300,
@@ -57,12 +57,12 @@ function Fetch() {
         ];
         transformedImageUrl = getImagekitUrlFromSrc(
           imageSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 
       case 'Transformation 3': //aspect ration and url from path and transformations as query param
-        transformationArr = [
+        transformationArray = [
           {
             height: 400,
             aspectRatio: '3-2',
@@ -70,37 +70,37 @@ function Fetch() {
         ];
         transformedImageUrl = getImagekitUrlFromPath(
           imagePath,
-          transformationArr,
+          transformationArray,
           'query',
         );
         break;
 
       case 'Transformation 4': //overlay image with x,y and its height
-        transformationArr = [
+        transformationArray = [
           {
             raw: 'l-image,i-plant.jpeg,h-100,b-10_CDDC39,l-end',
           },
         ];
         transformedImageUrl = getImagekitUrlFromPath(
           imagePath,
-          transformationArr,
+          transformationArray,
         );
         break;
 
       case 'Transformation 5': //overlay text example
-        transformationArr = [
+        transformationArray = [
           {
             raw: 'l-text,i-Imagekit,co-0651D5,fs-50,l-end',
           },
         ];
         transformedImageUrl = getImagekitUrlFromSrc(
           imageSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 
       case 'Transformation 6': //chained transformation
-        transformationArr = [
+        transformationArray = [
           {
             height: 300,
             width: 300,
@@ -111,7 +111,7 @@ function Fetch() {
         ];
         transformedImageUrl = getImagekitUrlFromSrc(
           imageSrc,
-          transformationArr,
+          transformationArray,
         );
         break;
 
