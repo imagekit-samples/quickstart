@@ -14,7 +14,7 @@ function Upload() {
 
   async function openFileSelector() {
     try {
-      var res = await DocumentPicker.pick({
+      const res = await DocumentPicker.pickSingle({
         type: [DocumentPicker.types.allFiles],
       });
 

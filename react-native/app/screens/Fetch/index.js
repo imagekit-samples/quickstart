@@ -13,8 +13,8 @@ import {urlEndpoint} from '../../config/imagekit';
 function Fetch() {
   let styleSheet = getStyleSheet({});
 
-  var imagePath = '/default.jpg';
-  var imageSrc = urlEndpoint + imagePath;
+  const imagePath = '/default.jpg';
+  let imageSrc = urlEndpoint + imagePath;
 
   const [imageUrl, setImageUrl] = useState();
   const [currentTr, setCurrentTr] = useState();
@@ -28,8 +28,8 @@ function Fetch() {
   }, [currentTr]);
 
   function showTransformedImage(transformationType) {
-    var transformationArr = [];
-    var transformedImageUrl;
+    let transformationArr = [];
+    let transformedImageUrl;
 
     switch (transformationType) {
       case 'Transformation 1': //basic image resizing

@@ -5,7 +5,7 @@ import {
   authenticationEndpoint,
 } from '../config/imagekit';
 
-var imagekitConfigOptions = {urlEndpoint};
+const imagekitConfigOptions = {urlEndpoint};
 if (publicKey) imagekitConfigOptions.publicKey = publicKey;
 if (authenticationEndpoint)
   imagekitConfigOptions.authenticationEndpoint = authenticationEndpoint;
@@ -13,11 +13,11 @@ if (authenticationEndpoint)
 const imagekit = new ImageKit(imagekitConfigOptions);
 
 module.exports.getImagekitUrlFromSrc = function (imageSrc, transformationArr) {
-  var ikOptions = {
+  const ikOptions = {
     src: imageSrc,
     transformation: transformationArr,
   };
-  var imageURL = imagekit.url(ikOptions);
+  const imageURL = imagekit.url(ikOptions);
 
   return decodeURIComponent(imageURL);
 };
@@ -27,7 +27,7 @@ module.exports.getImagekitUrlFromPath = function (
   transformationArr,
   transformationPostion,
 ) {
-  var ikOptions = {
+  const ikOptions = {
     urlEndpoint,
     path: imagePath,
     transformation: transformationArr,
@@ -35,7 +35,7 @@ module.exports.getImagekitUrlFromPath = function (
   if (transformationPostion)
     ikOptions.transformationPostion = transformationPostion;
 
-  var imageURL = imagekit.url(ikOptions);
+  const imageURL = imagekit.url(ikOptions);
 
   return decodeURIComponent(imageURL);
 };

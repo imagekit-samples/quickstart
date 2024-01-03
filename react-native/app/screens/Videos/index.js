@@ -8,12 +8,12 @@ import Video from 'react-native-video';
 function Videos() {
   let styleSheet = getStyleSheet({});
 
-  var videoPath = '/sample-video.mp4';
-  var videoSrc = urlEndpoint + videoPath;
+  const videoPath = '/sample-video.mp4';
+  let videoSrc = urlEndpoint + videoPath;
 
   function showTransformedVideo(transformationType) {
-    var transformationArr = [];
-    var transformedVideoUrl;
+    let transformationArr = [];
+    let transformedVideoUrl;
 
     switch (transformationType) {
       case 'Transformation 1': //basic video resizing
