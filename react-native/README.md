@@ -60,16 +60,10 @@ Move to the server directory
 cd server
 ```
 
-Create `.env` file by copying `sample.env`
+Insert your private key in `server/index.js`
 
 ```shell
-cp sample.env .env
-```
-
-Set the following keys in `.env`
-
-```shell
-PRIVATE_KEY=private_XXXXXXXXXXXX
+const privateKey = `private_XXXXXXXXXXXX`
 ```
 
 API private key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
