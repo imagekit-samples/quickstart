@@ -2,14 +2,13 @@
 
 This sample project covers:
 
-1. Setting up ImageKit React SDK
+1. Configuring a React Native application with the ImageKit JavaScript SDK
 2. Rendering images
 3. Setting authentication context for the SDK
 4. Applying common image manipulations
 5. Adding overlays to images
-6. Lazy loading images
-7. Blurred image placeholder
-8. Client-side file uploading
+6. Client-side file uploading
+7. Rendering videos
 
 # How to run locally
 
@@ -61,16 +60,10 @@ Move to the server directory
 cd server
 ```
 
-Create `.env` file by copying `sample.env`
+Insert your private key in `server/index.js`
 
 ```shell
-cp sample.env .env
-```
-
-Set the following keys in `.env`
-
-```shell
-PRIVATE_KEY=private_XXXXXXXXXXXX
+const privateKey = `private_XXXXXXXXXXXX`
 ```
 
 API private key can be obtained from the [developer](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.

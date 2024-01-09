@@ -1,31 +1,37 @@
-import { StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-function getStyleSheet(cssProps){
-	return StyleSheet.create({
-		btnContainer : {
-			flex : 1,
-			alignItems : 'stretch',
-			justifyContent : 'center',
-		},
-		imgContainer : {
-			flex : 3,
-			alignItems : 'center',
-			justifyContent : 'flex-start',
-		},
-		btnView : {
-			flexDirection : 'row',
-			justifyContent : 'space-evenly',
-			alignItems : 'center',
-			marginTop : 10,
-			marginBottom : 10,
-		},
-		buttonCssProps : {
-			width : 150
-		},
-		captionView : {
-			marginTop : 10
-		}
-	})
+function getStyleSheet(cssProps) {
+  return StyleSheet.create({
+    btnContainer: {
+      flex: 1,
+      alignItems: 'stretch',
+      justifyContent: 'center',
+    },
+    imgContainer: {
+      flex: 3,
+      alignItems: 'center',
+      justifyContent: 'flex-start',
+    },
+    btnView: {
+      flexDirection: 'row',
+      justifyContent: 'space-evenly',
+      alignItems: 'center',
+      marginTop: 10,
+      marginBottom: 10,
+    },
+    buttonCssProps: {
+      width: 150,
+    },
+    captionView: {
+      marginTop: 10,
+    },
+    text: {
+      color: 'black',
+      fontSize: 15,
+      marginLeft: 10,
+      marginRight: 10,
+    },
+  });
 }
 
 export default getStyleSheet;
