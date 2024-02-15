@@ -91,6 +91,7 @@
           :onSuccess="onSuccess"
           :onUploadProgress="onUploadProgress"
           :onUploadStart="onUploadStart"
+          :transformation= "{ pre: 'l-text,i-Imagekit,fs-50,l-end', post: [{type: 'transformation', value: 'w-100'}]}"
         />
         <p>Abort upload request</p>
         <button @click="abortChildUpload">Abort request</button>
