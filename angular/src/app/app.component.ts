@@ -15,7 +15,9 @@ export class AppComponent {
 
   transformation: Array<Transformation> = [{
      height: "200",
-     width: "200"
+     width: "200",
+     effectShadow: "bl-15_st-40_x-10_y-N5",
+     effectGradient: "from-red_to-white",
   }];
 
   flexibleTransformationOne: Array<Transformation> = [{

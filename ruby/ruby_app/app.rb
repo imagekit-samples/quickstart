@@ -19,7 +19,8 @@ puts "generated url => #{gen_url}"
 
 # 2 Using full image URL
 image_url = imagekitio.url({src: url_endpoint.chomp("/") + "/default-image.jpg",
-                            transformation: [{height: "300", width: "400"}],})
+                            transformation: [{height: "300", width: "400", effect_shadow: "bl-15",
+                            effect_gradient: "from-lightskyblue_to-mintcream"}],})
 puts "-------------------------------------"
 
 puts "Url using full image url =>  #{image_url}"
@@ -45,7 +46,8 @@ upload = imagekitio.upload_file(
     response_fields: 'tags,customCoordinates,isPrivateFile,metadata',
     tags: %w[abc def],
     use_unique_file_name: false,
-    is_private_file: true
+    is_private_file: true,
+    transformation: { pre: 'l-text,i-Imagekit,fs-50,l-end', post: [{type: 'transformation', value: 'w-100'}]},
     )
 puts "------------------------------------------", "\n"
 puts "Upload Private with binary => ", upload

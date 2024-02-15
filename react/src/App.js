@@ -91,6 +91,7 @@ function App() {
           // style={{display: 'none'}} // hide the default input and use the custom upload button
           inputRef={inputRefTest}
           ref={ikUploadRefTest}
+          transformation={{ pre: "l-text,i-Imagekit,fs-50,l-end", post: [{ type: "transformation", value: "w-100" }] }}
         />
         <p>Custom Upload Button</p>
         {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.click()}>Upload</button>}
