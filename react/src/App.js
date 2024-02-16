@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import './App.css';
 import { IKContext, IKImage, IKUpload, IKVideo } from 'imagekitio-react';
 
-const publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
-const urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
+const publicKey = "public_X140up/8w//8965Hp/pI8VCM6QY=";
+const urlEndpoint = "https://ik.imagekit.io/igi7ywjzdi/";
 const authenticationEndpoint = 'http://localhost:3001/auth';
 const videoUrlEndpoint = 'https://ik.imagekit.io/demo/';
 const videoPath = "sample-video.mp4";
@@ -43,7 +43,6 @@ const authenticator = async () => {
 };
 
 function App() {
-  const inputRefTest = useRef(null);
   const ikUploadRefTest = useRef(null);
   return (
     <div className="App">
@@ -73,6 +72,7 @@ function App() {
             "name": "remove-bg",
             "options": {
               "add_shadow": true,
+              "semitransparency":false
             },
           }]}
           webhookUrl="https://www.example.com/imagekit-webhook" // replace with your webhookUrl
@@ -89,7 +89,6 @@ function App() {
           onUploadProgress={onUploadProgress}
           onUploadStart={onUploadStart}
           // style={{display: 'none'}} // hide the default input and use the custom upload button
-          inputRef={inputRefTest}
           ref={ikUploadRefTest}
           transformation={{ pre: "l-text,i-Imagekit,fs-50,l-end", post: [{ type: "transformation", value: "w-100" }] }}
         />
