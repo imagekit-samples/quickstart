@@ -100,7 +100,7 @@
     [onUploadStart]="onUploadStartFunction"
     [onUploadProgress]="onUploadProgressFunction"
     [authenticator]="authenticator"
-    [transformation]='{ pre: "l-text,i-Imagekit,fs-50,l-end", "post": [{type: "transformation", value: "w-100"}]}'
+    [transformation]='{ "pre": "l-text,i-Imagekit,fs-50,l-end", "post": [{type: "transformation", value: "w-100"}]}'
     class="file-upload-ik">
   </ik-upload>
   <button (click)="onAbortFunction()">Abort</button>
