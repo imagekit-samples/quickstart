@@ -15,7 +15,7 @@ export class AppComponent {
 
   transformation: Array<Transformation> = [{
      height: "200",
-     width: "200",
+     width: "200"
   }];
 
   flexibleTransformationOne: Array<Transformation> = [{

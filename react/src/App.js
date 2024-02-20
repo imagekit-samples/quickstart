@@ -2,8 +2,8 @@ import React, { useRef } from 'react';
 import './App.css';
 import { IKContext, IKImage, IKUpload, IKVideo } from 'imagekitio-react';
 
-const publicKey = "public_X140up/8w//8965Hp/pI8VCM6QY=";
-const urlEndpoint = "https://ik.imagekit.io/igi7ywjzdi/";
+const publicKey = '<YOUR_IMAGEKIT_PUBLIC_KEY>';
+const urlEndpoint = '<YOUR_IMAGEKIT_URL_ENDPOINT>';
 const authenticationEndpoint = 'http://localhost:3001/auth';
 const videoUrlEndpoint = 'https://ik.imagekit.io/demo/';
 const videoPath = "sample-video.mp4";
