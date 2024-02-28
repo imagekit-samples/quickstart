@@ -76,6 +76,7 @@ if __name__ == "__main__":
             overwrite_tags=False,
             overwrite_custom_metadata=True,
             # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+            transformation={ "pre": 'l-text,i-Imagekit,fs-50,l-end', "post": [{"type": 'transformation', "value": 'w-100'}]}
         ),
     )
 
@@ -111,6 +112,7 @@ if __name__ == "__main__":
             overwrite_tags=False,
             overwrite_custom_metadata=True,
             # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+            transformation={ "pre": 'l-text,i-Imagekit,fs-50,l-end', "post": [{"type": 'transformation', "value": 'w-100'}]}
         ),
     )
 
@@ -149,6 +151,7 @@ if __name__ == "__main__":
             overwrite_tags=False,
             overwrite_custom_metadata=True,
             # custom_metadata={"test": 12}, # only add custom meta data if you have it in account.
+            transformation={ "pre": 'l-text,i-Imagekit,fs-50,l-end', "post": [{"type": 'transformation', "value": 'w-100'}]}
         ),
     )
 
@@ -299,6 +302,8 @@ if __name__ == "__main__":
                     "progressive": "true",
                     "effect_sharpen": "-",
                     "effect_contrast": "1",
+                    "effect_shadow": "bl-15_st-40_x-10_y-N5",
+                    "effect_gradient": "from-red_to-white",
                 }
             ],
         }

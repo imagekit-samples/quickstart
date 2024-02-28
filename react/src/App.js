@@ -43,7 +43,6 @@ const authenticator = async () => {
 };
 
 function App() {
-  const inputRefTest = useRef(null);
   const ikUploadRefTest = useRef(null);
   return (
     <div className="App">
@@ -73,6 +72,7 @@ function App() {
             "name": "remove-bg",
             "options": {
               "add_shadow": true,
+              "semitransparency":false
             },
           }]}
           webhookUrl="https://www.example.com/imagekit-webhook" // replace with your webhookUrl
@@ -89,8 +89,8 @@ function App() {
           onUploadProgress={onUploadProgress}
           onUploadStart={onUploadStart}
           // style={{display: 'none'}} // hide the default input and use the custom upload button
-          inputRef={inputRefTest}
           ref={ikUploadRefTest}
+          transformation={{ pre: "l-text,i-Imagekit,fs-50,l-end", post: [{ type: "transformation", value: "w-100" }] }}
         />
         <p>Custom Upload Button</p>
         {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.click()}>Upload</button>}
