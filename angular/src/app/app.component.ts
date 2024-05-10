@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Transformation } from 'imagekit-javascript/dist/src/interfaces/Transformation';
 import { IkUploadComponent } from 'imagekitio-angular';
+import { HTMLInputEvent } from 'imagekitio-angular/lib/utility/ik-type-def-collection';
 
 @Component({
   selector: 'app-root',
@@ -71,7 +72,7 @@ export class AppComponent {
     }
   };
 
-  applyImgTransformationOne(res) {
+  applyImgTransformationOne() {
     this.flexibleTransformationOne = [
       {
         height: '200',
@@ -89,7 +90,7 @@ export class AppComponent {
     ];
   }
 
-  applyImgTransformationTwo(res) {
+  applyImgTransformationTwo() {
     this.flexibleTransformationTwo = [
       {
         height: '200',
@@ -99,7 +100,7 @@ export class AppComponent {
     ];
   }
 
-  validateFileFunction(res: any) {
+  validateFileFunction(res: File): boolean {
     console.log('validating');
     if (res.size < 1000000) {
       // Less than 1mb
@@ -108,7 +109,7 @@ export class AppComponent {
     return false;
   }
 
-  onUploadStartFunction(res: any) {
+  onUploadStartFunction(res: HTMLInputEvent): void {
     console.log('onUploadStart');
   }
 
@@ -116,7 +117,7 @@ export class AppComponent {
     this.uploadComponent && this.uploadComponent.abort();
   }
 
-  onUploadProgressFunction(res: any) {
+  onUploadProgressFunction(res: ProgressEvent): void {
     console.log('progressing');
   }
 
