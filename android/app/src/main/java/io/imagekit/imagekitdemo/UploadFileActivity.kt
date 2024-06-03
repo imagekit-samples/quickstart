@@ -61,7 +61,22 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
             mapOf("name" to "google-auto-tagging", "minConfidence" to 80, "maxTags" to 5),
         )
         val overwriteAITags = false
-        val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
+
+        /**
+         * Custom metadata fields that will be set on the uploaded file
+         * These fields need to be defined in the ImageKit dashboard before they can be used.
+         * https://imagekit.io/dashboard/settings/media-library
+         *
+         * Field definitions used in this example:
+         *   -  Field label: Device Name
+         *      Field name: device_name
+         *      Field type: Text
+         *   -  Field label: UID
+         *      Field name: uid
+         *      Field type: Number
+         */
+        // val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
+
         file?.let {
             loadingDialog = AlertDialog.Builder(this)
                 .setMessage("Uploading file...")
@@ -79,7 +94,7 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                             "folder" to targetFolder,
                             "extensions" to Gson().toJson(extensions),
                             "overwriteAITags" to overwriteAITags.toString(),
-                            "customMetadata" to Gson().toJson(customMetadata)
+                            // "customMetadata" to Gson().toJson(customMetadata)
                         )
                     )?.let { response -> response["token"] }.toString()
 
