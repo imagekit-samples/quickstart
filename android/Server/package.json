@@ -6,9 +6,10 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "imagekit": "^3.1.1"
+    "imagekit": "^3.1.1",
+    "jsonwebtoken": "^9.0.2"
   },
-  "scripts":{
+  "scripts": {
     "start": "node index.js"
   }
 }

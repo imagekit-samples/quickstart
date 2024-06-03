@@ -7,7 +7,7 @@ const val IK_PUBLIC_KEY = "IK_PUBLIC_KEY"
 const val IK_URL_ENDPOINT = "https://ik.imagekit.io/IMAGEKIT_ID"
 
 const val AUTH_SERVER_BASE_URL = "AUTH_SERVER_URL"
-const val AUTH_API_ENDPOINT = "/"
+const val AUTH_API_ENDPOINT = "/generateUploadAuthToken"
 
 //Replace with any image available in your ImageKit media library
 const val SAMPLE_IMAGE = "default-image.jpg"
