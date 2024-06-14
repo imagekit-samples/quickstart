@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		538A9E30253D8B5400337437 /* FetchImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538A9E2F253D8B5400337437 /* FetchImageViewController.swift */; };
 		538A9E32253D925100337437 /* UploadImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538A9E31253D925100337437 /* UploadImageViewController.swift */; };
 		538A9E34253D967900337437 /* UploadFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538A9E33253D967900337437 /* UploadFileViewController.swift */; };
+		70A6379B2C1C14080007E812 /* UploadAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6379A2C1C14080007E812 /* UploadAuthService.swift */; };
+		70A6379D2C1C14970007E812 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A6379C2C1C14970007E812 /* Constants.swift */; };
 		AD535FC466F6C7BFDA604638 /* Pods_ImageKitDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F52154C12D06C8E9AE8CE0A4 /* Pods_ImageKitDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,8 @@
 		538A9E2F253D8B5400337437 /* FetchImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchImageViewController.swift; sourceTree = "<group>"; };
 		538A9E31253D925100337437 /* UploadImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadImageViewController.swift; sourceTree = "<group>"; };
 		538A9E33253D967900337437 /* UploadFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadFileViewController.swift; sourceTree = "<group>"; };
+		70A6379A2C1C14080007E812 /* UploadAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadAuthService.swift; sourceTree = "<group>"; };
+		70A6379C2C1C14970007E812 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CFE06A9002E02DEB1C165F66 /* Pods-ImageKitDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageKitDemo.release.xcconfig"; path = "Target Support Files/Pods-ImageKitDemo/Pods-ImageKitDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F52154C12D06C8E9AE8CE0A4 /* Pods_ImageKitDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageKitDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,6 +92,8 @@
 				538A9E2F253D8B5400337437 /* FetchImageViewController.swift */,
 				538A9E31253D925100337437 /* UploadImageViewController.swift */,
 				538A9E33253D967900337437 /* UploadFileViewController.swift */,
+				70A6379A2C1C14080007E812 /* UploadAuthService.swift */,
+				70A6379C2C1C14970007E812 /* Constants.swift */,
 			);
 			path = ImageKitDemo;
 			sourceTree = "<group>";
@@ -215,12 +221,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70A6379B2C1C14080007E812 /* UploadAuthService.swift in Sources */,
 				538A9E34253D967900337437 /* UploadFileViewController.swift in Sources */,
 				538A9E20253D88D600337437 /* ViewController.swift in Sources */,
 				538A9E30253D8B5400337437 /* FetchImageViewController.swift in Sources */,
 				538A9E32253D925100337437 /* UploadImageViewController.swift in Sources */,
 				538A9E1C253D88D600337437 /* AppDelegate.swift in Sources */,
 				538A9E1E253D88D600337437 /* SceneDelegate.swift in Sources */,
+				70A6379D2C1C14970007E812 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22F6NPJLCR;
 				INFOPLIST_FILE = ImageKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -384,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 22F6NPJLCR;
 				INFOPLIST_FILE = ImageKitDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
