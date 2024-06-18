@@ -65,7 +65,22 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
             mapOf("name" to "google-auto-tagging", "minConfidence" to 80, "maxTags" to 5),
         )
         val overwriteAITags = false
-        val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
+
+        /**
+         * Custom metadata fields that will be set on the uploaded file
+         * These fields need to be defined in the ImageKit dashboard before they can be used.
+         * https://imagekit.io/dashboard/settings/media-library
+         *
+         * Field definitions used in this example:
+         *   -  Field label: Device Name
+         *      Field name: device_name
+         *      Field type: Text
+         *   -  Field label: UID
+         *      Field name: uid
+         *      Field type: Number
+         */
+
+        // val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
 
         bitmap?.let {
             loadingDialog = AlertDialog.Builder(this)
@@ -83,7 +98,7 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
                             "folder" to targetFolder,
                             "extensions" to Gson().toJson(extensions),
                             "overwriteAITags" to overwriteAITags.toString(),
-                            "customMetadata" to Gson().toJson(customMetadata)
+                            // "customMetadata" to Gson().toJson(customMetadata)
                         )
                     )?.let { it["token"] }.toString()
 
@@ -96,7 +111,7 @@ class UploadImageActivity : AppCompatActivity(), ImageKitCallback, View.OnClickL
                         folder = targetFolder,
                         extensions = extensions,
                         overwriteAITags = overwriteAITags,
-                        customMetadata = customMetadata,
+                        // customMetadata = customMetadata,
                         preprocessor = ImageUploadPreprocessor.Builder()
                             .limit(100, 100)
                             .crop(Point(10, 20), Point(40, 45))
