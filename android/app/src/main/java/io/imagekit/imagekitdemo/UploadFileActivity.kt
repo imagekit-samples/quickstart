@@ -86,7 +86,7 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
          *      Field name: uid
          *      Field type: Number
          */
-        // val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
+         val customMetadata = mapOf("device_name" to "Emulator", "uid" to 167434)
 
         file?.let {
             loadingDialog = AlertDialog.Builder(this)
@@ -105,7 +105,7 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                             "folder" to targetFolder,
                             "extensions" to Gson().toJson(extensions),
                             "overwriteAITags" to overwriteAITags.toString(),
-                            // "customMetadata" to Gson().toJson(customMetadata)
+                             "customMetadata" to Gson().toJson(customMetadata)
                         )
                     )?.let { response -> response["token"] }.toString()
 
