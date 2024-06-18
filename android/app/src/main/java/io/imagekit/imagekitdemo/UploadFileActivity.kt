@@ -16,8 +16,10 @@ import com.imagekit.android.entity.UploadPolicy
 import com.imagekit.android.entity.UploadResponse
 import com.imagekit.android.preprocess.VideoUploadPreprocessor
 import io.imagekit.imagekitdemo.databinding.ActivityUploadFileBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import java.io.*
+import java.io.File
 
 
 class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickListener {
@@ -39,9 +41,18 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 24 && resultCode == RESULT_OK) {
             val selectedFile = data?.data
-            if (selectedFile != null){
-                file = FileUtils.getPath(this, selectedFile)?.let { File(it) }
-                uploadFile()
+            if (selectedFile != null) {
+                file = File("${externalCacheDir?.path}/${selectedFile.path?.split("/")?.last()}")
+                lifecycleScope.launch {
+                    async(Dispatchers.IO) {
+                        contentResolver.openInputStream(selectedFile)?.use { input ->
+                            file?.outputStream()?.use { output ->
+                                output.write(input.readBytes())
+                            }
+                        }
+                    }.await()
+                    uploadFile()
+                }
             }
         }
     }
@@ -90,6 +101,9 @@ class UploadFileActivity : AppCompatActivity(), ImageKitCallback, View.OnClickLi
                         useUniqueFileName = true,
                         tags = tags,
                         folder = targetFolder,
+                        extensions = extensions,
+                        overwriteAITags = false,
+                        customMetadata = customMetadata,
                         policy = UploadPolicy.Builder()
                             .requireNetworkType(UploadPolicy.NetworkType.UNMETERED)
                             .maxRetries(3)
