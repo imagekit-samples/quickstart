@@ -21,13 +21,17 @@ pod install
 
 ## Setup authentication
 
-In `ImageKitDemo/AppDelegate.swift`, set the following parameters for authentication:
+In `ImageKitDemo/Constants.swift`, set the following parameters for authentication:
 
 ```swift
-_ = ImageKit.init(publicKey: "<YOUR_IMAGEKIT_PUBLIC_KEY>", urlEndpoint: "<YOUR_IMAGEKIT_URL_ENDPOINT>", authenticationEndpoint: "http://localhost:8080/auth")
+let IK_PUBLIC_KEY = "your_public_key"
+
+let IK_URL_ENDPOINT = "https://ik.imagekit.io/your_imagekit_id"
+
+let AUTH_SERVER_API_ENDPOINT = "http://localhost:8080/auth"
 ```
 
-`urlEndpoint` is a required parameter.  `publicKey` and `authenticationEndpoint` parameters are optional and only needed if you want to use the SDK for client-side file upload. 
+`IK_URL_ENDPOINT` is a required parameter. `IK_PUBLIC_KEY` and `AUTH_SERVER_API_ENDPOINT` parameters are optional and only needed if you want to use the SDK for client-side file upload. 
 
 You can get the value of [URL-endpoint](https://imagekit.io/dashboard#url-endpoints) from your ImageKit dashboard.
 
@@ -57,12 +61,13 @@ cp sample.env .env
 Set the following keys in `.env`
 
 ```shell
+PUBLIC_KEY=public_XXXXXXXXXXXX
 PRIVATE_KEY=private_XXXXXXXXXXXX
 ```
 
 API private key can be obtained from the [developers](https://imagekit.io/dashboard#developers) section in your ImageKit dashboard.
 
-Please note that file upload will only work if, along with the above, you have also defined `publicKey`, `urlEndpoint`, and `authenticationEndpoint` variables in `ImageKitDemo/AppDelegate.swift`.
+Please note that file upload will only work if, along with the above, `IK_PUBLIC_KEY` and `AUTH_SERVER_API_ENDPOINT` are set in `Constants.swift` file.
 
 Install packages:
 
