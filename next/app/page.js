@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { IKImage, IKContext, IKUpload, IKVideo } from "imagekit-next";
+import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekit-next";
 
 const publicKey = "<YOUR_IMAGEKIT_PUBLIC_KEY>";
 const urlEndpoint = "<YOUR_IMAGEKIT_URL_ENDPOINT>";
@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className="App">
       <h1>ImageKit Next.js quick start</h1>
-      <IKContext publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
+      <ImageKitProvider publicKey={publicKey} urlEndpoint={urlEndpoint} authenticator={authenticator}>
         <div>
           <h2>File upload</h2>
           <IKUpload fileName="test-upload.png" onError={onError} onSuccess={onSuccess} />
@@ -98,8 +98,8 @@ export default function Home() {
           <p>Abort upload request</p>
           {ikUploadRefTest && <button onClick={() => ikUploadRefTest.current.abort()}>Abort request</button>}
         </div>
-      </IKContext>
-      <IKContext urlEndpoint={urlEndpoint}>
+      </ImageKitProvider>
+      <ImageKitProvider urlEndpoint={urlEndpoint}>
         <IKImage path="default-image.jpg" width={400} height={400} alt="Alt text" />
         <h2>Loading image from an absolute path</h2>
         <IKImage src="https://ik.imagekit.io/demo/default-image.jpg" width="400" height="400" alt="Alt text" />
@@ -212,15 +212,15 @@ export default function Home() {
           width="400"
           alt="Alt text"
         />
-      </IKContext>
-      <IKContext publicKey={publicKey} authenticator={authenticator} urlEndpoint={videoUrlEndpoint}>
+      </ImageKitProvider>
+      <ImageKitProvider publicKey={publicKey} authenticator={authenticator} urlEndpoint={videoUrlEndpoint}>
         <h2>Video Element</h2>
         <IKVideo className="ikvideo-default" path={videoPath} transformation={[{ height: 200, width: 200 }]} controls={true} />
 
         <br />
         <h2>Video with some advance transformation</h2>
         <IKVideo className="ikvideo-with-tr" path={videoPath} transformation={[{ height: 200, width: 600, b: "5_red", q: 95 }]} controls={true} />
-      </IKContext>
+      </ImageKitProvider>
     </div>
   );
 }
