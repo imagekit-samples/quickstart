@@ -9,7 +9,7 @@ const videoPath = "sample-video.mp4";
 
 const authenticator = async () => {
   try {
-    const response = await fetch("http://localhost:3001/auth");
+    const response = await fetch("http://localhost:3000/api/auth");
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -104,114 +104,104 @@ export default function Home() {
         <h2>Loading image from an absolute path</h2>
         <IKImage src="https://ik.imagekit.io/demo/default-image.jpg" width="400" height="400" alt="Alt text" />
         <h2>Height and width manipulation</h2>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              height: 200,
-              width: 200,
-            },
-          ]}
-          width="200"
-          height="200"
-          alt="Alt text"
-        />
+        <div className="relative dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                height: 200,
+                width: 200,
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h2>Quality manipulation</h2>
         <IKImage path="default-image.jpg" transformation={[{ quality: 10 }]} width="400" height="400" alt="Alt text" />
         <h2>Crop mode</h2>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              height: 300,
-              width: 200,
-              cropMode: "extract",
-            },
-          ]}
-          width="200"
-          height="300"
-          alt="Alt text"
-        />
+        <div className="relative dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                height: 300,
+                width: 200,
+                cropMode: "extract",
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h2>Chained transformation</h2>
         <h3>Step 1: Resized and cropped</h3>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              height: 300,
-              width: 200,
-            },
-          ]}
-          width="200"
-          height="300"
-          alt="Alt text"
-        />
-
+        <div className="relative large-dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                height: 300,
+                width: 200,
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h3>Step 2: Resized and cropped, then rotated</h3>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              height: 300,
-              width: 200,
-            },
-            {
-              rt: 90,
-            },
-          ]}
-          width="200"
-          height="300"
-          alt="Alt text"
-        />
-
+        <div className="relative large-dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                height: 300,
+                width: 200,
+              },
+              {
+                rt: 90,
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h3>Step 3: Rotated, then resized and cropped</h3>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              rt: 90,
-            },
-            {
-              height: 300,
-              width: 200,
-            },
-          ]}
-          width="200"
-          height="300"
-          alt="Alt text"
-        />
-
+        <div className="relative large-dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                rt: 90,
+              },
+              {
+                height: 300,
+                width: 200,
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h2>Adding text overlay to image</h2>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[
-            {
-              height: 300,
-              width: 300,
-              raw: "l-text,i-Imagekit,rt-90,co-0651D5,fs-50,l-end",
-            },
-          ]}
-          width="300"
-          height="300"
-          alt="Alt text"
-        />
-
+        <div className="relative large-dimension">
+          <IKImage
+            path="default-image.jpg"
+            transformation={[
+              {
+                height: 300,
+                width: 300,
+                raw: "l-text,i-Imagekit,rt-90,co-0651D5,fs-50,l-end",
+              },
+            ]}
+            alt="Alt text"
+          />
+        </div>
         <h2>Lazy loading images</h2>
-        <IKImage path="default-image.jpg" transformation={[{ height: 300, width: 400 }]} loading="lazy" height="300" width="400" alt="Alt text" />
-
+        <div className="relative large-dimension">
+          <IKImage path="default-image.jpg" transformation={[{ height: 300, width: 400 }]} loading="lazy" alt="Alt text" />
+        </div>
         <h2>Blurred image placeholder</h2>
         <IKImage path="default-image.jpg" lqip={{ active: true, quality: 20 }} width="400" height="400" alt="Alt text" />
-
         <h3>Combining lazy loading with low-quality placeholders</h3>
-        <IKImage
-          path="default-image.jpg"
-          transformation={[{ height: 300, width: 400 }]}
-          lqip={{ active: true }}
-          loading="lazy"
-          height="300"
-          width="400"
-          alt="Alt text"
-        />
+        <div className="relative large-dimension">
+          <IKImage path="default-image.jpg" transformation={[{ height: 300, width: 400 }]} lqip={{ active: true }} loading="lazy" alt="Alt text" />
+        </div>
       </ImageKitProvider>
       <ImageKitProvider publicKey={publicKey} authenticator={authenticator} urlEndpoint={videoUrlEndpoint}>
         <h2>Video Element</h2>
