@@ -2,8 +2,8 @@
 import React, { useRef } from "react";
 import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekit-next";
 
-const publicKey = "<YOUR_IMAGEKIT_PUBLIC_KEY>";
-const urlEndpoint = "<YOUR_IMAGEKIT_URL_ENDPOINT>";
+const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
+const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 const videoUrlEndpoint = "https://ik.imagekit.io/demo/";
 const videoPath = "sample-video.mp4";
 
@@ -60,23 +60,23 @@ export default function Home() {
             responseFields={["tags"]}
             validateFile={(file) => file.size < 2000000}
             folder={"/sample-folder"}
-            extensions={[
-              {
-                name: "remove-bg",
-                options: {
-                  add_shadow: true,
-                },
-              },
-            ]}
+            // extensions={[
+            //   {
+            //     name: "remove-bg",
+            //     options: {
+            //       add_shadow: true,
+            //     },
+            //   },
+            // ]}
             webhookUrl="https://www.example.com/imagekit-webhook" // replace with your webhookUrl
             overwriteFile={true}
             overwriteAITags={true}
             overwriteTags={true}
             overwriteCustomMetadata={true}
-            customMetadata={{
-              brand: "Nike",
-              color: "red",
-            }}
+            // customMetadata={{
+            //   brand: "Nike",
+            //   color: "red",
+            // }}
             onError={onError}
             onSuccess={onSuccess}
             onUploadProgress={onUploadProgress}
