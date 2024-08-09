@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Add configuration
 
-Create `.env.local` file and copy the content from `.env.example` into it. Replace <YOUR_IMAGEKIT_PUBLIC_KEY>, <YOUR_IMAGEKIT_URL_ENDPOINT> and  <YOUR_IMAGEKIT_PRIVATE_KEY> with actual values.
+Create `.env.local` file and copy the content from `.env.example` into it. Replace `<YOUR_IMAGEKIT_PUBLIC_KEY>`, `<YOUR_IMAGEKIT_URL_ENDPOINT>` and  `<YOUR_IMAGEKIT_PRIVATE_KEY>` with actual values.
  
 ## Getting Started
 
@@ -10,11 +10,13 @@ First, install the dependencies:
 
 ```bash
 npm install
+```
 
 Now let's run the development server:
 
 ```bash
 npm run dev
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
