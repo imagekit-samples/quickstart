@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef } from "react";
-import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekit-next";
+import { IKImage, ImageKitProvider, IKUpload, IKVideo } from "imagekitio-next";
 
 const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;
 const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
