@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). For the scope of this integration, we will focus on the app routers in `Next.js`. Please refer to [here](https://github.com/imagekit-developer/imagekit-next/tree/master/example/page-router) for page router.
 
 ## Add configuration
 
