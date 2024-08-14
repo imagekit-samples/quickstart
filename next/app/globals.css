@@ -1,0 +1,21 @@
+.App {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.dimension {
+  height: 200px;
+  width: 200px;
+}
+
+.large-dimension {
+  height: 300px;
+  width: 300px;
+}
